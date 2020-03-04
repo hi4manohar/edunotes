@@ -16,9 +16,19 @@ const routes = [
     component: () => import("../views/About.vue")
   },
   {
-    path: "/home/chooseboard",
+    path: "/home/:viewtype",
     name: "chooseboard",
     component: Home
+  },
+  {
+    path: "/app",
+    name: "app",
+    component: () => import("../views/app.vue")
+  },
+  {
+    path: "/app/details",
+    name: "appdetails",
+    component: () => import("../views/app.vue")
   }
 ];
 
