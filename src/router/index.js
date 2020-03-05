@@ -29,7 +29,7 @@ const routes = [
   },
   {
     path: "/app/details",
-    name: "App",
+    name: "AppDetails",
     component: () => import("../views/App.vue")
   },
   {
