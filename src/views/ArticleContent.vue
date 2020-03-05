@@ -1,7 +1,8 @@
 <template>
   <v-container>
     <v-app-bar app clipped-right color="#1565C0" dark>
-      <v-app-bar-nav-icon />
+      <a @click="$router.back()"><v-icon>mdi-arrow-left</v-icon></a>
+      <v-spacer />
       <v-toolbar-title>EduNotes</v-toolbar-title>
       <v-spacer />
       <v-btn icon>
