@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import ArticleList from "../views/ArticleList";
+import ArticleContent from "../views/ArticleContent";
 
 Vue.use(VueRouter);
 
@@ -17,18 +19,29 @@ const routes = [
   },
   {
     path: "/home/:viewtype",
-    name: "chooseboard",
+    name: "Welcome",
     component: Home
   },
   {
     path: "/app",
-    name: "app",
-    component: () => import("../views/app.vue")
+    name: "App",
+    component: () => import("../views/App.vue")
   },
   {
     path: "/app/details",
-    name: "appdetails",
-    component: () => import("../views/app.vue")
+    name: "App",
+    component: () => import("../views/App.vue")
+  },
+  {
+    path: "/content",
+    name: "ArticleList",
+    component: ArticleList
+  },
+  {
+    //route: /content/anyarticle name
+    path: "/content/:articlename",
+    name: "ArticleContent",
+    component: ArticleContent
   }
 ];
 

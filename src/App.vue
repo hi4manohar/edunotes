@@ -17,3 +17,4 @@ export default {
   })
 };
 </script>
+<style src="./assets/css/globalApp.css"></style>
