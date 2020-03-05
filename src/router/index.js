@@ -23,16 +23,6 @@ const routes = [
     component: Home
   },
   {
-    path: "/app",
-    name: "App",
-    component: () => import("../views/App.vue")
-  },
-  {
-    path: "/app/details",
-    name: "AppDetails",
-    component: () => import("../views/App.vue")
-  },
-  {
     path: "/content",
     name: "ArticleList",
     component: ArticleList

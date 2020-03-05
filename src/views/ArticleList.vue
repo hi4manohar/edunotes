@@ -2,17 +2,22 @@
   <v-app>
     <Header />
     <v-content pa-5>
-      <v-list-item v-for="name in names" :key="name.title">
-        <v-list-item-content>
-          <v-list-item-title v-text="name.title"></v-list-item-title>
-          <v-list-item-subtitle v-text="name.subtitle"></v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
+      <router-link
+        v-for="(name, index) in names"
+        :to="`/content/${name.title}`"
+        :key="index"
+      >
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title v-text="name.title"></v-list-item-title>
+            <v-list-item-subtitle v-text="name.subtitle"></v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </router-link>
     </v-content>
     <Footer />
   </v-app>
 </template>
-
 
 <script>
 import Header from "@/components/common/Header.vue";
@@ -39,6 +44,57 @@ export default {
     names: [
       { title: "Photos", subtitle: "Jan 9, 2014" },
       { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
+      { title: "Work", subtitle: "Jan 28, 2014" },
+      { title: "Photos", subtitle: "Jan 9, 2014" },
+      { title: "Recipes", subtitle: "Jan 17, 2014" },
       { title: "Work", subtitle: "Jan 28, 2014" }
     ]
   }),
@@ -48,8 +104,3 @@ export default {
   }
 };
 </script>
-
-
-
-
-

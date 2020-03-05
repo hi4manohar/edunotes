@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <welcome v-if="welcome" msg="Welcome to Your Vue.js App" />
-    <chooseboard v-if="chooseboard" />
-    <chooseclass v-if="chooseclass" />
+    <Welcome v-if="welcome" v-on:changesteps="changeComponentStatus" />
+    <ChooseBoard v-if="chooseboard" v-on:changesteps="changeComponentStatus" />
+    <ChooseClass v-if="chooseclass" v-on:changesteps="changeComponentStatus" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import welcome from "@/components/welcome/welcome.vue";
-import chooseboard from "@/components/welcome/chooseboard.vue";
-import chooseclass from "@/components/welcome/chooseclass.vue";
+import Welcome from "@/components/welcome/Welcome.vue";
+import ChooseBoard from "@/components/welcome/ChooseBoard.vue";
+import ChooseClass from "@/components/welcome/ChooseClass.vue";
 
 export default {
   name: "Home",
@@ -20,33 +20,29 @@ export default {
     chooseclass: false
   }),
   components: {
-    welcome,
-    chooseboard,
-    chooseclass
+    Welcome,
+    ChooseBoard,
+    ChooseClass
   },
   methods: {
-    loadAll() {
-      console.log(this.$route);
-      switch (this.$route.params.viewtype) {
-        case "chooseboard":
-          this.welcome = false;
-          this.chooseboard = true;
-          this.chooseclass = false;
-          break;
-        case "chooseclass":
-          this.welcome = false;
-          this.chooseboard = false;
-          this.chooseclass = true;
-          break;
-        default:
-          this.welcome = true;
-          this.chooseboard = false;
-          this.chooseclass = false;
+    changeComponentStatus(val) {
+      if (val === "chooseboard") {
+        this.chooseboard = true;
+        this.welcome = false;
+        this.chooseclass = false;
+      } else if (val === "welcome") {
+        this.chooseboard = false;
+        this.welcome = true;
+        this.chooseclass = false;
+      } else if (val === "chooseclass") {
+        this.chooseboard = false;
+        this.welcome = false;
+        this.chooseclass = true;
       }
     }
   },
   created() {
-    this.loadAll();
+    console.log("params", this.params);
   }
 };
 </script>

@@ -12,7 +12,7 @@
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
     </v-app-bar>
-    
+
     <v-navigation-drawer v-model="drawer" app>
       <v-list>
         <v-list-item link>
