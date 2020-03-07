@@ -2,7 +2,7 @@
   <v-app>
     <Header />
     <h2>This is Notes component</h2>
-    <Footer active='notes'/>
+    <Footer active="notes" />
   </v-app>
 </template>
 
@@ -12,8 +12,7 @@ import Footer from "@/components/common/Footer.vue";
 
 export default {
   name: "Notes",
-  data: () => ({
-  }),
+  data: () => ({}),
   components: {
     Header,
     Footer

@@ -2,7 +2,7 @@
   <v-app>
     <Header />
     <h2>This is Encyclopedia component</h2>
-    <Footer active='enc'/>
+    <Footer active="enc" />
   </v-app>
 </template>
 
@@ -12,8 +12,7 @@ import Footer from "@/components/common/Footer.vue";
 
 export default {
   name: "Encyclopedia",
-  data: () => ({
-  }),
+  data: () => ({}),
   components: {
     Header,
     Footer

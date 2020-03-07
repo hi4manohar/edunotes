@@ -10,7 +10,11 @@
       </div>
     </router-link>
     <router-link to="/question">
-      <div class="footbtn" :class="[active === 'question' ? 'active' : '']" ripple>
+      <div
+        class="footbtn"
+        :class="[active === 'question' ? 'active' : '']"
+        ripple
+      >
         <v-icon>mdi-head-question</v-icon>Question
       </div>
     </router-link>
@@ -27,8 +31,12 @@
       </div>
     </router-link>
 
-    <router-link to="settings">    
-      <div class="footbtn" :class="[active === 'settings' ? 'active' : '']" ripple>
+    <router-link to="settings">
+      <div
+        class="footbtn"
+        :class="[active === 'settings' ? 'active' : '']"
+        ripple
+      >
         <v-icon>mdi-settings-outline </v-icon>Settings
       </div>
     </router-link>
@@ -37,7 +45,7 @@
 
 <script>
 export default {
-  props: ['active'],
+  props: ["active"],
   name: "Footer",
   data: () => ({
     links: ["Home", "About", "Team", "Services"]
@@ -48,7 +56,8 @@ export default {
 .v-footer {
   box-shadow: 0px 0px 2px #888;
 }
-.footbtn.active i, .footbtn.active  {
+.footbtn.active i,
+.footbtn.active {
   color: blue;
 }
 .v-btn {

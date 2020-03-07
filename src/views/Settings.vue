@@ -2,7 +2,7 @@
   <v-app>
     <Header />
     <h2>This is Settings component</h2>
-    <Footer active='settings'/>
+    <Footer active="settings" />
   </v-app>
 </template>
 
@@ -12,8 +12,7 @@ import Footer from "@/components/common/Footer.vue";
 
 export default {
   name: "Settings",
-  data: () => ({
-  }),
+  data: () => ({}),
   components: {
     Header,
     Footer
