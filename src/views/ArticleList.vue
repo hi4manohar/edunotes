@@ -21,7 +21,7 @@
         </v-list-item>
       </router-link>
     </v-content>
-    <Footer />
+    <Footer active='home'/>
   </v-app>
 </template>
 
