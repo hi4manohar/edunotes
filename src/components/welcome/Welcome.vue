@@ -7,15 +7,58 @@
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Scrambled it to make a type specimen book.
     </p>
-    <div class="welcome-logo mb-10"></div>
-    <v-btn rounded large color="primary" @click="showBoard">Get Started</v-btn>
+    <v-carousel
+      cycle
+      height="250"
+      hide-delimiter-background
+      show-arrows-on-hover
+      hide-delimiters
+      interval="2000"
+    >
+      <v-carousel-item
+        v-for="(slide, i) in slides"
+        :key="i"
+      >
+        <v-sheet
+          :color="colors[i]"
+          height="100%"
+        >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+            <div class="title">{{ slide }} Slide</div>
+          </v-row>
+        </v-sheet>
+      </v-carousel-item>
+    </v-carousel>
+  
+    <v-btn fixed block color="primary" @click="showBoard">Get Started</v-btn>
   </div>
 </template>
 
 <script>
 export default {
   name: "Welcome",
-  data: () => ({}),
+  data () {
+    return {
+      colors: [
+        'indigo',
+        'warning',
+        'pink darken-2',
+        'red lighten-1',
+        'deep-purple accent-4',
+      ],
+      slides: [
+        'First',
+        'Second',
+        'Third',
+        'Fourth',
+        'Fifth',
+      ],
+    }
+  },
   methods: {
     showBoard() {
       this.$emit("changesteps", "chooseboard");
@@ -24,13 +67,11 @@ export default {
 };
 </script>
 
-<style>
-.welcome-logo {
-  width: 250px;
-  height: 250px;
-  background: #f0f7ff;
-  border-radius: 50%;
-  border: 1px solid #beddfb;
-  margin: 0 auto;
+<style scoped>
+.v-btn{
+  left:0px;
+  border-radius: 0px;
+  bottom:0px;
+  height: 50px !important;
 }
 </style>

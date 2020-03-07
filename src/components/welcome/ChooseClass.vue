@@ -1,6 +1,6 @@
 <template>
   <div class="pa-5">
-    <v-btn><v-icon @click="showBoard">mdi-arrow-left</v-icon></v-btn>
+    <v-icon @click="showBoard">mdi-arrow-left</v-icon>
     <h1 class="title text-center">
       Choose Your <span class="font-weight-bold blue--text">Class</span>
     </h1>
