@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Header />
-    <v-content pa-5>
+    <v-content class="pt-1">
       <router-link
         v-for="(name, index) in names"
         :to="`/content/${name.title}`"
@@ -9,8 +9,14 @@
       >
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title v-text="name.title"></v-list-item-title>
-            <v-list-item-subtitle v-text="name.subtitle"></v-list-item-subtitle>
+            <v-list-item-title
+              lass="text-truncate"
+              v-text="name.title"
+            ></v-list-item-title>
+            <v-list-item-subtitle
+              class="text-truncate"
+              v-text="name.subtitle"
+            ></v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </router-link>
@@ -42,7 +48,12 @@ export default {
       { text: "Backups", icon: "mdi-cloud-upload" }
     ],
     names: [
-      { title: "Photos", subtitle: "Jan 9, 2014" },
+      {
+        title:
+          "This is short description of this post This is short description ",
+        subtitle:
+          "This is short description of this post This is short description of this post This is short description of this post"
+      },
       { title: "Recipes", subtitle: "Jan 17, 2014" },
       { title: "Work", subtitle: "Jan 28, 2014" },
       { title: "Photos", subtitle: "Jan 9, 2014" },
@@ -104,3 +115,22 @@ export default {
   }
 };
 </script>
+<style scoped>
+.v-list-item {
+  border: 1px solid #eee;
+  border-radius: 0px;
+  margin: 5px 10px;
+  background: #f7f7f7;
+}
+.v-list-item__title {
+  font-size: 14px;
+  max-width: 90%;
+}
+.v-list-item__subtitle {
+  font-size: 11px;
+  max-width: 90%;
+}
+a {
+  text-decoration: none;
+}
+</style>

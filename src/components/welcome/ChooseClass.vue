@@ -1,6 +1,6 @@
 <template>
   <div class="pa-5">
-    <v-icon @click="showBoard">mdi-arrow-left</v-icon>
+    <v-btn><v-icon @click="showBoard">mdi-arrow-left</v-icon></v-btn>
     <h1 class="title text-center">
       Choose Your <span class="font-weight-bold blue--text">Class</span>
     </h1>
@@ -9,19 +9,7 @@
     </p>
     <v-list three-line>
       <template v-for="(item, index) in items">
-        <v-subheader
-          v-if="item.header"
-          :key="item.header"
-          v-text="item.header"
-        ></v-subheader>
-
-        <v-divider
-          v-else-if="item.divider"
-          :key="index"
-          :inset="item.inset"
-        ></v-divider>
-
-        <router-link to="/content" :key="index" v-else>
+        <router-link to="/content" :key="index">
           <v-list-item :key="item.title" class="mb-2">
             <v-list-item-avatar>
               <v-img :src="item.avatar"></v-img>
@@ -45,7 +33,6 @@ export default {
   name: "chooseboard",
   data: () => ({
     items: [
-      { header: "Class" },
       {
         avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
         title: "8th",
@@ -85,5 +72,11 @@ export default {
 .v-list-item {
   border: 1px solid #ddd;
   border-radius: 10px;
+}
+.v-list--three-line .v-list-item {
+  min-height: 75px;
+}
+a {
+  text-decoration: none;
 }
 </style>

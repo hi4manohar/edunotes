@@ -1,6 +1,6 @@
 <template>
   <div class="pa-5">
-    <v-icon @click="showHome">mdi-arrow-left</v-icon>
+    <v-btn icon><v-icon @click="showHome">mdi-arrow-left</v-icon></v-btn>
     <h1 class="title text-center">
       Choose Your <span class="font-weight-bold blue--text">Board</span>
     </h1>
@@ -8,20 +8,8 @@
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
     </p>
     <v-list three-line>
-      <template v-for="(item, index) in items">
-        <v-subheader
-          v-if="item.header"
-          :key="item.header"
-          v-text="item.header"
-        ></v-subheader>
-
-        <v-divider
-          v-else-if="item.divider"
-          :key="index"
-          :inset="item.inset"
-        ></v-divider>
-
-        <v-list-item v-else :key="item.title" class="mb-2" @click="showClass">
+      <template v-for="item in items">
+        <v-list-item :key="item.title" class="mb-2" @click="showClass">
           <v-list-item-avatar>
             <v-img :src="item.avatar"></v-img>
           </v-list-item-avatar>
@@ -41,7 +29,6 @@ export default {
   name: "ChooseBoard",
   data: () => ({
     items: [
-      { header: "Boards" },
       {
         avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
         title: "CBSE",
@@ -84,5 +71,8 @@ export default {
 .v-list-item {
   border: 1px solid #ddd;
   border-radius: 10px;
+}
+.v-list--three-line .v-list-item {
+  min-height: 75px;
 }
 </style>
