@@ -55,7 +55,8 @@ export default {
       transition: "none",
       height: 72,
       type: "list-item-two-line"
-    }
+    },
+    names: {}
   }),
   components: {
     Header,
