@@ -19,6 +19,7 @@
         v-for="(name, index) in names"
         :to="`/content/${name.title}`"
         :key="index"
+        v-else
       >
         <v-list-item ripple>
           <v-list-item-content>
@@ -32,10 +33,10 @@
             ></v-list-item-subtitle>
           </v-list-item-content>
           <v-list-item-action>
-          <v-btn icon>
-            <v-icon>mdi-chevron-right</v-icon>
-          </v-btn>
-        </v-list-item-action>
+            <v-btn icon>
+              <v-icon>mdi-chevron-right</v-icon>
+            </v-btn>
+          </v-list-item-action>
         </v-list-item>
       </router-link>
     </v-content>
@@ -62,10 +63,9 @@ export default {
     Header,
     Footer
   },
-  mounted() {
-    let ref = this;
-      ref.skloader.loading = false;
-      ref.names = [
+  methods: {
+    loadArticleList() {
+      this.names = [
         {
           title:
             "This is short description of this post This is short description ",
@@ -126,6 +126,18 @@ export default {
         { title: "Recipes", subtitle: "Jan 17, 2014" },
         { title: "Work", subtitle: "Jan 28, 2014" }
       ];
+    }
+  },
+  created() {
+    this.loadArticleList();
+  },
+  mounted() {
+    this.$nextTick(function() {
+      let ref = this;
+      setTimeout(function() {
+        ref.skloader.loading = false;
+      }, 1000);
+    });
   }
 };
 </script>
@@ -147,8 +159,7 @@ export default {
 .skloader {
   top: 0;
 }
-.skloader .v-list-item__content{
-  padding:0px;
+.skloader .v-list-item__content {
+  padding: 0px;
 }
-
 </style>
