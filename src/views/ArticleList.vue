@@ -64,7 +64,6 @@ export default {
   },
   mounted() {
     let ref = this;
-    setTimeout(function() {
       ref.skloader.loading = false;
       ref.names = [
         {
@@ -127,7 +126,6 @@ export default {
         { title: "Recipes", subtitle: "Jan 17, 2014" },
         { title: "Work", subtitle: "Jan 28, 2014" }
       ];
-    }, 1000);
   }
 };
 </script>
@@ -146,8 +144,8 @@ export default {
   font-size: 11px;
   max-width: 90%;
 }
-a {
-  text-decoration: none;
+.skloader {
+  top: 0;
 }
 .skloader .v-list-item__content{
   padding:0px;
