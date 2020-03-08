@@ -2,6 +2,19 @@
   <v-app>
     <Header />
     <v-content class="pt-1">
+      <div class="skloader" v-if="skloader.loading">
+        <v-list-item v-for="n in 2" :key="n">
+          <v-list-item-content>
+            <v-skeleton-loader
+              :loading="skloader.loading"
+              :transition="skloader.transition"
+              :height="skloader.height"
+              :type="skloader.type"
+            >
+            </v-skeleton-loader>
+          </v-list-item-content>
+        </v-list-item>
+      </div>
       <router-link
         v-for="(name, index) in names"
         :to="`/content/${name.title}`"
@@ -32,86 +45,83 @@ import Footer from "@/components/common/Footer.vue";
 export default {
   name: "ArticleList",
   data: () => ({
-    drawer: null,
-    drawerRight: null,
-    right: false,
-    left: false,
-    links: ["Home", "About Us", "Team", "Services"],
-    item: 0,
-    items: [
-      { text: "My Files", icon: "mdi-folder" },
-      { text: "Shared with me", icon: "mdi-account-multiple" },
-      { text: "Starred", icon: "mdi-star" },
-      { text: "Recent", icon: "mdi-history" },
-      { text: "Offline", icon: "mdi-check-circle" },
-      { text: "Uploads", icon: "mdi-upload" },
-      { text: "Backups", icon: "mdi-cloud-upload" }
-    ],
-    names: [
-      {
-        title:
-          "This is short description of this post This is short description ",
-        subtitle:
-          "This is short description of this post This is short description of this post This is short description of this post"
-      },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" },
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" }
-    ]
+    skloader: {
+      loading: true,
+      transition: "none",
+      height: 72,
+      type: "list-item-two-line"
+    }
   }),
   components: {
     Header,
     Footer
+  },
+  mounted() {
+    let ref = this;
+    setTimeout(function() {
+      ref.skloader.loading = false;
+      ref.names = [
+        {
+          title:
+            "This is short description of this post This is short description ",
+          subtitle:
+            "This is short description of this post This is short description of this post This is short description of this post"
+        },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" },
+        { title: "Photos", subtitle: "Jan 9, 2014" },
+        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { title: "Work", subtitle: "Jan 28, 2014" }
+      ];
+    }, 1000);
   }
 };
 </script>

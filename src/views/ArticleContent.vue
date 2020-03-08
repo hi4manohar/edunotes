@@ -72,6 +72,9 @@ export default {
   },
   created() {
     this.loadArticle();
+  },
+  mounted() {
+    this.$vuetify.goTo(0);
   }
 };
 </script>
