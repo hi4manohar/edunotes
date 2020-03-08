@@ -50,7 +50,8 @@ export default {
       transition: "none",
       height: 72,
       type: "list-item-two-line"
-    }
+    },
+    names: false
   }),
   components: {
     Header,
@@ -140,7 +141,7 @@ export default {
   font-size: 11px;
   max-width: 90%;
 }
-a {
-  text-decoration: none;
+.skloader {
+  top: 0;
 }
 </style>
