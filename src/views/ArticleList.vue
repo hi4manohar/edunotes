@@ -3,7 +3,7 @@
     <Header />
     <v-content class="pt-20">
       <div class="skloader" v-if="skloader.loading">
-        <v-list-item v-for="n in 2" :key="n">
+        <v-list-item v-for="n in 3" :key="n">
           <v-list-item-content>
             <v-skeleton-loader
               :loading="skloader.loading"
@@ -20,7 +20,7 @@
         :to="`/content/${name.title}`"
         :key="index"
       >
-        <v-list-item>
+        <v-list-item ripple>
           <v-list-item-content>
             <v-list-item-title
               lass="text-truncate"
@@ -31,6 +31,11 @@
               v-text="name.subtitle"
             ></v-list-item-subtitle>
           </v-list-item-content>
+          <v-list-item-action>
+          <v-btn icon>
+            <v-icon>mdi-chevron-right</v-icon>
+          </v-btn>
+        </v-list-item-action>
         </v-list-item>
       </router-link>
     </v-content>
@@ -127,10 +132,10 @@ export default {
 </script>
 <style scoped>
 .v-list-item {
-  border: 1px solid #eee;
-  border-radius: 0px;
-  margin: 5px 10px;
-  background: #f7f7f7;
+  box-shadow: 0px 0px 4px #ddd;
+  border-radius: 5px;
+  margin: 10px 10px;
+  background: #fff;
 }
 .v-list-item__title {
   font-size: 14px;
@@ -143,4 +148,8 @@ export default {
 a {
   text-decoration: none;
 }
+.skloader .v-list-item__content{
+  padding:0px;
+}
+
 </style>

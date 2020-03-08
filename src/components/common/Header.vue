@@ -2,12 +2,12 @@
   <div>
     <v-app-bar app clipped-right color="#1565C0" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>EduNotes</v-toolbar-title>
+      <v-toolbar-title class="pl-2">EduNotes</v-toolbar-title>
       <v-spacer />
       <!-- <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn> -->
-      <v-menu bottom left>
+      <!-- <v-menu bottom left>
         <template v-slot:activator="{ on }">
           <v-btn dark icon v-on="on">
             <v-icon>mdi-dots-vertical</v-icon>
@@ -20,7 +20,7 @@
             }}</v-list-item-title>
           </v-list-item>
         </v-list>
-      </v-menu>
+      </v-menu> -->
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app>
