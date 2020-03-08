@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <Header />
-    <h2>This is Encyclopedia component</h2>
+    <v-content class="pt-20">
+      <h1>This is Encyclopedia component</h1>
+    </v-content>
     <Footer active="enc" />
   </v-app>
 </template>

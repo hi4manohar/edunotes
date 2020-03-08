@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Header />
-    <v-content class="pt-1">
+    <v-content class="pt-20">
       <div class="skloader" v-if="skloader.loading">
         <v-list-item v-for="n in 2" :key="n">
           <v-list-item-content>

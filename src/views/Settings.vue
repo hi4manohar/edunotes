@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <Header />
-    <h2>This is Settings component</h2>
+    <v-content class="pt-20">
+      <h1>This is Setting Componetnt</h1>
+    </v-content>
     <Footer active="settings" />
   </v-app>
 </template>

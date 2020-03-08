@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <Header />
-    <h2>This is Notes component</h2>
+    <v-content class="pt-20">
+      <h1>This is NoTES component</h1>
+    </v-content>
     <Footer active="notes" />
   </v-app>
 </template>

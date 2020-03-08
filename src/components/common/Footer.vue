@@ -20,7 +20,7 @@
     </router-link>
 
     <router-link to="encyclopedia">
-      <div class="footbtn" :class="[active === 'enc' ? 'active' : '']" ripple>
+      <div class="footbtn enc" :class="[active === 'enc' ? 'active' : '']" ripple>
         <v-icon>mdi-book-open-page-variant </v-icon>Encyclopedia
       </div>
     </router-link>
@@ -72,6 +72,9 @@ export default {
   font-size: 10px;
   padding: 2px 0px;
   color: rgba(0, 0, 0, 0.6);
+}
+.enc{
+  width: 55px;
 }
 .footbtn i {
   font-size: 18px;
