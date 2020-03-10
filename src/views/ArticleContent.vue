@@ -106,39 +106,5 @@ export default {
 };
 </script>
 <style scoped>
-h2 {
-  font-size: 20px;
-  font-weight: 500;
-}
-h3 {
-  font-size: 16px;
-  font-weight: 500;
-}
-h4 {
-  font-size: 14px;
-  font-weight: 500;
-}
-h5 {
-  font-size: 14px;
-  font-weight: 500;
-}
-h6 {
-  font-size: 13px;
-  font-weight: 400;
-}
-p {
-  font-size: 12px;
-  color: #616161;
-}
-ul {
-  margin: 20px 0px;
-}
-ul li {
-  font-size: 12px;
-  font-weight: 400;
-  color: #616161;
-}
-.skloader {
-  top: 0;
-}
+
 </style>

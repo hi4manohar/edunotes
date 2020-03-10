@@ -67,24 +67,25 @@ export default {
     loadArticleList() {
       this.names = [
         {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
           title:
             "This is short description of this post This is short description ",
           subtitle:
             "This is short description of this post This is short description of this post This is short description of this post"
         },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Work", subtitle: "Jan 28, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Photos", subtitle: "Jan 9, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Work", subtitle: "Jan 28, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Photos", subtitle: "Jan 9, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Work", subtitle: "Jan 28, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Photos", subtitle: "Jan 9, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Work", subtitle: "Jan 28, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Photos", subtitle: "Jan 9, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
         { title: "Work", subtitle: "Jan 28, 2014" },
         { title: "Photos", subtitle: "Jan 9, 2014" },
         { title: "Recipes", subtitle: "Jan 17, 2014" },
@@ -142,11 +143,14 @@ export default {
 };
 </script>
 <style scoped>
+.v-content{
+  padding-bottom: 56px !important;
+}
 .v-list-item {
   box-shadow: 0px 0px 4px #ddd;
   border-radius: 5px;
-  margin: 10px 10px;
   background: #fff;
+  margin:10px;
 }
 .v-list-item__title {
   font-size: 14px;
