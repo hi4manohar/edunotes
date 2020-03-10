@@ -15,29 +15,35 @@
           </v-list-item-content>
         </v-list-item>
       </div>
-      <router-link
-        v-for="(name, index) in names"
-        :to="`/content/${name.title}`"
-        :key="index"
-      >
-        <v-list-item ripple>
-          <v-list-item-content>
-            <v-list-item-title
-              lass="text-truncate"
-              v-text="name.title"
-            ></v-list-item-title>
-            <v-list-item-subtitle
-              class="text-truncate"
-              v-text="name.subtitle"
-            ></v-list-item-subtitle>
-          </v-list-item-content>
-          <v-list-item-action>
-          <v-btn icon>
-            <v-icon>mdi-chevron-right</v-icon>
-          </v-btn>
-        </v-list-item-action>
-        </v-list-item>
-      </router-link>
+      <div>
+        <h4 class="ma-3">All Article</h4>
+        <router-link
+          v-for="(name, index) in names"
+          :to="`/content/${name.title}`"
+          :key="index"
+        >
+          <v-list-item ripple class="ma-3">
+            <v-list-item-avatar>
+              <v-img :src="name.avatar"></v-img>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title
+                lass="text-truncate"
+                v-text="name.title"
+              ></v-list-item-title>
+              <v-list-item-subtitle
+                class="text-truncate"
+                v-text="name.subtitle"
+              ></v-list-item-subtitle>
+            </v-list-item-content>
+            <v-list-item-action>
+            <v-btn icon>
+              <v-icon>mdi-chevron-right</v-icon>
+            </v-btn>
+          </v-list-item-action>
+          </v-list-item>
+        </router-link>
+      </div>
     </v-content>
     <Footer active="home" />
   </v-app>
@@ -68,24 +74,25 @@ export default {
       ref.skloader.loading = false;
       ref.names = [
         {
+          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
           title:
             "This is short description of this post This is short description ",
           subtitle:
             "This is short description of this post This is short description of this post This is short description of this post"
         },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Work", subtitle: "Jan 28, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Photos", subtitle: "Jan 9, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Work", subtitle: "Jan 28, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Photos", subtitle: "Jan 9, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Work", subtitle: "Jan 28, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Photos", subtitle: "Jan 9, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Work", subtitle: "Jan 28, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Photos", subtitle: "Jan 9, 2014" },
+        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
         { title: "Work", subtitle: "Jan 28, 2014" },
         { title: "Photos", subtitle: "Jan 9, 2014" },
         { title: "Recipes", subtitle: "Jan 17, 2014" },
@@ -132,10 +139,12 @@ export default {
 };
 </script>
 <style scoped>
+.v-content{
+  padding-bottom: 56px !important;
+}
 .v-list-item {
   box-shadow: 0px 0px 4px #ddd;
   border-radius: 5px;
-  margin: 10px 10px;
   background: #fff;
 }
 .v-list-item__title {
