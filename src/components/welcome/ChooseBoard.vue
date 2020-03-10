@@ -28,33 +28,8 @@
 export default {
   name: "ChooseBoard",
   data: () => ({
-    items: [
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-        title: "CBSE",
-        subtitle: "Central Board "
-      },
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
-        title: "ICSE",
-        subtitle: "Foreign Board"
-      },
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
-        title: "BSEB",
-        subtitle: "Bihar Board"
-      },
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
-        title: "HSBC",
-        subtitle: "Haryana Board"
-      },
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
-        title: "MPSC",
-        subtitle: "Madhya Pradesh Board"
-      }
-    ]
+    publicPath: process.env.BASE_URL,
+    items: {}
   }),
   methods: {
     showHome() {
@@ -62,7 +37,39 @@ export default {
     },
     showClass() {
       this.$emit("changesteps", "chooseclass");
+    },
+    loadBoard() {
+      this.items = [
+        {
+          avatar: this.publicPath + "Bordicon/CBSE.jpeg",
+          title: "CBSE",
+          subtitle: "Central Board "
+        },
+        {
+          avatar: this.publicPath + "Bordicon/ICSE.jpg",
+          title: "ICSE",
+          subtitle: "Foreign Board"
+        },
+        {
+          avatar: this.publicPath + "Bordicon/bseb.jpg",
+          title: "BSEB",
+          subtitle: "Bihar Board"
+        },
+        {
+          avatar: this.publicPath + "Bordicon/UP.jpg",
+          title: "UPMSP",
+          subtitle: "Uttar Pradesh Madhyamik Shiksha Parishad"
+        },
+        {
+          avatar: this.publicPath + "Bordicon/mp.jpg",
+          title: "MPSC",
+          subtitle: "Madhya Pradesh Board"
+        }
+      ]
     }
+  },
+  created() {
+    this.loadBoard();
   }
 };
 </script>

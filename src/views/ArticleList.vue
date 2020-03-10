@@ -15,35 +15,30 @@
           </v-list-item-content>
         </v-list-item>
       </div>
-      <div>
-        <h4 class="ma-3">All Article</h4>
-        <router-link
-          v-for="(name, index) in names"
-          :to="`/content/${name.title}`"
-          :key="index"
-        >
-          <v-list-item ripple class="ma-3">
-            <v-list-item-avatar>
-              <v-img :src="name.avatar"></v-img>
-            </v-list-item-avatar>
-            <v-list-item-content>
-              <v-list-item-title
-                lass="text-truncate"
-                v-text="name.title"
-              ></v-list-item-title>
-              <v-list-item-subtitle
-                class="text-truncate"
-                v-text="name.subtitle"
-              ></v-list-item-subtitle>
-            </v-list-item-content>
-            <v-list-item-action>
+      <router-link
+        v-for="(name, index) in names"
+        :to="`/content/${name.title}`"
+        :key="index"
+        v-else
+      >
+        <v-list-item ripple>
+          <v-list-item-content>
+            <v-list-item-title
+              lass="text-truncate"
+              v-text="name.title"
+            ></v-list-item-title>
+            <v-list-item-subtitle
+              class="text-truncate"
+              v-text="name.subtitle"
+            ></v-list-item-subtitle>
+          </v-list-item-content>
+          <v-list-item-action>
             <v-btn icon>
               <v-icon>mdi-chevron-right</v-icon>
             </v-btn>
           </v-list-item-action>
-          </v-list-item>
-        </router-link>
-      </div>
+        </v-list-item>
+      </router-link>
     </v-content>
     <Footer active="home" />
   </v-app>
@@ -68,11 +63,9 @@ export default {
     Header,
     Footer
   },
-  mounted() {
-    let ref = this;
-    setTimeout(function() {
-      ref.skloader.loading = false;
-      ref.names = [
+  methods: {
+    loadArticleList() {
+      this.names = [
         {
           avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
           title:
@@ -134,7 +127,18 @@ export default {
         { title: "Recipes", subtitle: "Jan 17, 2014" },
         { title: "Work", subtitle: "Jan 28, 2014" }
       ];
-    }, 1000);
+    }
+  },
+  created() {
+    this.loadArticleList();
+  },
+  mounted() {
+    this.$nextTick(function() {
+      let ref = this;
+      setTimeout(function() {
+        ref.skloader.loading = false;
+      }, 1000);
+    });
   }
 };
 </script>
@@ -146,6 +150,7 @@ export default {
   box-shadow: 0px 0px 4px #ddd;
   border-radius: 5px;
   background: #fff;
+  margin:10px;
 }
 .v-list-item__title {
   font-size: 14px;
@@ -155,11 +160,10 @@ export default {
   font-size: 11px;
   max-width: 90%;
 }
-a {
-  text-decoration: none;
+.skloader {
+  top: 0;
 }
-.skloader .v-list-item__content{
-  padding:0px;
+.skloader .v-list-item__content {
+  padding: 0px;
 }
-
 </style>
