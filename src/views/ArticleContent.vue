@@ -7,7 +7,7 @@
         <v-spacer />
       </v-app-bar>
     </div>
-    <v-content class="pt-20">
+    <v-content class="pt-0">
       <v-container>
         <div class="skloader" v-if="skloader.loading">
           <v-skeleton-loader
@@ -106,5 +106,10 @@ export default {
 };
 </script>
 <style scoped>
-
+.v-content{
+  margin-top: 56px;
+  height: calc(100vh - 112px);
+  margin-bottom: 56px !important;
+  overflow: auto;
+}
 </style>

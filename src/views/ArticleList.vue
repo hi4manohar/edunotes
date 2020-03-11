@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Header />
-    <v-content class="pt-20">
+    <v-content class="pt-0">
       <div class="skloader" v-if="skloader.loading">
         <v-list-item v-for="n in 3" :key="n">
           <v-list-item-content>
@@ -144,11 +144,14 @@ export default {
 </script>
 <style scoped>
 .v-content{
-  padding-bottom: 56px !important;
+  margin-top: 56px;
+  height: calc(100vh - 112px);
+  margin-bottom: 56px !important;
+  overflow: auto;
 }
 .v-list-item {
-  box-shadow: 0px 0px 4px #ddd;
-  border-radius: 5px;
+  box-shadow: 0px 1px 4px #ddd;
+  border-radius: 1px;
   background: #fff;
   margin:10px;
 }
