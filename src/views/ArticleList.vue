@@ -47,8 +47,10 @@
 <script>
 import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
+import { mapState, mapActions } from 'vuex'
 
 export default {
+
   name: "ArticleList",
   data: () => ({
     skloader: {
@@ -56,101 +58,48 @@ export default {
       transition: "none",
       height: 72,
       type: "list-item-two-line"
-    },
-    names: {}
+    }
   }),
   components: {
     Header,
     Footer
   },
+  computed: {
+    ...mapState({
+      names: state => state.article.articleList
+    })
+  },
   methods: {
-    loadArticleList() {
-      this.names = [
-        {
-          avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-          title:
-            "This is short description of this post This is short description ",
-          subtitle:
-            "This is short description of this post This is short description of this post This is short description of this post"
-        },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Work", subtitle: "Jan 28, 2014" },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Photos", subtitle: "Jan 9, 2014" },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Work", subtitle: "Jan 28, 2014" },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Photos", subtitle: "Jan 9, 2014" },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Work", subtitle: "Jan 28, 2014" },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Photos", subtitle: "Jan 9, 2014" },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Work", subtitle: "Jan 28, 2014" },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Photos", subtitle: "Jan 9, 2014" },
-        { avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg", title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" },
-        { title: "Photos", subtitle: "Jan 9, 2014" },
-        { title: "Recipes", subtitle: "Jan 17, 2014" },
-        { title: "Work", subtitle: "Jan 28, 2014" }
-      ];
-    }
+    ...mapActions('article', {
+      loadArticleList: 'articleList'
+    })
   },
   created() {
-    this.loadArticleList();
+    if( !this.names.length ) {
+      this.loadArticleList();
+    } else {
+
+      console.log('hi');      
+    }
+    
   },
   mounted() {
     this.$nextTick(function() {
       let ref = this;
-      setTimeout(function() {
-        ref.skloader.loading = false;
-      }, 1000);
+      ref.skloader.loading = false;
     });
   }
 };
 </script>
 <style scoped>
-.v-content{
+.v-content {
   padding-bottom: 56px !important;
 }
 .v-list-item {
   box-shadow: 0px 0px 4px #ddd;
   border-radius: 5px;
   background: #fff;
-  margin:10px;
+  margin: 10px;
 }
 .v-list-item__title {
   font-size: 14px;
@@ -159,9 +108,6 @@ export default {
 .v-list-item__subtitle {
   font-size: 11px;
   max-width: 90%;
-}
-.skloader {
-  top: 0;
 }
 .skloader .v-list-item__content {
   padding: 0px;
