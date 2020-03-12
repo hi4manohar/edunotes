@@ -41,7 +41,7 @@ export default {
     loadBoard() {
       this.items = [
         {
-          avatar: this.publicPath + "Bordicon/CBSE.jpeg",
+          avatar: this.publicPath + "Bordicon/CBSE.jpg",
           title: "CBSE",
           subtitle: "Central Board "
         },
@@ -65,7 +65,7 @@ export default {
           title: "MPSC",
           subtitle: "Madhya Pradesh Board"
         }
-      ]
+      ];
     }
   },
   created() {

@@ -4,13 +4,8 @@
     <v-content class="pt-0">
       <v-container fluid>
         <v-row>
-          <v-col
-            v-for="card in cards"
-            :key="card.title"
-            :cols="card.flex"
-          >
-            <v-card>
-
+          <v-col v-for="(card, index) in cards" :key="index" :cols="card.flex">
+            <v-card height="220">
               <v-img
                 :src="card.src"
                 class="white--text align-end"
@@ -18,7 +13,10 @@
                 height="120px"
               >
               </v-img>
-              <v-card-title v-text="card.title"></v-card-title>
+              <v-card-title
+                lass="text-truncate"
+                v-text="card.title"
+              ></v-card-title>
               <v-card-subtitle v-text="card.subtitle"></v-card-subtitle>
             </v-card>
           </v-col>
@@ -37,13 +35,43 @@ export default {
   name: "Notes",
   data: () => ({
     cards: [
-      { title: 'Favorite road1', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
-      { title: 'Best airlines2', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
-      { title: 'Favorite road3', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
-      { title: 'Best airlines4', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
-      { title: 'Favorite road5', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
-      { title: 'Best airlines6', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
-    ],
+      {
+        title: "Favorite road",
+        subtitle: "This is subtitle",
+        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
+        flex: 6
+      },
+      {
+        title: "Best airlines",
+        subtitle: "This is subtitle",
+        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+        flex: 6
+      },
+      {
+        title: "Favorite road",
+        subtitle: "This is subtitle",
+        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
+        flex: 6
+      },
+      {
+        title: "Best airlines",
+        subtitle: "This is subtitle",
+        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+        flex: 6
+      },
+      {
+        title: "Favorite road",
+        subtitle: "This is subtitle",
+        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
+        flex: 6
+      },
+      {
+        title: "Best airlines",
+        subtitle: "This is subtitle",
+        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+        flex: 6
+      }
+    ]
   }),
   components: {
     Header,
@@ -52,18 +80,18 @@ export default {
 };
 </script>
 <style scoped>
-.v-content{
+.v-content {
   margin-top: 56px;
   height: calc(100vh - 112px);
   margin-bottom: 56px !important;
   overflow: auto;
 }
-.v-card__title{
+.v-card__title {
   font-size: 14px;
-  padding:5px 10px;
+  padding: 5px 10px;
 }
-.v-card__subtitle{
+.v-card__subtitle {
   font-size: 11px;
-  padding:5px 10px;
+  padding: 5px 10px;
 }
 </style>
