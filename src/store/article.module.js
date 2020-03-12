@@ -5,9 +5,8 @@ const state = {
 };
 const actions = {
   articleList({ commit, state }) {
-
-    if( !state.articleList.length ) {
-      console.log('na')
+    if (!state.articleList.length) {
+      console.log("na");
       let json = articleService.articleList();
       commit("saveArticle", json);
     } else {

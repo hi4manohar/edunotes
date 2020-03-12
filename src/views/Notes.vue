@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Header />
-    <v-content class="pt-20">
+    <v-content class="pt-0">
       <v-container fluid>
         <v-row>
           <v-col v-for="(card, index) in cards" :key="index" :cols="card.flex">
@@ -79,3 +79,19 @@ export default {
   }
 };
 </script>
+<style scoped>
+.v-content {
+  margin-top: 56px;
+  height: calc(100vh - 112px);
+  margin-bottom: 56px !important;
+  overflow: auto;
+}
+.v-card__title {
+  font-size: 14px;
+  padding: 5px 10px;
+}
+.v-card__subtitle {
+  font-size: 11px;
+  padding: 5px 10px;
+}
+</style>

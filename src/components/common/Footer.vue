@@ -41,7 +41,7 @@
         :class="[active === 'settings' ? 'active' : '']"
         ripple
       >
-        <v-icon>mdi-settings-outline </v-icon>Settings
+        <v-icon>mdi-settings-outline</v-icon>Settings
       </div>
     </router-link>
   </v-footer>
