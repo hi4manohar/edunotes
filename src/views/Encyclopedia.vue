@@ -2,11 +2,11 @@
   <v-app>
     <Header />
     <v-content class="pt-0">
-     <v-text-field
-        solo
-        label="Prepend inner"
-      >
-      </v-text-field>
+    <v-text-field
+            solo
+            label="Search Your Question"
+            prepend-inner-icon="search"
+          ></v-text-field>
       <div class="skloader" v-if="skloader.loading">
         <v-list-item v-for="n in 3" :key="n">
           <v-list-item-content>
@@ -145,10 +145,6 @@ export default {
         ref.skloader.loading = false;
       }, 1000);
     });
-  },
-  components: {
-    Header,
-    Footer
   }
 };
 </script>
@@ -163,9 +159,6 @@ export default {
   box-shadow: 0px 1px 4px #ddd;
   border-radius: 1px;
   background: #fff;
-  margin:10px;
-}
-.v-text-field{
   margin:10px;
 }
 .v-list-item__title {
@@ -183,9 +176,7 @@ export default {
   padding: 0px;
 }
 .v-text-field{
-  margin:10px;
+  margin:10px 10px 0px !important;
 }
-.v-text-field.v-text-field--enclosed .v-text-field__details{
-  display: none !important;
-}
+
 </style>

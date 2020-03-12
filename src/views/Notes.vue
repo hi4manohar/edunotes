@@ -37,12 +37,12 @@ export default {
   name: "Notes",
   data: () => ({
     cards: [
-      { title: 'Favorite road', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
-      { title: 'Best airlines', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
-      { title: 'Favorite road', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
-      { title: 'Best airlines', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
-      { title: 'Favorite road', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
-      { title: 'Best airlines', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
+      { title: 'Favorite road1', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
+      { title: 'Best airlines2', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
+      { title: 'Favorite road3', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
+      { title: 'Best airlines4', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
+      { title: 'Favorite road5', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
+      { title: 'Best airlines6', subtitle: 'This is subtitle', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
     ],
   }),
   components: {

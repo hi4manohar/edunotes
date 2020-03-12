@@ -41,7 +41,7 @@
         :class="[active === 'settings' ? 'active' : '']"
         ripple
       >
-        <v-icon>mdi-setting-outline</v-icon>Settings
+        <v-icon>mdi-account-settings</v-icon> Settings
       </div>
     </router-link>
   </v-footer>
@@ -62,7 +62,7 @@ export default {
 }
 .footbtn.active i,
 .footbtn.active {
-  color: blue;
+  color: #1565c0;
 }
 .v-btn {
   font-size: 10px;

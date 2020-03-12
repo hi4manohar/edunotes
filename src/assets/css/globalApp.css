@@ -50,3 +50,7 @@ ul li {
 .skloader {
   top: 0;
 }
+
+.v-text-field__details{
+  display: none !important;
+}
