@@ -2,12 +2,11 @@
   <v-app>
     <Header />
     <v-content class="pt-0">
-      <v-text-field
-            label="Outlined"
-            single-line
-            outlined
-            rounded
-          ></v-text-field>
+     <v-text-field
+        solo
+        label="Prepend inner"
+      >
+      </v-text-field>
       <div class="skloader" v-if="skloader.loading">
         <v-list-item v-for="n in 3" :key="n">
           <v-list-item-content>
@@ -182,5 +181,11 @@ export default {
 }
 .skloader .v-list-item__content {
   padding: 0px;
+}
+.v-text-field{
+  margin:10px;
+}
+.v-text-field.v-text-field--enclosed .v-text-field__details{
+  display: none !important;
 }
 </style>
