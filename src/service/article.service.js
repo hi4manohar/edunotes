@@ -1,128 +1,30 @@
+import axios from 'axios';
+import * as appConfig from '../config/index.config';
+
 export const articleService = {
-  articleList
+    articleList
 };
 
-function articleList() {
-  // fetch('https://jsonplaceholder.typicode.com/todos/1')
-  //     .then(response => {
-  //         response.json()
-  //     })
-  //     .then(json => {
-  //         return json;
-  //     })
+async function articleList() {
 
-  return [
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title:
-        "This is short description of this post This is short description ",
-      subtitle:
-        "This is short description of this post This is short description of this post This is short description of this post"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Recipes",
-      subtitle: "Jan 17, 2014"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Work",
-      subtitle: "Jan 28, 2014"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Photos",
-      subtitle: "Jan 9, 2014"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Recipes",
-      subtitle: "Jan 17, 2014"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Work",
-      subtitle: "Jan 28, 2014"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Photos",
-      subtitle: "Jan 9, 2014"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Recipes",
-      subtitle: "Jan 17, 2014"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Work",
-      subtitle: "Jan 28, 2014"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Photos",
-      subtitle: "Jan 9, 2014"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Recipes",
-      subtitle: "Jan 17, 2014"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Work",
-      subtitle: "Jan 28, 2014"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Photos",
-      subtitle: "Jan 9, 2014"
-    },
-    {
-      avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      title: "Recipes",
-      subtitle: "Jan 17, 2014"
-    },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" },
-    { title: "Photos", subtitle: "Jan 9, 2014" },
-    { title: "Recipes", subtitle: "Jan 17, 2014" },
-    { title: "Work", subtitle: "Jan 28, 2014" }
-  ];
+    return new Promise((resolve, reject) => {
+
+        axios.get(appConfig.API_URL + 'article-list').then(function(response) {
+            console.log(response);
+            if( response.data.status === true ) {
+                resolve(response.data.data);
+            } else {
+                reject({
+                    status: false,
+                    msg: response.data.msg
+                });
+            }
+        }).catch(function(error) {
+            reject({
+                status: false,
+                msg: error
+            });
+        })
+
+    })
 }

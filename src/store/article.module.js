@@ -1,27 +1,32 @@
 import { articleService } from "../service/article.service";
 
 const state = {
-  articleList: []
+    articleList: []
 };
 const actions = {
-  articleList({ commit, state }) {
-    if (!state.articleList.length) {
-      console.log("na");
-      let json = articleService.articleList();
-      commit("saveArticle", json);
-    } else {
-      console.log(state.articleList);
+    async articleList({ commit, state }) {
+        if (!state.articleList.length) {
+
+            try {
+                let json = await articleService.articleList();
+                console.log(json);
+                commit("saveArticle", json)
+            } catch (err) {
+                console.log('err', err);
+            }
+        } else {
+            console.log(state.articleList);
+        }
     }
-  }
 };
 const mutations = {
-  saveArticle(state, lists) {
-    state.articleList = lists;
-  }
+    saveArticle(state, lists) {
+        state.articleList = lists;
+    }
 };
 export const article = {
-  namespaced: true,
-  state,
-  actions,
-  mutations
+    namespaced: true,
+    state,
+    actions,
+    mutations
 };
