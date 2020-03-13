@@ -1,12 +1,12 @@
 <template>
   <v-app>
-    <div>
+    <!-- <div>
       <v-app-bar app clipped-right color="#1565C0" dark>
         <a @click="$router.back()"><v-icon ripple>mdi-arrow-left</v-icon></a>
         <v-toolbar-title class="pl-4">EduNotes</v-toolbar-title>
         <v-spacer />
       </v-app-bar>
-    </div>
+    </div> -->
     <v-content class="pt-0">
       <v-container>
         <div class="skloader" v-if="skloader.loading">
@@ -26,6 +26,15 @@
         </div>
       </v-container>
     </v-content>
+    <v-footer
+      absolute
+      class="font-weight-medium">
+      <v-col
+        class="text-center"
+        cols="12">
+        <a @click="$router.back()"><v-icon>mdi-close</v-icon></a>
+      </v-col>
+    </v-footer>
   </v-app>
 </template>
 
@@ -107,8 +116,8 @@ export default {
 </script>
 <style scoped>
 .v-content {
-  margin-top: 56px;
-  height: calc(100vh - 112px);
+  margin-top: 6px;
+  height: calc(100vh - 62px);
   margin-bottom: 56px !important;
   overflow: auto;
 }

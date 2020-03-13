@@ -1,16 +1,15 @@
 <template>
-  <div class="pa-5">
-    <v-icon @click="showBoard">mdi-arrow-left</v-icon>
-    <h1 class="title text-center">
-      Choose Your <span class="font-weight-bold blue--text">Class</span>
-    </h1>
-    <p class="caption  text-center">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    </p>
+  <div class="">
+    <v-toolbar :elevation="0" class="mt-2">
+      <v-icon @click="showBoard" v-ripple>mdi-arrow-left</v-icon>
+      <h1 class="title pl-2">
+        Choose Your <span class="font-weight-bold blue--text">Class</span>
+      </h1>
+    </v-toolbar>
     <v-list three-line>
       <template v-for="(item, index) in items">
         <router-link to="/content" :key="index">
-          <v-list-item :key="item.title" class="mb-2">
+          <v-list-item :key="item.title" class="mb-2" v-ripple>
             <v-list-item-avatar>
               <v-img :src="item.avatar"></v-img>
             </v-list-item-avatar>
@@ -78,5 +77,8 @@ export default {
 }
 a {
   text-decoration: none;
+}
+.v-list{
+  padding:4px 16px;
 }
 </style>
