@@ -62,7 +62,7 @@ export default {
 }
 .footbtn.active i,
 .footbtn.active {
-  color: blue;
+  color: #1565c0;
 }
 .v-btn {
   font-size: 10px;

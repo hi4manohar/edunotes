@@ -2,12 +2,11 @@
   <v-app>
     <Header />
     <v-content class="pt-0">
-      <v-text-field
-        label="Outlined"
-        single-line
-        outlined
-        rounded
-      ></v-text-field>
+    <v-text-field
+            solo
+            label="Search Your Question"
+            prepend-inner-icon="search"
+          ></v-text-field>
       <div class="skloader" v-if="skloader.loading">
         <v-list-item v-for="n in 3" :key="n">
           <v-list-item-content>
@@ -214,9 +213,6 @@ export default {
   background: #fff;
   margin: 10px;
 }
-.v-text-field {
-  margin: 10px;
-}
 .v-list-item__title {
   font-size: 14px;
   max-width: 90%;
@@ -231,4 +227,8 @@ export default {
 .skloader .v-list-item__content {
   padding: 0px;
 }
+.v-text-field{
+  margin:10px 10px 0px !important;
+}
+
 </style>
