@@ -1,8 +1,7 @@
 <template>
   
   <v-app>
-    <transition>
-    <div v-if="!articleContent">
+    <div v-show="!articleContent">
       <Header />
       <v-content class="pt-0">
         <div class="skloader" v-if="skloader.loading">
@@ -45,11 +44,13 @@
       </v-content>
       <Footer active="home" />
     </div>
-    <articleContent
-      v-else
-      :content="articleData" 
-      v-on:showListArticle="showListArticle()" />
-      </transition>
+    <div v-show="articleContent">
+      <articleContent
+        
+        :content="articleData" 
+        v-on:showListArticle="showListArticle()"
+      />
+    </div>
   </v-app>
 </template>
 <script>
@@ -121,7 +122,7 @@ export default {
 <style scoped>
 .v-content {
   margin-top: 56px;
-  /*height: calc(100vh - 112px);*/
+  height: calc(100vh - 112px);
   margin-bottom: 56px !important;
   overflow: auto;
 }
