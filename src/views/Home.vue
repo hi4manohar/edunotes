@@ -11,6 +11,7 @@
 import Welcome from "@/components/welcome/Welcome.vue";
 import ChooseBoard from "@/components/welcome/ChooseBoard.vue";
 import ChooseClass from "@/components/welcome/ChooseClass.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "Home",
@@ -23,6 +24,9 @@ export default {
     Welcome,
     ChooseBoard,
     ChooseClass
+  },
+  computed: {
+    ...mapState("user", ["token_id"])
   },
   methods: {
     changeComponentStatus(val) {
@@ -42,7 +46,9 @@ export default {
     }
   },
   created() {
-    console.log("params", this.params);
+    if (this.token_id) {
+      this.$router.push("/content");
+    }
   }
 };
 </script>

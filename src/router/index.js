@@ -11,62 +11,42 @@ import Settings from "../views/Settings";
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home
-  },
+  { path: "/", name: "Home", component: Home },
   {
     path: "/about",
     name: "About",
     component: () => import("../views/About.vue")
   },
+  { path: "/home/:viewtype", name: "Welcome", component: Home },
+  { path: "/content", name: "ArticleList", component: ArticleList },
   {
-    path: "/home/:viewtype",
-    name: "Welcome",
-    component: Home
-  },
-  {
-    path: "/content",
-    name: "ArticleList",
-    component: ArticleList
-  },
-  {
-    //route: /content/anyarticle name
     path: "/content/:articlename",
     name: "ArticleContent",
     component: ArticleContent
   },
-  {
-    //route: /content/anyarticle name
-    path: "/question",
-    name: "Question",
-    component: Question
-  },
-  {
-    //route: /content/anyarticle name
-    path: "/encyclopedia",
-    name: "Encyclopedia",
-    component: Encyclopedia
-  },
-  {
-    //route: /content/anyarticle name
-    path: "/notes",
-    name: "Notes",
-    component: Notes
-  },
-  {
-    //route: /content/anyarticle name
-    path: "/settings",
-    name: "Settings",
-    component: Settings
-  }
+  { path: "/question", name: "Question", component: Question },
+  { path: "/encyclopedia", name: "Encyclopedia", component: Encyclopedia },
+  { path: "/notes", name: "Notes", component: Notes },
+  { path: "/settings", name: "Settings", component: Settings }
 ];
 
-const router = new VueRouter({
+export const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  // redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ["/"];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem("token_id");
+
+  if (authRequired && !loggedIn) {
+    return next("/");
+  }
+
+  next();
 });
 
 export default router;

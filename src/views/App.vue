@@ -8,6 +8,7 @@
 <script>
 import homedetails from "@/components/mainapp/homedetails.vue";
 import home from "@/components/mainapp/home.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "app",
@@ -19,6 +20,9 @@ export default {
     homedetails,
     home
   },
+  computed: {
+    ...mapState("user", ["token_id"])
+  },
   methods: {
     loadAll() {
       console.log(this.$route);
@@ -27,6 +31,10 @@ export default {
     }
   },
   created() {
+    console.log("token", this.token_id);
+    if (this.token_id) {
+      this.router.push("/content");
+    }
     this.loadAll();
   }
 };
