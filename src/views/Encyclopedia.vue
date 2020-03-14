@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header />
+    <Header pagetitle="Encyclopedia"/>
     <v-content class="pt-0">
       <v-text-field
         solo

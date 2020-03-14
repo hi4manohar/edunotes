@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header />
+    <Header pagetitle="Books"/>
     <v-content class="pt-0">
       <v-container fluid>
         <v-row>

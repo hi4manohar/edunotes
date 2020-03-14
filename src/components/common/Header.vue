@@ -1,41 +1,12 @@
 <template>
   <div>
     <v-app-bar app clipped-right color="#1565C0" dark>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title class="pl-2">EduNotes</v-toolbar-title>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" white />
+      <v-toolbar-title title class="pl-2">{{ pagetitle }}</v-toolbar-title>
       <v-spacer />
-      <!-- <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn> -->
-      <!-- <v-menu bottom left>
-        <template v-slot:activator="{ on }">
-          <v-btn dark icon v-on="on">
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item v-for="(item, i) in items" :key="i">
-            <v-list-item-title class="text-small">{{
-              item.text
-            }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu> -->
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" app>
-      <!-- <v-list>
-        <v-list-item link>
-          <v-list-item-content>
-            <v-list-item-title class="title">John Leider</v-list-item-title>
-            <v-list-item-subtitle>john@vuetifyjs.com</v-list-item-subtitle>
-          </v-list-item-content>
-
-          <v-list-item-action>
-            <v-icon>mdi-menu-down</v-icon>
-          </v-list-item-action>
-        </v-list-item>
-      </v-list> -->
+    <v-navigation-drawer v-model="drawer" width="85%" app>
       <v-divider></v-divider>
       <v-list nav dense>
         <v-list-item-group v-model="item" color="primary">
@@ -43,7 +14,6 @@
             <v-list-item-icon>
               <v-icon v-text="item.icon"></v-icon>
             </v-list-item-icon>
-
             <v-list-item-content>
               <v-list-item-title v-text="item.text"></v-list-item-title>
             </v-list-item-content>
@@ -56,6 +26,7 @@
 
 <script>
 export default {
+  props : ["pagetitle"],
   name: "Header",
   data: () => ({
     drawer: null,
@@ -64,13 +35,11 @@ export default {
     left: false,
     item: 0,
     items: [
-      { text: "My Files", icon: "mdi-folder" },
-      { text: "Shared with me", icon: "mdi-account-multiple" },
-      { text: "Starred", icon: "mdi-star" },
-      { text: "Recent", icon: "mdi-history" },
-      { text: "Offline", icon: "mdi-check-circle" },
-      { text: "Uploads", icon: "mdi-upload" },
-      { text: "Backups", icon: "mdi-cloud-upload" }
+      { text: "Change Board", icon: "mdi-account-cog-outline" },
+      { text: "Change Class", icon: "mdi-account-cog-outline" },
+      { text: "About Us", icon: "mdi-star" },
+      { text: "Notifications", icon: "mdi-bell-outline" },
+      { text: "Help", icon: "mdi-help-circle-outline" }
     ],
     names: [
       { title: "Photos", subtitle: "Jan 9, 2014" },
@@ -80,3 +49,8 @@ export default {
   })
 };
 </script>
+<style scoped="">
+  .v-navigation-drawer{
+    max-width: 300px;
+  }
+</style>

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header />
+    <Header pagetitle="Notes"/>
     <v-content class="pt-0">
       <v-container fluid >
         <v-card v-ripple class="mb-3" rounded-none>
@@ -36,6 +36,7 @@ import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
 
 export default {
+
   name: "Notes",
   components: {
     Header,

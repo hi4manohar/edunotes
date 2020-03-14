@@ -18,10 +18,17 @@ img{
 h2 {
   font-size: 20px;
   font-weight: 500;
+  margin-bottom:10px;
 }
 h3 {
   font-size: 16px;
   font-weight: 500;
+  margin-bottom:10px;
+}
+h3 span{
+  font-size: 16px !important;
+  font-weight: 500;
+  margin-bottom:10px;
 }
 h4 {
   font-size: 14px;
@@ -38,6 +45,48 @@ h6 {
 p {
   font-size: 12px;
   color: #616161;
+}
+.description{
+  line-height: 18px;
+  white-space: normal;
+  font-size: 12px;
+}
+.description table{
+  width: 100%;
+  margin-bottom:10px;
+  border:1px solid #f5f5f5;
+}
+.description span a{
+  display: block;
+  margin-bottom:10px;
+}
+.description table td{
+  border:1px solid #f5f5f5;
+  padding:5px;
+}
+.description span{
+  font-size: 12px !important;
+  color: #616161 !important;
+  white-space: normal;
+}
+.description pre{
+  background: #f5f5f5;
+  padding:10px;
+  border: 2px;
+  margin: 10px 0px;
+  width: 100%;
+  white-space: normal;
+}
+.description pre span{
+  padding:10px;
+  background: #fff;
+  margin-bottom: 10px;
+  display: block;
+  border-radius: 2px;
+}
+.article hr, .description hr{
+  border:#f5f5f5 solid 1px;
+  margin:10px 0px;
 }
 ul {
   margin: 20px 0px;

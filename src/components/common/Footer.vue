@@ -37,11 +37,11 @@
 
     <router-link to="settings">
       <div
-        class="footbtn"
+        class="footbtn enc"
         :class="[active === 'settings' ? 'active' : '']"
         ripple
       >
-        <v-icon>mdi-settings-outline</v-icon>Settings
+        <v-icon>mdi-timer</v-icon>Test Series
       </div>
     </router-link>
   </v-footer>
@@ -74,13 +74,14 @@ export default {
   border-radius: 50%;
   text-align: center;
   font-size: 10px;
-  padding: 2px 0px;
-  color: rgba(0, 0, 0, 0.6);
+  padding: 5px 0px;
+  color: #616161;
 }
 .enc {
   width: 55px;
 }
 .footbtn i {
   font-size: 18px;
+  display: block!important;
 }
 </style>
