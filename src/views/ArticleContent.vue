@@ -21,15 +21,16 @@
     </v-content>
     <v-footer absolute class="font-weight-medium">
       <v-col class="text-center" cols="12">
-        <a @click="showListArticle()"><v-icon>mdi-close</v-icon></a>
+        <a @click="showListArticle()">
+          <v-icon>mdi-close</v-icon>
+        </a>
       </v-col>
     </v-footer>
   </div>
 </template>
-
 <script>
 export default {
-  props: ['content'],
+  props: ["content"],
   name: "ArticleList",
   data: () => ({
     skloader: {
@@ -48,7 +49,7 @@ export default {
       };
     },
     showListArticle() {
-      this.$emit('showListArticle', true)
+      this.$emit("showListArticle", true);
     }
   },
   created() {

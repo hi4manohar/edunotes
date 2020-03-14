@@ -1,5 +1,4 @@
 <template>
-  
   <v-app>
     <div v-show="!articleContent">
       <Header />
@@ -21,6 +20,7 @@
           v-for="(name, index) in names"
           @click="showContent(index)"
           :key="index"
+          :class="{ active: activeIndex === index }"
           v-else
         >
           <v-list-item ripple>
@@ -46,8 +46,7 @@
     </div>
     <div v-if="articleContent">
       <articleContent
-        
-        :content="articleData" 
+        :content="articleData"
         v-on:showListArticle="showListArticle()"
       />
     </div>
@@ -70,7 +69,8 @@ export default {
     },
     names: [],
     articleContent: false,
-    articleData: {}
+    articleData: {},
+    activeIndex: false
   }),
   components: {
     Header,
@@ -86,12 +86,12 @@ export default {
     showContent(index) {
       this.articleContent = true;
       this.articleData = this.names[index];
+      this.activeIndex = index;
     },
     showListArticle(val) {
       this.articleContent = val;
     },
     trimmedData(str) {
-      console.log(typeof str);
       if (str === null || str === "") return false;
       else str = str.toString();
       return str
@@ -103,7 +103,6 @@ export default {
     async loadArticleList() {
       try {
         let json = await articleService.articleList();
-        console.log(json);
         if (json.status === true) this.names = json.data;
         this.skloader.loading = false;
       } catch (err) {

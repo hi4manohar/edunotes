@@ -7,27 +7,30 @@
       </h1>
     </v-toolbar>
     <v-list three-line>
-      <template v-for="(item, index) in items">
-        <router-link to="/content" :key="index">
-          <v-list-item :key="item.title" class="mb-2" v-ripple>
-            <v-list-item-avatar>
-              <v-img :src="item.avatar"></v-img>
-            </v-list-item-avatar>
+      <template v-for="item in items">
+        <v-list-item
+          :key="item.title"
+          class="mb-2"
+          @click="setHandleConfig()"
+          v-ripple
+        >
+          <v-list-item-avatar>
+            <v-img :src="item.avatar"></v-img>
+          </v-list-item-avatar>
 
-            <v-list-item-content>
-              <v-list-item-title v-html="item.title"></v-list-item-title>
-              <v-list-item-subtitle
-                v-html="item.subtitle"
-              ></v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </router-link>
+          <v-list-item-content>
+            <v-list-item-title v-html="item.title"></v-list-item-title>
+            <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
       </template>
     </v-list>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "chooseboard",
   data: () => ({
@@ -60,9 +63,16 @@ export default {
     ]
   }),
   methods: {
+    ...mapActions("user", ["setConfig"]),
     showBoard() {
       this.$emit("changesteps", "chooseboard");
+    },
+    setHandleConfig() {
+      this.setConfig();
     }
+  },
+  computed: {
+    // ...mapState('user', ['loggedIn'])
   }
 };
 </script>
