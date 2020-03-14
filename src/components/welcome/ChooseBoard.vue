@@ -81,7 +81,7 @@ export default {
 .v-list--three-line .v-list-item {
   min-height: 75px;
 }
-.v-list{
-  padding:4px 16px;
+.v-list {
+  padding: 4px 16px;
 }
 </style>

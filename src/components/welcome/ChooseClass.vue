@@ -78,7 +78,7 @@ export default {
 a {
   text-decoration: none;
 }
-.v-list{
-  padding:4px 16px;
+.v-list {
+  padding: 4px 16px;
 }
 </style>
