@@ -15,7 +15,7 @@
         :class="[active === 'question' ? 'active' : '']"
         ripple
       >
-        <v-icon>mdi-head-question</v-icon>Question
+        <v-icon>mdi-book-multiple</v-icon>Books
       </div>
     </router-link>
 

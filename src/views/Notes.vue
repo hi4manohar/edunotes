@@ -2,25 +2,29 @@
   <v-app>
     <Header />
     <v-content class="pt-0">
-      <v-container fluid>
-        <v-row>
-          <v-col v-for="(card, index) in cards" :key="index" :cols="card.flex">
-            <v-card height="220">
-              <v-img
-                :src="card.src"
-                class="white--text align-end"
-                gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                height="120px"
-              >
-              </v-img>
-              <v-card-title
-                lass="text-truncate"
-                v-text="card.title"
-              ></v-card-title>
-              <v-card-subtitle v-text="card.subtitle"></v-card-subtitle>
-            </v-card>
-          </v-col>
-        </v-row>
+      <v-container fluid >
+        <v-card v-ripple class="mb-3" rounded-none>
+          <v-list-item>
+            <v-avatar class="mr-3" size="70" width="100"  tile>
+              <v-img src="https://cdn.vuetifyjs.com/images/cards/road.jpg"></v-img>
+            </v-avatar>
+            <v-list-item-content>
+              <v-list-item-title class="subtitle-2 mb-1">Hello This is notes of pysics</v-list-item-title>
+              <v-list-item-subtitle class="caption">Notes Author Name</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
+        <v-card v-ripple class="mb-3">
+          <v-list-item>
+            <v-avatar class="mr-3" width="100" size="70" tile>
+              <v-img src="https://cdn.vuetifyjs.com/images/cards/road.jpg"></v-img>
+            </v-avatar>
+            <v-list-item-content>
+              <v-list-item-title class="subtitle-2 mb-1">Hello This is notes of pysics</v-list-item-title>
+              <v-list-item-subtitle class="caption">Notes Author Name</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-card>
       </v-container>
     </v-content>
     <Footer active="notes" />
@@ -33,46 +37,6 @@ import Footer from "@/components/common/Footer.vue";
 
 export default {
   name: "Notes",
-  data: () => ({
-    cards: [
-      {
-        title: "Favorite road",
-        subtitle: "This is subtitle",
-        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-        flex: 6
-      },
-      {
-        title: "Best airlines",
-        subtitle: "This is subtitle",
-        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-        flex: 6
-      },
-      {
-        title: "Favorite road",
-        subtitle: "This is subtitle",
-        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-        flex: 6
-      },
-      {
-        title: "Best airlines",
-        subtitle: "This is subtitle",
-        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-        flex: 6
-      },
-      {
-        title: "Favorite road",
-        subtitle: "This is subtitle",
-        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-        flex: 6
-      },
-      {
-        title: "Best airlines",
-        subtitle: "This is subtitle",
-        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-        flex: 6
-      }
-    ]
-  }),
   components: {
     Header,
     Footer
@@ -85,6 +49,15 @@ export default {
   height: calc(100vh - 112px);
   margin-bottom: 56px !important;
   overflow: auto;
+}
+.v-card{
+  overflow: hidden;
+  border-radius: 0px !important;
+  box-shadow: none;
+  border-bottom:1px solid #f3f3f3;
+}
+.v-list-item{
+  padding:0px !important;
 }
 .v-card__title {
   font-size: 14px;

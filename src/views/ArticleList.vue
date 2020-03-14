@@ -44,7 +44,7 @@
       </v-content>
       <Footer active="home" />
     </div>
-    <div v-show="articleContent">
+    <div v-if="articleContent">
       <articleContent
         
         :content="articleData" 
