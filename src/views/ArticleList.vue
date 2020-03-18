@@ -1,8 +1,12 @@
 <template>
   <v-app>
     <div v-show="!articleContent">
-      <Header pagetitle="Read"/>
-      <v-content class="pt-0">
+      <Header pagetitle="Read" />
+      <v-content
+        class="pt-0"
+        v-scroll:#scroll-target="onScroll"
+        id="scroll-target"
+      >
         <div class="skloader" v-if="skloader.loading">
           <v-list-item v-for="n in 3" :key="n">
             <v-list-item-content>
@@ -20,10 +24,9 @@
           v-for="(name, index) in names"
           @click="showContent(index)"
           :key="index"
-          :class="{ active: activeIndex === index }"
           v-else
         >
-          <v-list-item ripple>
+          <v-list-item :class="{ active: activeIndex === index }" ripple>
             <v-list-item-content>
               <v-list-item-title
                 lass="text-truncate"
@@ -55,8 +58,9 @@
 <script>
 import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
-import { articleService } from "../service/article.service";
-import articleContent from "./ArticleContent";
+// import { articleService } from "../service/article.service";
+import articleContent from "../components/article/ArticleContent";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "ArticleList",
@@ -67,7 +71,6 @@ export default {
       height: 72,
       type: "list-item-two-line"
     },
-    names: [],
     articleContent: false,
     articleData: {},
     activeIndex: false
@@ -77,8 +80,27 @@ export default {
     Footer,
     articleContent
   },
-  computed: {},
+  computed: {
+    ...mapState({
+      names: state => state.article.articleList,
+      homeScroll: state => state.scroll.component.home
+    })
+  },
   methods: {
+    // ...mapActions('article', {
+    //   loadArticleList: 'articleList'
+    // }),
+    ...mapActions({
+      loadArticleList: "article/articleList",
+      setHomeScroll: "scroll/setHomeScroll"
+    }),
+    onScroll(e) {
+      this.setHomeScroll({
+        component: "home",
+        axis: { x: 0, y: e.target.scrollTop }
+      });
+      // console.log(this.homeScroll);
+    },
     getUrlStringFromTitle(str) {
       if (str === null || str === "") return false;
       else return encodeURI(str.replace(/ /g, "-"));
@@ -98,24 +120,40 @@ export default {
         .replace(/(<([^>]+)>)/gi, "")
         .trim()
         .substring(0, 100);
-    },
-
-    async loadArticleList() {
-      try {
-        let json = await articleService.articleList();
-        if (json.status === true) this.names = json.data;
-        this.skloader.loading = false;
-      } catch (err) {
-        console.log("err", err);
-      }
     }
+
+    // async loadArticleList() {
+
+    //   try {
+    //     let json = await articleService.articleList();
+    //     if (json.status === true) this.names = json.data;
+    //     this.skloader.loading = false;
+    //   } catch (err) {
+    //     console.log("err", err);
+    //   }
+    // }
   },
   created() {
     if (!this.names.length) {
       this.loadArticleList();
+    } else {
+      this.skloader.loading = false;
     }
   },
-  mounted() {}
+  watch: {
+    names: function(n) {
+      if (n.length > 0) {
+        this.skloader.loading = false;
+      }
+    }
+  },
+  mounted() {
+    // this.skloader.loading = false;
+    this.$nextTick(() => {
+      this.container = document.getElementById("scroll-target");
+      this.container.scrollTop = Number(this.homeScroll.y);
+    });
+  }
 };
 </script>
 <style scoped>

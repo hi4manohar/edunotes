@@ -82,6 +82,6 @@ export default {
 }
 .footbtn i {
   font-size: 18px;
-  display: block!important;
+  display: block !important;
 }
 </style>

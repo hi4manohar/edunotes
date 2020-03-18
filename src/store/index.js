@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { article } from "./article.module";
 import { user } from "./user.module";
+import { scroll } from "./scroll.module";
 
 Vue.use(Vuex);
 
@@ -11,6 +12,7 @@ export default new Vuex.Store({
   actions: {},
   modules: {
     article,
-    user
+    user,
+    scroll
   }
 });
