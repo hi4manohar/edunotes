@@ -21,23 +21,20 @@
           </v-list-item>
         </div>
         <v-container class="mb-12" v-else>
-          <h4>Article List</h4>
-          <br>
-
           <div
-            class="list-card"
+            class="list-card mb-4"
             v-for="(name, index) in names"
             @click="showContent(index)"
             :key="index"
           >
-            <v-card max-width="344" :class="{ active: activeIndex === index }">
+            <v-card class="mx-auto" max-width="344" :class="{ active: activeIndex === index }">
               <v-list-item v-ripple>
                 <v-list-item-content>
                   <v-list-item-title class="subtitle-2" v-text="name.post_title"></v-list-item-title>
                   <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
-              <v-img src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg" height="120"></v-img>
+              <v-img v-if="index%2 == 0" src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg" height="120"></v-img>
               <v-card-text
                 v-html="trimmedData(name.post_content)">
               </v-card-text>
@@ -213,7 +210,7 @@ export default {
   margin: 10px;
 }*/
 .v-list-item__title {
-  font-size: 14px;
+  font-size: 18px !important;
   max-width: 90%;
 }
 .v-list-item__subtitle {
@@ -224,8 +221,7 @@ export default {
   padding: 0px;
 }
 h4{
-  font-size: 14px !important;
+  font-size: 16px !important;
   margin-bottom: 0px;
 }
-
 </style>
