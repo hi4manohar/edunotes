@@ -23,14 +23,13 @@
         <v-container class="mb-12" v-else>
           <h4>Article List</h4>
           <br>
-
           <div
-            class="list-card"
+            class="list-card mb-4"
             v-for="(name, index) in names"
             @click="showContent(index)"
             :key="index"
           >
-            <v-card max-width="344" :class="{ active: activeIndex === index }">
+            <v-card class="mx-auto" max-width="344" :class="{ active: activeIndex === index }">
               <v-list-item v-ripple>
                 <v-list-item-content>
                   <v-list-item-title class="subtitle-2" v-text="name.post_title"></v-list-item-title>
@@ -84,7 +83,7 @@
       </v-content>      
       <Footer active="home" />
     </div>
-    <div v-if="articleContent">
+    <div v-if="articleContent" transition="slide-x-transition">
       <articleContent
         :content="articleData"
         v-on:showListArticle="showListArticle()"
@@ -207,7 +206,7 @@ export default {
   margin: 10px;
 }*/
 .v-list-item__title {
-  font-size: 14px;
+  font-size: 16px !important;
   max-width: 90%;
 }
 .v-list-item__subtitle {
@@ -218,8 +217,22 @@ export default {
   padding: 0px;
 }
 h4{
-  font-size: 14px !important;
+  font-size: 16px !important;
   margin-bottom: 0px;
 }
 
+
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
 </style>

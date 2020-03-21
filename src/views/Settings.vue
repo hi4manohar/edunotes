@@ -101,7 +101,7 @@ export default {
 }
 .card-header span{
   position: absolute;
-  bottom:-1px;
+  bottom:0px;
   left: 0px;
   padding:7px 15px;
   font-weight: 800;
