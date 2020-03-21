@@ -36,7 +36,6 @@ import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
 
 export default {
-
   name: "Notes",
   components: {
     Header,
@@ -67,5 +66,21 @@ export default {
 .v-card__subtitle {
   font-size: 11px;
   padding: 5px 10px;
+}
+.card-header{
+  height: 80px;
+  position: relative;
+}
+.card-header span{
+  position: absolute;
+  bottom:0px;
+  padding:7px 15px;
+  font-weight: 800;
+  color: #000;
+  border-radius: 0px 4px 0px 0px;
+}
+.card-footer{
+  padding:10px;
+  font-size: 13px;
 }
 </style>

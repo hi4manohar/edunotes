@@ -58,4 +58,8 @@ export default {
   bottom: 0px;
   height: 50px !important;
 }
+.v-carousel{
+  max-width: 500px;
+  margin:0 auto;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <div v-show="!articleContent">
-      <Header pagetitle="Read"/>
+      <Header pagetitle="Read Article"/>
       <v-content class="pt-0">
         <div class="skloader" v-if="skloader.loading">
           <v-list-item v-for="n in 3" :key="n">
@@ -146,4 +146,6 @@ export default {
 .skloader .v-list-item__content {
   padding: 0px;
 }
+
+
 </style>

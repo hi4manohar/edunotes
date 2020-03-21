@@ -37,11 +37,11 @@
 
     <router-link to="settings">
       <div
-        class="footbtn enc"
+        class="footbtn"
         :class="[active === 'settings' ? 'active' : '']"
         ripple
       >
-        <v-icon>mdi-timer</v-icon>Test Series
+        <v-icon>mdi-timer</v-icon>Syllabus
       </div>
     </router-link>
   </v-footer>
