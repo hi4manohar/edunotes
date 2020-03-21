@@ -4,13 +4,13 @@ const state = {
   articleList: []
 };
 const actions = {
-  async articleList({ commit, state }) {
+  async articleList({ dispatch, commit, state }) {
     if (!state.articleList.length) {
       try {
         let json = await articleService.articleList();
         if (json.status === true) commit("saveArticle", json.data);
       } catch (err) {
-        console.log("err", err);
+        dispatch("alert/error", err.msg, { root: true });
       }
     } else {
       console.log(state.articleList);

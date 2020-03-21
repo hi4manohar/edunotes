@@ -16,7 +16,7 @@ const state = token_id
     };
 
 const actions = {
-  async setConfig({ commit }) {
+  async setConfig({ dispatch, commit }) {
     try {
       let configStatus = await userService.setConfig();
       if (configStatus.status === true) {
@@ -25,6 +25,7 @@ const actions = {
         router.push("/content");
       }
     } catch (err) {
+      dispatch("alert/error", err.msg);
       console.log("rrr", err);
     }
   }
