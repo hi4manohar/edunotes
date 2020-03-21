@@ -45,7 +45,7 @@
                 <v-btn text color="deep-purple accent-4">
                   Read
                 </v-btn>
-                <v-btn text color="deep-purple accent-4">Save</v-btn>
+                <v-btn text color="deep-purple accent-4" @click="saveArticle($event, index)">Save</v-btn>
                 <v-spacer></v-spacer>
                 <v-btn icon>
                   <v-icon>mdi-heart</v-icon>
@@ -84,12 +84,14 @@
       </v-content>      
       <Footer active="home" />
     </div>
-    <div v-if="articleContent">
-      <articleContent
-        :content="articleData"
-        v-on:showListArticle="showListArticle()"
-      />
-    </div>
+    <v-scroll-x-transition>
+      <div v-if="articleContent">
+        <articleContent
+          :content="articleData"
+          v-on:showListArticle="showListArticle()"
+        />
+      </div>
+    </v-scroll-x-transition>
   </v-app>
 </template>
 <script>
@@ -149,6 +151,10 @@ export default {
     },
     showListArticle(val) {
       this.articleContent = val;
+    },
+    saveArticle(e, val) {
+      e.stopPropagation();
+      console.log('save this article', val);
     },
     trimmedData(str) {
       if (str === null || str === "") return false;
