@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as appConfig from "../config/index.config";
+import store from "../store";
 
 export const articleService = {
   articleList,
@@ -9,7 +10,11 @@ export const articleService = {
 function articleList() {
   return new Promise((resolve, reject) => {
     axios
-      .get(appConfig.API_URL + "article-list")
+      .get(appConfig.API_URL + "article-list", {
+        headers: {
+          "auth-token": store.state.user.token_id
+        }
+      })
       .then(function(response) {
         if (response.data.status === true) {
           resolve({

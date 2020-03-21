@@ -1,27 +1,39 @@
 <template>
   <v-app>
-    <Header pagetitle="Notes"/>
+    <Header pagetitle="Notes" />
     <v-content class="pt-0">
-      <v-container fluid >
+      <v-container fluid>
         <v-card v-ripple class="mb-3" rounded-none>
           <v-list-item>
-            <v-avatar class="mr-3" size="70" width="100"  tile>
-              <v-img src="https://cdn.vuetifyjs.com/images/cards/road.jpg"></v-img>
+            <v-avatar class="mr-3" size="70" width="100" tile>
+              <v-img
+                src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
+              ></v-img>
             </v-avatar>
             <v-list-item-content>
-              <v-list-item-title class="subtitle-2 mb-1">Hello This is notes of pysics</v-list-item-title>
-              <v-list-item-subtitle class="caption">Notes Author Name</v-list-item-subtitle>
+              <v-list-item-title class="subtitle-2 mb-1"
+                >Hello This is notes of pysics</v-list-item-title
+              >
+              <v-list-item-subtitle class="caption"
+                >Notes Author Name</v-list-item-subtitle
+              >
             </v-list-item-content>
           </v-list-item>
         </v-card>
         <v-card v-ripple class="mb-3">
           <v-list-item>
             <v-avatar class="mr-3" width="100" size="70" tile>
-              <v-img src="https://cdn.vuetifyjs.com/images/cards/road.jpg"></v-img>
+              <v-img
+                src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
+              ></v-img>
             </v-avatar>
             <v-list-item-content>
-              <v-list-item-title class="subtitle-2 mb-1">Hello This is notes of pysics</v-list-item-title>
-              <v-list-item-subtitle class="caption">Notes Author Name</v-list-item-subtitle>
+              <v-list-item-title class="subtitle-2 mb-1"
+                >Hello This is notes of pysics</v-list-item-title
+              >
+              <v-list-item-subtitle class="caption"
+                >Notes Author Name</v-list-item-subtitle
+              >
             </v-list-item-content>
           </v-list-item>
         </v-card>
@@ -50,14 +62,14 @@ export default {
   margin-bottom: 56px !important;
   overflow: auto;
 }
-.v-card{
+.v-card {
   overflow: hidden;
   border-radius: 0px !important;
   box-shadow: none;
-  border-bottom:1px solid #f3f3f3;
+  border-bottom: 1px solid #f3f3f3;
 }
-.v-list-item{
-  padding:0px !important;
+.v-list-item {
+  padding: 0px !important;
 }
 .v-card__title {
   font-size: 14px;

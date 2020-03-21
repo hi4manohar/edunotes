@@ -14,7 +14,7 @@
         <div class="article" v-else>
           <div class="title">
             <h2>{{ article.title }}</h2>
-            <hr>
+            <hr />
           </div>
           <div class="description" v-html="article.content"></div>
         </div>
@@ -59,10 +59,7 @@ export default {
   mounted() {
     this.$vuetify.goTo(0);
     this.$nextTick(function() {
-      let ref = this;
-      setTimeout(function() {
-        ref.skloader.loading = false;
-      }, 1000);
+      this.skloader.loading = false;
     });
   }
 };
@@ -74,7 +71,7 @@ export default {
   margin-bottom: 56px !important;
   overflow: auto;
 }
-.v-footer{
-  box-shadow:0px 0px 2px #888;
+.v-footer {
+  box-shadow: 0px 0px 2px #888;
 }
 </style>

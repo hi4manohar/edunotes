@@ -75,18 +75,17 @@
     <Footer active="settings" />
   </v-app>
 </template>
-
 <script>
 import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
 
 export default {
-  name: "Settings",
-  data: () => ({}),
-  components: {
-    Header,
-    Footer
-  }
+    name: "Settings",
+    data: () => ({}),
+    components: {
+        Header,
+        Footer
+    }
 };
 </script>
 <style scoped="">
@@ -102,7 +101,8 @@ export default {
 }
 .card-header span{
   position: absolute;
-  bottom:0px;
+  bottom:-1px;
+  left: 0px;
   padding:7px 15px;
   font-weight: 800;
   color: #000;
@@ -112,4 +112,9 @@ export default {
   padding:10px;
   font-size: 13px;
 }
+h4{
+  font-size: 16px;
+  margin-bottom: 0px;
+}
 </style>
+

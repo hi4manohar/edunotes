@@ -1,39 +1,51 @@
 <template>
   <v-app>
-    <Header pagetitle="Books"/>
+    <Header pagetitle="Books" />
     <v-content class="pt-0">
       <v-container fluid>
         <v-row>
           <v-col cols="6">
             <v-card>
-              <v-img src="https://cdn.vuetifyjs.com/images/cards/road.jpg" height="100px">
+              <v-img
+                src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
+                height="100px"
+              >
               </v-img>
               <v-card-title>Physics</v-card-title>
-              <v-card-subtitle >H C Verma</v-card-subtitle>
+              <v-card-subtitle>H C Verma</v-card-subtitle>
             </v-card>
           </v-col>
           <v-col cols="6">
             <v-card>
-              <v-img src="https://cdn.vuetifyjs.com/images/cards/road.jpg" height="100px">
+              <v-img
+                src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
+                height="100px"
+              >
               </v-img>
               <v-card-title>Physics</v-card-title>
-              <v-card-subtitle >H C Verma</v-card-subtitle>
+              <v-card-subtitle>H C Verma</v-card-subtitle>
             </v-card>
           </v-col>
           <v-col cols="6">
             <v-card>
-              <v-img src="https://cdn.vuetifyjs.com/images/cards/road.jpg" height="100px">
+              <v-img
+                src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
+                height="100px"
+              >
               </v-img>
               <v-card-title>Physics</v-card-title>
-              <v-card-subtitle >H C Verma</v-card-subtitle>
+              <v-card-subtitle>H C Verma</v-card-subtitle>
             </v-card>
           </v-col>
           <v-col cols="6">
             <v-card>
-              <v-img src="https://cdn.vuetifyjs.com/images/cards/road.jpg" height="100px">
+              <v-img
+                src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
+                height="100px"
+              >
               </v-img>
               <v-card-title>Physics</v-card-title>
-              <v-card-subtitle >H C Verma</v-card-subtitle>
+              <v-card-subtitle>H C Verma</v-card-subtitle>
             </v-card>
           </v-col>
         </v-row>
@@ -49,9 +61,7 @@ import Footer from "@/components/common/Footer.vue";
 
 export default {
   name: "Question",
-  data: () => ({
-    
-  }),
+  data: () => ({}),
   components: {
     Header,
     Footer
@@ -68,7 +78,7 @@ export default {
 .v-card__title {
   font-size: 14px;
   padding: 5px 10px;
-  margin-bottom:5px;
+  margin-bottom: 5px;
 }
 .v-card__subtitle {
   font-size: 11px;

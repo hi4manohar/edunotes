@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  props : ["pagetitle"],
+  props: ["pagetitle"],
   name: "Header",
   data: () => ({
     drawer: null,
@@ -50,7 +50,7 @@ export default {
 };
 </script>
 <style scoped="">
-  .v-navigation-drawer{
-    max-width: 300px;
-  }
+.v-navigation-drawer {
+  max-width: 300px;
+}
 </style>
