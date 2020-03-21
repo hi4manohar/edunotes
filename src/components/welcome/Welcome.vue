@@ -1,5 +1,6 @@
 <template>
-  <div class="py-10 px-5 text-center">
+  <v-app>
+    <div class="py-10 px-5 text-center">
     <h1 class="title">
       Welcome To <span class="font-weight-bold blue--text">EduNotes</span>
     </h1>
@@ -26,6 +27,7 @@
 
     <v-btn fixed block color="primary" @click="showBoard">Get Started</v-btn>
   </div>
+  </v-app>
 </template>
 
 <script>

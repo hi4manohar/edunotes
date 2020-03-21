@@ -1,5 +1,6 @@
 <template>
-  <div class="">
+  <v-app>
+    <div class="">
     <v-toolbar :elevation="0" class="mt-2">
       <v-icon @click="showBoard" v-ripple>mdi-arrow-left</v-icon>
       <h1 class="title pl-2">
@@ -26,6 +27,7 @@
       </template>
     </v-list>
   </div>
+  </v-app>
 </template>
 
 <script>
