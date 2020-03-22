@@ -65,6 +65,8 @@ export default {
           this.$router.push('/');
         }
       }
+
+      return key === 2 ? this.$router.push('/about') : '';
     }
   }
 };
