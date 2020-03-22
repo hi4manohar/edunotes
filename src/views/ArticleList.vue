@@ -24,11 +24,11 @@
           <div
             class="list-card mb-4"
             v-for="(name, index) in names"
-            @click="showContent(index)"
+            @click="$router.push('/post/' + index)"
             :key="index"
           >
-            <v-card class="mx-auto" max-width="344" :class="{ active: activeIndex === index }">
-              <v-list-item v-ripple>
+            <v-card class="mx-auto" :class="{ active: activeIndex === index }">
+              <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title class="subtitle-2" v-text="name.post_title"></v-list-item-title>
                   <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>

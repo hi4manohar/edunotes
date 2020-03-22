@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import ArticleList from "../views/ArticleList";
+import ArticleContent from "../views/ArticleContent"
 import Question from "../views/Question";
 import Encyclopedia from "../views/Encyclopedia";
 import Notes from "../views/Notes";
@@ -18,6 +19,7 @@ const routes = [
   },
   { path: "/home/:viewtype", name: "Welcome", component: Home },
   { path: "/content", name: "ArticleList", component: ArticleList },
+  { path: "/post/:articleid", name: "ArticleContent", component: ArticleContent },
   { path: "/question", name: "Question", component: Question },
   { path: "/encyclopedia", name: "Encyclopedia", component: Encyclopedia },
   { path: "/notes", name: "Notes", component: Notes },
