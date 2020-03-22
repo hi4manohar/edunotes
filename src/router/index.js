@@ -20,7 +20,7 @@ const routes = [
   },
   { path: "/home/:viewtype", name: "Welcome", component: Home },
   { path: "/content", name: "ArticleList", component: ArticleList },
-  { path: "/post/:articleid", name: "ArticleContent", component: ArticleContent },
+  { path: "/post/:articleid", name: "ArticleContent", component: ArticleContent, meta: { transition: 'flip-y' } },
   { path: "/question", name: "Question", component: Question },
   { path: "/encyclopedia", name: "Encyclopedia", component: Encyclopedia },
   { path: "/notes", name: "Notes", component: Notes },

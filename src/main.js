@@ -3,7 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-
+import VuePageTransition from 'vue-page-transition'
+Vue.use(VuePageTransition)
 
 Vue.config.productionTip = false;
 import vuetify from "./plugins/vuetify";

@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <transition name="slide-fade">
     <div class="article-content">
       <v-content class="pt-0">
         <v-container>
@@ -30,7 +29,6 @@
         </v-col>
       </v-footer>
     </div>
-  </transition>
   </v-app>
 </template>
 <script>
