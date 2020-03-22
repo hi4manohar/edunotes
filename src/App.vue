@@ -28,7 +28,6 @@ export default {
   },
   watch: {
     $route() {
-      console.log(alert.message);
       // clear alert on location change
       this.clearAlert();
     }

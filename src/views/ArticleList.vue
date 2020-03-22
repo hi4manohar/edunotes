@@ -21,22 +21,20 @@
           </v-list-item>
         </div>
         <v-container class="mb-12" v-else>
-          <h4>Article List</h4>
-          <br>
           <div
             class="list-card mb-4"
             v-for="(name, index) in names"
-            @click="showContent(index)"
+            @click="$router.push('/post/' + index)"
             :key="index"
           >
-            <v-card class="mx-auto" max-width="344" :class="{ active: activeIndex === index }">
-              <v-list-item v-ripple>
+            <v-card class="mx-auto" :class="{ active: activeIndex === index }">
+              <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title class="subtitle-2" v-text="name.post_title"></v-list-item-title>
                   <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
-              <v-img src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg" height="120"></v-img>
+              <v-img v-if="index%2 == 0" src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg" height="120"></v-img>
               <v-card-text
                 v-html="trimmedData(name.post_content)">
               </v-card-text>
@@ -44,7 +42,7 @@
                 <v-btn text color="deep-purple accent-4">
                   Read
                 </v-btn>
-                <v-btn text color="deep-purple accent-4">Save</v-btn>
+                <v-btn text color="deep-purple accent-4" @click="saveArticle($event, index)">Save</v-btn>
                 <v-spacer></v-spacer>
                 <v-btn icon>
                   <v-icon>mdi-heart</v-icon>
@@ -83,12 +81,14 @@
       </v-content>      
       <Footer active="home" />
     </div>
-    <div v-if="articleContent" transition="slide-x-transition">
-      <articleContent
-        :content="articleData"
-        v-on:showListArticle="showListArticle()"
-      />
-    </div>
+    <v-scroll-x-transition>
+      <div v-if="articleContent">
+        <articleContent
+          :content="articleData"
+          v-on:showListArticle="showListArticle()"
+        />
+      </div>
+    </v-scroll-x-transition>
   </v-app>
 </template>
 <script>
@@ -149,6 +149,10 @@ export default {
     showListArticle(val) {
       this.articleContent = val;
     },
+    saveArticle(e, val) {
+      e.stopPropagation();
+      console.log('save this article', val);
+    },
     trimmedData(str) {
       if (str === null || str === "") return false;
       else str = str.toString();
@@ -206,7 +210,7 @@ export default {
   margin: 10px;
 }*/
 .v-list-item__title {
-  font-size: 16px !important;
+  font-size: 18px !important;
   max-width: 90%;
 }
 .v-list-item__subtitle {
@@ -220,6 +224,4 @@ h4{
   font-size: 16px !important;
   margin-bottom: 0px;
 }
-
-
 </style>
