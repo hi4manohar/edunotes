@@ -7,6 +7,7 @@ import Question from "../views/Question";
 import Encyclopedia from "../views/Encyclopedia";
 import Notes from "../views/Notes";
 import Settings from "../views/Settings";
+import SubjectPosts from "../views/SubjectPosts";
 
 Vue.use(VueRouter);
 
@@ -23,7 +24,8 @@ const routes = [
   { path: "/question", name: "Question", component: Question },
   { path: "/encyclopedia", name: "Encyclopedia", component: Encyclopedia },
   { path: "/notes", name: "Notes", component: Notes },
-  { path: "/settings", name: "Settings", component: Settings }
+  { path: "/settings", name: "Settings", component: Settings },
+  { path: "/syllabus/:subjects", name: "Settings", component: SubjectPosts }
 ];
 
 export const router = new VueRouter({
