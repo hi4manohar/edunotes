@@ -66,7 +66,9 @@ export default {
         }
       }
 
-      return key === 2 ? this.$router.push('/about') : '';
+      key === 2 ? this.$router.push('/about') : '';
+      key === 3 ? this.$router.push('/notifications') : '';
+
     }
   }
 };

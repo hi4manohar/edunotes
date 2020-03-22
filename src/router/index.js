@@ -6,26 +6,24 @@ import ArticleContent from "../views/ArticleContent"
 import Question from "../views/Question";
 import Encyclopedia from "../views/Encyclopedia";
 import Notes from "../views/Notes";
-import Settings from "../views/Settings";
+import Syllabus from "../views/Syllabus";
 import SubjectPosts from "../views/SubjectPosts";
+import Notifications from "../views/Notifications";
 
 Vue.use(VueRouter);
 
 const routes = [
   { path: "/", name: "Home", component: Home },
-  {
-    path: "/about",
-    name: "About",
-    component: () => import("../views/About.vue")
-  },
+  { path: "/about", name: "About", component: () => import("../views/About.vue") },
   { path: "/home/:viewtype", name: "Welcome", component: Home },
   { path: "/content", name: "ArticleList", component: ArticleList },
   { path: "/post/:articleid", name: "ArticleContent", component: ArticleContent },
   { path: "/question", name: "Question", component: Question },
   { path: "/encyclopedia", name: "Encyclopedia", component: Encyclopedia },
   { path: "/notes", name: "Notes", component: Notes },
-  { path: "/settings", name: "Settings", component: Settings },
-  { path: "/syllabus/:subjects", name: "SubjectPosts", component: SubjectPosts }
+  { path: "/syllabus", name: "Syllabus", component: Syllabus },
+  { path: "/syllabus/:subjects", name: "SubjectPosts", component: SubjectPosts },
+  { path: "/notifications", name: "Notifications", component: Notifications }
 ];
 
 export const router = new VueRouter({

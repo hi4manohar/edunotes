@@ -1,5 +1,4 @@
 <template>
-
   <v-app>
     
     <h1>Welcome to Edunotes</h1>
@@ -8,7 +7,7 @@
 
 <script>
 export default {
-  name: 'About',
+  name: "Notifications",
   data() {
     return {
       items: [

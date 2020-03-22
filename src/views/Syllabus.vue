@@ -36,7 +36,7 @@
         </div>
       </v-container>
     </v-content>
-    <Footer active="settings" />
+    <Footer active="syllabus" />
   </v-app>
 </template>
 <script>
@@ -47,7 +47,7 @@ import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
 
 export default {
-  name: "Settings",
+  name: "Syllabus",
   data: () => ({
     color: ["red", "blue", "pink", "purple", "indigo"],
     skloader: {
