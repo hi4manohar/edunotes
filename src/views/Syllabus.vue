@@ -3,6 +3,17 @@
     <Header pagetitle="Syllabus"/>
     <v-content class="pt-0">
       <v-container>
+
+        <div class="skloader" v-if="skloader.loading">
+          <v-skeleton-loader
+            :loading="skloader.loading"
+            :transition-group="skloader.transition"
+            :height="skloader.height"
+            :type="skloader.types"
+          >
+          </v-skeleton-loader>
+        </div>
+        <div class="content" v-else>
           <v-row>
             <v-col>
               <h4>Subjects</h4>
@@ -22,9 +33,10 @@
               </router-link>
               </v-col>
           </v-row>
-        </v-container>
+        </div>
+      </v-container>
     </v-content>
-    <Footer active="settings" />
+    <Footer active="syllabus" />
   </v-app>
 </template>
 <script>
@@ -35,29 +47,45 @@ import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
 
 export default {
-    name: "Settings",
-    data: () => ({
-      color: ["red", "blue", "pink", "purple", "indigo"]
-    }),
-    components: {
-        Header,
-        Footer
-    },
-    computed: {
-      ...mapState({
-        subjects: state => state.article.subjectList
-      })
-    },
-    methods: {
-      ...mapActions({
-        subjectList: "article/subjectList",
-      })
-    },
-    created() {
-      if (!this.subjects.length) {
-        this.subjectList();
+  name: "Syllabus",
+  data: () => ({
+    color: ["red", "blue", "pink", "purple", "indigo"],
+    skloader: {
+      loading: true,
+      transition: "none",
+      height: 388,
+      types: "article, card-avatar"
+    }
+  }),
+  components: {
+      Header,
+      Footer
+  },
+  computed: {
+    ...mapState({
+      subjects: state => state.article.subjectList
+    })
+  },
+  methods: {
+    ...mapActions({
+      subjectList: "article/subjectList",
+    })
+  },
+  created() {
+    if (!this.subjects.length) {
+      this.subjectList();
+    } else {
+      this.skloader.loading = false;
+    }
+  },
+
+  watch: {
+    subjects: function(n) {
+      if (n.length > 0) {
+        this.skloader.loading = false;
       }
-    },
+    }
+  },
 };
 </script>
 <style scoped="">

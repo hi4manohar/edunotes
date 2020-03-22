@@ -5,7 +5,6 @@
       absolute
       color="white"
       elevate-on-scroll
-      scroll-target="#scrolling-techniques-7"
     >
       <v-btn icon light @click="$router.go(-1)">
         <v-icon color="grey darken-2">mdi-arrow-left</v-icon>

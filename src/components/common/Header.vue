@@ -10,7 +10,7 @@
       <v-divider></v-divider>
       <v-list nav dense>
         <v-list-item-group v-model="item" color="primary">
-          <v-list-item v-for="(item, i) in items" :key="i">
+          <v-list-item v-for="(item, i) in items" :key="i" @click="moveTo(i)">
             <v-list-item-icon>
               <v-icon v-text="item.icon"></v-icon>
             </v-list-item-icon>
@@ -25,6 +25,9 @@
 </template>
 
 <script>
+
+import { mapState, mapActions } from "vuex";
+
 export default {
   props: ["pagetitle"],
   name: "Header",
@@ -40,13 +43,34 @@ export default {
       { text: "About Us", icon: "mdi-star" },
       { text: "Notifications", icon: "mdi-bell-outline" },
       { text: "Help", icon: "mdi-help-circle-outline" }
-    ],
-    names: [
-      { title: "Photos", subtitle: "Jan 9, 2014" },
-      { title: "Recipes", subtitle: "Jan 17, 2014" },
-      { title: "Work", subtitle: "Jan 28, 2014" }
     ]
-  })
+  }),
+
+  computed: {
+    ...mapState({
+      user: state => state.user
+    })
+  },
+
+  methods: {
+    ...mapActions({
+      resetConfig: "user/resetConfig"
+    }),
+
+    moveTo(key) {
+      if( key === 0 || key === 1 ) {
+        if( this.user.status.loggedIn === true ) {
+          this.resetConfig();
+        } else {
+          this.$router.push('/');
+        }
+      }
+
+      key === 2 ? this.$router.push('/about') : '';
+      key === 3 ? this.$router.push('/notifications') : '';
+
+    }
+  }
 };
 </script>
 <style scoped="">

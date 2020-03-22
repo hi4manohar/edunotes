@@ -10,12 +10,7 @@
         Close
       </v-btn>
     </v-snackbar>
-    <transition
-        name="slide-left"
-        mode="out-in"
-      >
     <router-view></router-view>
-     </transition>
   </div>
 </template>
 

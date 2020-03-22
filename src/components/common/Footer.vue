@@ -35,10 +35,10 @@
       </div>
     </router-link>
 
-    <router-link to="settings">
+    <router-link to="syllabus">
       <div
         class="footbtn"
-        :class="[active === 'settings' ? 'active' : '']"
+        :class="[active === 'syllabus' ? 'active' : '']"
         ripple
       >
         <v-icon>mdi-timer</v-icon>Syllabus
@@ -51,9 +51,7 @@
 export default {
   props: ["active"],
   name: "Footer",
-  data: () => ({
-    links: ["Home", "About", "Team", "Services"]
-  })
+  data: () => ({})
 };
 </script>
 <style scoped="">
