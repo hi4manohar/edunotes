@@ -4,7 +4,8 @@ import store from "../store";
 
 export const articleService = {
   articleList,
-  articleDetails
+  articleDetails,
+  subjectList
 };
 
 function articleList() {
@@ -43,6 +44,32 @@ function articleDetails() {
       .get(appConfig.API_URL + "article-list")
       .then(function(response) {
         console.log(response);
+        if (response.data.status === true) {
+          resolve({
+            status: true,
+            data: response.data.data
+          });
+        } else {
+          reject({
+            status: false,
+            msg: response.data.msg
+          });
+        }
+      })
+      .catch(function(error) {
+        reject({
+          status: false,
+          msg: error
+        });
+      });
+  });
+}
+
+function subjectList() {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(appConfig.API_URL + "class/get")
+      .then(function(response) {
         if (response.data.status === true) {
           resolve({
             status: true,

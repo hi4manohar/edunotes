@@ -34,7 +34,7 @@
                   <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
-              <v-img v-if="index%2 == 0" src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg" height="120"></v-img>
+              <v-img v-if="index%2 == 0 && name.guid" :src="name.guid" height="120"></v-img>
               <v-card-text
                 v-html="trimmedData(name.post_content)">
               </v-card-text>
