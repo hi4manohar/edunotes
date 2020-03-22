@@ -25,7 +25,7 @@ const routes = [
   { path: "/encyclopedia", name: "Encyclopedia", component: Encyclopedia },
   { path: "/notes", name: "Notes", component: Notes },
   { path: "/settings", name: "Settings", component: Settings },
-  { path: "/syllabus/:subjects", name: "Settings", component: SubjectPosts }
+  { path: "/syllabus/:subjects", name: "SubjectPosts", component: SubjectPosts }
 ];
 
 export const router = new VueRouter({
