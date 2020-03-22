@@ -5,8 +5,7 @@
       Welcome To <span class="font-weight-bold blue--text">EduNotes</span>
     </h1>
     <p class="caption mb-10">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Scrambled it to make a type specimen book.
+      A Helping hand to study effectively.
     </p>
     <v-carousel
       cycle

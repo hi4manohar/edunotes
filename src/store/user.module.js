@@ -28,12 +28,23 @@ const actions = {
       dispatch("alert/error", err.msg);
       console.log("rrr", err);
     }
+  },
+
+  async resetConfig({ commit }) {
+    localStorage.clear();
+    commit('resetLogin');
+    router.push("/");
   }
 };
 const mutations = {
   loginSuccess(state, token_id) {
     state.status = { loggedIn: true };
     state.token_id = token_id;
+  },
+
+  resetLogin(state) {
+    state.status.loggedIn = false;
+    state.token_id = null;
   }
 };
 export const user = {

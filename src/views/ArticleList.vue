@@ -53,31 +53,7 @@
               </v-card-actions>
             </v-card>
           </div>
-        </v-container>
-        <div
-          v-for="(name, index) in names"
-          @click="showContent(index)"
-          :key="index"
-          v-show="false"
-        >
-          <v-list-item :class="{ active: activeIndex === index }" ripple>
-            <v-list-item-content>
-              <v-list-item-title
-                lass="text-truncate"
-                v-text="name.post_title"
-              ></v-list-item-title>
-              <v-list-item-subtitle
-                class="text-truncate"
-                v-html="trimmedData(name.post_content)"
-              ></v-list-item-subtitle>
-            </v-list-item-content>
-            <v-list-item-action>
-              <v-btn icon>
-                <v-icon>mdi-chevron-right</v-icon>
-              </v-btn>
-            </v-list-item-action>
-          </v-list-item>
-        </div>        
+        </v-container>      
       </v-content>      
       <Footer active="home" />
     </div>
@@ -105,7 +81,7 @@ export default {
       loading: true,
       transition: "none",
       height: 72,
-      type: "list-item-two-line"
+      type: "list-item-avatar-three-line"
     },
     articleContent: false,
     articleData: {},
@@ -123,9 +99,6 @@ export default {
     })
   },
   methods: {
-    // ...mapActions('article', {
-    //   loadArticleList: 'articleList'
-    // }),
     ...mapActions({
       loadArticleList: "article/articleList",
       setHomeScroll: "scroll/setHomeScroll"
