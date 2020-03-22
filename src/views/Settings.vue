@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header pagetitle="Test Series"/>
+    <Header pagetitle="Syllabus"/>
     <v-content class="pt-0">
       <v-container>
           <v-row>
