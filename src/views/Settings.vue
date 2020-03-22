@@ -9,14 +9,14 @@
             </v-col>
           </v-row>
           <v-row>
-              <v-col cols="6" v-for="(n, index) in 10" :key="index">
-                <router-link to="/syllabus/physics">
+              <v-col cols="6" v-for="(subject, index) in subjects" :key="index">
+                <router-link :to="'/syllabus/' + subject.slug">
                 <v-card :elevation="3"  v-ripple>
-                  <div class="card-header blue lighten-4">
-                    <span class="blue lighten-6">2</span>
+                  <div class="card-header red lighten-4">
+                    <span class="blue lighten-6">{{ index+1 }}</span>
                   </div>
                   <div class="card-footer">
-                    English
+                    {{ subject.name }}
                   </div>
                 </v-card>
               </router-link>
@@ -28,6 +28,9 @@
   </v-app>
 </template>
 <script>
+
+import { mapState, mapActions } from "vuex";
+
 import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
 
@@ -37,7 +40,22 @@ export default {
     components: {
         Header,
         Footer
-    }
+    },
+    computed: {
+      ...mapState({
+        subjects: state => state.article.subjectList
+      })
+    },
+    methods: {
+      ...mapActions({
+        subjectList: "article/subjectList",
+      })
+    },
+    created() {
+      if (!this.subjects.length) {
+        this.subjectList();
+      }
+    },
 };
 </script>
 <style scoped="">

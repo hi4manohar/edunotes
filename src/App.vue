@@ -1,6 +1,15 @@
 <template>
   <div class="main-view">
-    <v-alert v-if="alert.type" :type="alert.type">{{ alert.message }}</v-alert>
+    <v-snackbar v-model="snackbar">
+      {{ alert.message }}
+      <v-btn
+        color="pink"
+        text
+        @click="updatesnackbar(false)"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
     <router-view></router-view>
   </div>
 </template>
@@ -19,12 +28,20 @@ export default {
   computed: {
     ...mapState({
       alert: state => state.alert
-    })
+    }),
+
+    snackbar() {
+      return this.alert.type ? true : false;
+    }
   },
   methods: {
     ...mapActions({
       clearAlert: "alert/clear"
-    })
+    }),
+
+    updatesnackbar(val) {
+      this.alert.type = val;
+    }
   },
   watch: {
     $route() {
