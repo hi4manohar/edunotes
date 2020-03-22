@@ -24,7 +24,7 @@
                 <router-link :to="'/syllabus/' + subject.slug">
                 <v-card :elevation="3"  v-ripple>
                   <div :class="'card-header '+ color[index]">
-                    <span class="">{{ index+1 }}</span>
+                    <span class="text--white">{{ index+1 }}</span>
                   </div>
                   <div class="card-footer">
                     {{ subject.name }}
@@ -105,7 +105,7 @@ export default {
   left: 0px;
   padding:7px 15px;
   font-weight: 800;
-  color: #000;
+  color: #fff;
   border-radius: 0px 4px 0px 0px;
 }
 .card-footer{
