@@ -9,6 +9,7 @@ import Notes from "../views/Notes";
 import Syllabus from "../views/Syllabus";
 import SubjectPosts from "../views/SubjectPosts";
 import Notifications from "../views/Notifications";
+import ChapterPosts from "../views/ChapterPosts";
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,7 @@ const routes = [
   { path: "/notes", name: "Notes", component: Notes },
   { path: "/syllabus", name: "Syllabus", component: Syllabus },
   { path: "/syllabus/:subjects", name: "SubjectPosts", component: SubjectPosts },
+  { path: "/syllabus/:subjects/:chapter", name: "ChapterPosts", component: ChapterPosts },
   { path: "/notifications", name: "Notifications", component: Notifications }
 ];
 

@@ -17,17 +17,19 @@
     </div>
     <div class="slidercon">
       <div class="sliderconin" :style="{ width: getsliderWidth }">
-        <v-card :elevation="5" width="260" v-for="(item, index) in 10" :key="index">
-          <v-img
-            height="150"
-            src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-          ></v-img>
-          <v-card-title class="py-2">01 Chapter</v-card-title>
-          <v-card-text>
-            <div class="subtitle-1">Real Number</div>
-            <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
-          </v-card-text>
-        </v-card>
+        <router-link to="/syllabus/maths/real-numbers">
+          <v-card :elevation="5" width="260" v-for="(item, index) in 10" :key="index">
+            <v-img
+              height="150"
+              src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+            ></v-img>
+            <v-card-title class="py-2">01 Chapter</v-card-title>
+            <v-card-text>
+              <div class="subtitle-1">Real Number</div>
+              <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+            </v-card-text>
+          </v-card>
+        </router-link>
       </div>
     </div>
     </v-container>
