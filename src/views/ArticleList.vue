@@ -20,7 +20,7 @@
             </v-list-item-content>
           </v-list-item>
         </div>
-        <v-container class="mb-12" v-else>
+        <v-container class="" v-else>
           <div
             class="list-card mb-4"
             v-for="(name, index) in names"
@@ -81,14 +81,14 @@
       </v-content>      
       <Footer active="home" />
     </div>
-    <v-scroll-x-transition>
+    <transition name="slide-fade">
       <div v-if="articleContent">
         <articleContent
           :content="articleData"
           v-on:showListArticle="showListArticle()"
         />
       </div>
-    </v-scroll-x-transition>
+    </transition>
   </v-app>
 </template>
 <script>
@@ -185,6 +185,14 @@ export default {
       if (n.length > 0) {
         this.skloader.loading = false;
       }
+    },
+
+    watch: {
+      $route(to, from) {
+        const toDepth = to.path.split('/').length
+        const fromDepth = from.path.split('/').length
+        this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+      }
     }
   },
   mounted() {
@@ -224,4 +232,6 @@ h4{
   font-size: 16px !important;
   margin-bottom: 0px;
 }
+
+
 </style>

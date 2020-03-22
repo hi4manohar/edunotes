@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <transition name="slide-fade">
     <div class="article-content">
       <v-content class="pt-0">
         <v-container>
@@ -21,7 +22,7 @@
           </div>
         </v-container>
       </v-content>
-      <v-footer absolute class="font-weight-medium">
+      <v-footer fixed class="font-weight-medium">
         <v-col class="text-center" cols="12">
           <a @click="$router.go(-1)">
             <v-icon>mdi-close</v-icon>
@@ -29,6 +30,7 @@
         </v-col>
       </v-footer>
     </div>
+  </transition>
   </v-app>
 </template>
 <script>
@@ -93,4 +95,5 @@ export default {
 .v-footer {
   box-shadow: 0px 0px 2px #888;
 }
+
 </style>

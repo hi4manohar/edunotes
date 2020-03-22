@@ -7,7 +7,9 @@
       elevate-on-scroll
       scroll-target="#scrolling-techniques-7"
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-btn icon light>
+        <v-icon color="grey darken-2">mdi-arrow-left</v-icon>
+      </v-btn>
       <v-toolbar-title>Choose Chapter</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
@@ -29,28 +31,11 @@
                 height="200"
                 src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
               ></v-img>
-              <v-card-title>Cafe Badilico</v-card-title>
+              <v-card-title class="py-2">01 Chapter</v-card-title>
               <v-card-text>
-                <v-row
-                  align="center"
-                  class="mx-0"
-                >
-                  <!-- <v-rating
-                    :value="4.5"
-                    color="amber"
-                    dense
-                    half-increments
-                    readonly
-                    size="14"
-                  ></v-rating> -->
-
-                  <!-- <div class="grey--text ml-4">4.5 (413)</div> -->
-                </v-row>
-
-                <div class="my-4 subtitle-1">
-                  $ • Italian, Cafe
+                <div class="subtitle-1">
+                  Real Number
                 </div>
-
                 <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
               </v-card-text>
             </v-card>

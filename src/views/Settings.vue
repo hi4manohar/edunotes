@@ -12,8 +12,8 @@
               <v-col cols="6" v-for="(subject, index) in subjects" :key="index">
                 <router-link :to="'/syllabus/' + subject.slug">
                 <v-card :elevation="3"  v-ripple>
-                  <div class="card-header red lighten-4">
-                    <span class="blue lighten-6">{{ index+1 }}</span>
+                  <div :class="'card-header '+ color[index]">
+                    <span class="">{{ index+1 }}</span>
                   </div>
                   <div class="card-footer">
                     {{ subject.name }}
@@ -36,7 +36,9 @@ import Footer from "@/components/common/Footer.vue";
 
 export default {
     name: "Settings",
-    data: () => ({}),
+    data: () => ({
+      color: ["red", "blue", "pink", "purple", "indigo"]
+    }),
     components: {
         Header,
         Footer
