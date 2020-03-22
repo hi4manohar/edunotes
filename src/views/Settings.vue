@@ -9,66 +9,18 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="6">
-              <v-card :elevation="3"  v-ripple>
-                <div class="card-header blue lighten-4">
-                  <span class="blue lighten-6">2</span>
-                </div>
-                <div class="card-footer">
-                  English
-                </div>
-              </v-card>
-            </v-col>
-            <v-col cols="6">
-              <v-card :elevation="3"  v-ripple>
-                <div class="card-header green lighten-4">
-                  <span class="green lighten-3">2</span>
-                </div>
-                <div class="card-footer">
-                  Science
-                </div>
-              </v-card>
-            </v-col>
-            <v-col cols="6">
-              <v-card :elevation="3"  v-ripple>
-                <div class="card-header green accent-2">
-                  <span class="green accent-3">2</span>
-                </div>
-                <div class="card-footer">
-                  Social Science
-                </div>
-              </v-card>
-            </v-col>
-            <v-col cols="6">
-              <v-card :elevation="3" v-ripple>
-                <div class="card-header pink accent-1" >
-                  <span class="pink accent-2">2</span>
-                </div>
-                <div class="card-footer">
-                  Mathematics
-                </div>
-              </v-card>
-            </v-col>
-            <v-col cols="6">
-              <v-card :elevation="3" v-ripple>
-                <div class="card-header cyan lighten-4" >
-                  <span class="cyan lighten-3">2</span>
-                </div>
-                <div class="card-footer">
-                  Mathematics
-                </div>
-              </v-card>
-            </v-col>
-            <v-col cols="6">
-              <v-card :elevation="3" v-ripple>
-                <div class="card-header lime lighten-4" >
-                  <span class="lime lighten-3">2</span>
-                </div>
-                <div class="card-footer">
-                  Mathematics
-                </div>
-              </v-card>
-            </v-col>
+              <v-col cols="6" v-for="(n, index) in 10" :key="index">
+                <router-link to="/syllabus/physics">
+                <v-card :elevation="3"  v-ripple>
+                  <div class="card-header blue lighten-4">
+                    <span class="blue lighten-6">2</span>
+                  </div>
+                  <div class="card-footer">
+                    English
+                  </div>
+                </v-card>
+              </router-link>
+              </v-col>
           </v-row>
         </v-container>
     </v-content>
