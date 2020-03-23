@@ -66,7 +66,7 @@ p {
 }
 .description span{
   font-size: 12px !important;
-  color: #616161 !important;
+  color: rgba(0, 0, 0, 0.6) !important;
   white-space: normal;
 }
 .description pre{
@@ -94,7 +94,7 @@ ul {
 ul li {
   font-size: 12px;
   font-weight: 400;
-  color: #616161;
+  color: rgba(0, 0, 0, 0.6);
 }
 .skloader {
   top: 0;

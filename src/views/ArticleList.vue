@@ -20,29 +20,31 @@
             </v-list-item-content>
           </v-list-item>
         </div>
-        <v-container class="" v-else>
+        <v-container class="px-0 py-2 pt-0" v-else>
           <div
-            class="list-card mb-4"
+            class="list-card mb-2"
             v-for="(name, index) in names"
             @click="$router.push('/post/' + index)"
             :key="index"
           >
-            <v-card class="mx-auto" :class="{ active: activeIndex === index }">
+            <v-card class="mx-auto elevation-0" :class="{ active: activeIndex === index }">
               <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title class="subtitle-2" v-text="name.post_title"></v-list-item-title>
                   <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
-              <v-img v-if="index%2 == 0 && name.guid" :src="name.guid" height="120"></v-img>
-              <v-card-text
+              <div class="ma-3 my-1 article-img">
+                <v-img v-if="index%2 == 0 && name.guid" :src="name.guid" height="150"></v-img>
+              </div>
+              <v-card-text class="px-3 py-1"
                 v-html="trimmedData(name.post_content)">
               </v-card-text>
               <v-card-actions>
-                <v-btn text color="deep-purple accent-4">
+                <v-btn text color="">
                   Read
                 </v-btn>
-                <v-btn text color="deep-purple accent-4" @click="saveArticle($event, index)">Save</v-btn>
+                <v-btn text color="" @click="saveArticle($event, index)">Save</v-btn>
                 <v-spacer></v-spacer>
                 <v-btn icon>
                   <v-icon>mdi-heart</v-icon>
@@ -183,6 +185,7 @@ export default {
   height: calc(100vh - 112px);
   margin-bottom: 56px !important;
   overflow: auto;
+  background: #eee;
 }
 /*.v-list-item {
   box-shadow: 0px 1px 4px #ddd;
@@ -205,6 +208,19 @@ h4{
   font-size: 16px !important;
   margin-bottom: 0px;
 }
-
+.article-img{
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+.v-card{
+  border-radius: 0px !important;
+}
+.v-btn{
+  font-size: 12px;
+}
+.v-btn span i{
+  font-size: 18px !important;
+}
 
 </style>

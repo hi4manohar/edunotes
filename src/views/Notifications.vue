@@ -11,7 +11,7 @@
         <v-spacer></v-spacer>
     </v-app-bar>
     <v-content justify="center">
-      <v-card>
+      <v-card :elevation="0">
         <v-list two-line>
           <template v-for="(item, index) in items">
             <v-subheader
@@ -31,8 +31,6 @@
             <v-list-item
               v-else
               :key="item.title"
-              ripple
-              
             >
               <v-list-item-avatar>
                 <img :src="item.avatar">
