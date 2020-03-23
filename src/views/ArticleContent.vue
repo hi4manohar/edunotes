@@ -52,21 +52,19 @@ export default {
     })
   },
   methods: {
-
     ...mapActions({
       loadArticleList: "article/articleList"
     }),
 
     loadArticle(id) {
-
-      if( this.names[id] ) {
+      if (this.names[id]) {
         this.article = {
           title: this.names[id].post_title,
           content: this.names[id].post_content
         };
       } else {
-        console.log('hello');
-      }      
+        console.log("hello");
+      }
     },
     showListArticle() {
       this.$emit("showListArticle", true);
@@ -93,5 +91,4 @@ export default {
 .v-footer {
   box-shadow: 0px 0px 2px #888;
 }
-
 </style>

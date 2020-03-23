@@ -24,7 +24,7 @@ const actions = {
         let json = await articleService.subjectList();
         if (json.status === true) commit("saveSubject", json.data);
       } catch (err) {
-        console.log('error', err);
+        console.log("error", err);
         dispatch("alert/error", err.msg, { root: true });
       }
     } else {

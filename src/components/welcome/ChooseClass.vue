@@ -1,32 +1,34 @@
 <template>
   <v-app>
     <div class="">
-    <v-toolbar :elevation="0" class="mt-2">
-      <v-icon @click="showBoard" v-ripple>mdi-arrow-left</v-icon>
-      <h1 class="title pl-2">
-        Choose Your <span class="font-weight-bold blue--text">Class</span>
-      </h1>
-    </v-toolbar>
-    <v-list three-line>
-      <template v-for="item in items">
-        <v-list-item
-          :key="item.title"
-          class="mb-2"
-          @click="setHandleConfig()"
-          v-ripple
-        >
-          <v-list-item-avatar>
-            <v-img :src="item.avatar"></v-img>
-          </v-list-item-avatar>
+      <v-toolbar :elevation="0" class="mt-2">
+        <v-icon @click="showBoard" v-ripple>mdi-arrow-left</v-icon>
+        <h1 class="title pl-2">
+          Choose Your <span class="font-weight-bold blue--text">Class</span>
+        </h1>
+      </v-toolbar>
+      <v-list three-line>
+        <template v-for="item in items">
+          <v-list-item
+            :key="item.title"
+            class="mb-2"
+            @click="setHandleConfig()"
+            v-ripple
+          >
+            <v-list-item-avatar>
+              <v-img :src="item.avatar"></v-img>
+            </v-list-item-avatar>
 
-          <v-list-item-content>
-            <v-list-item-title v-html="item.title"></v-list-item-title>
-            <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-      </template>
-    </v-list>
-  </div>
+            <v-list-item-content>
+              <v-list-item-title v-html="item.title"></v-list-item-title>
+              <v-list-item-subtitle
+                v-html="item.subtitle"
+              ></v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </template>
+      </v-list>
+    </div>
   </v-app>
 </template>
 

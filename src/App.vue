@@ -2,11 +2,7 @@
   <div class="main-view">
     <v-snackbar v-model="snackbar">
       {{ alert.message }}
-      <v-btn
-        color="pink"
-        text
-        @click="updatesnackbar(false)"
-      >
+      <v-btn color="pink" text @click="updatesnackbar(false)">
         Close
       </v-btn>
     </v-snackbar>
@@ -54,7 +50,6 @@ export default {
 <style src="./assets/css/globalApp.css"></style>
 
 <style type="text/css">
-  
 .slide-left-enter-active,
 .slide-left-leave-active {
   transition-duration: 0.3s;
@@ -64,6 +59,6 @@ export default {
 
 .slide-left-enter,
 .slide-left-leave-active {
-  opacity: 0
+  opacity: 0;
 }
 </style>

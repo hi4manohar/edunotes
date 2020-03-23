@@ -32,7 +32,7 @@ const actions = {
 
   async resetConfig({ commit }) {
     localStorage.clear();
-    commit('resetLogin');
+    commit("resetLogin");
     router.push("/");
   }
 };
