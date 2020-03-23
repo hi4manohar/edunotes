@@ -10,6 +10,7 @@ import Syllabus from "../views/Syllabus";
 import SubjectPosts from "../views/SubjectPosts";
 import Notifications from "../views/Notifications";
 import ChapterPosts from "../views/ChapterPosts";
+import BookDescription from "../views/BookDescription";
 
 Vue.use(VueRouter);
 
@@ -20,6 +21,7 @@ const routes = [
   { path: "/content", name: "ArticleList", component: ArticleList },
   { path: "/post/:articleid", name: "ArticleContent", component: ArticleContent },
   { path: "/question", name: "Question", component: Question },
+  { path: "/books/:name", name: "BookDescription", component: BookDescription },
   { path: "/encyclopedia", name: "Encyclopedia", component: Encyclopedia },
   { path: "/notes", name: "Notes", component: Notes },
   { path: "/syllabus", name: "Syllabus", component: Syllabus },

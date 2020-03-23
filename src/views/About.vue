@@ -23,7 +23,6 @@
       <br>
       <br>
       <p class="text-center"><strong>v1.00</strong><br>App Updated</p>
-      
     </v-content>
   </v-app>
 </template>

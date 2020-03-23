@@ -9,11 +9,11 @@
     </p>
     <v-carousel
       cycle
-      height="250"
+      height="300"
       hide-delimiter-background
       show-arrows-on-hover
       hide-delimiters
-      interval="2000"
+      interval="4000"
     >
       <v-carousel-item v-for="(slide, i) in slides" :key="i">
         <v-sheet :color="colors[i]" height="100%">

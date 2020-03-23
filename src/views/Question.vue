@@ -5,48 +5,17 @@
       <v-container fluid>
         <v-row>
           <v-col cols="6">
-            <v-card>
-              <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
-                height="100px"
-              >
-              </v-img>
-              <v-card-title>Physics</v-card-title>
-              <v-card-subtitle>H C Verma</v-card-subtitle>
-            </v-card>
-          </v-col>
-          <v-col cols="6">
-            <v-card>
-              <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
-                height="100px"
-              >
-              </v-img>
-              <v-card-title>Physics</v-card-title>
-              <v-card-subtitle>H C Verma</v-card-subtitle>
-            </v-card>
-          </v-col>
-          <v-col cols="6">
-            <v-card>
-              <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
-                height="100px"
-              >
-              </v-img>
-              <v-card-title>Physics</v-card-title>
-              <v-card-subtitle>H C Verma</v-card-subtitle>
-            </v-card>
-          </v-col>
-          <v-col cols="6">
-            <v-card>
-              <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
-                height="100px"
-              >
-              </v-img>
-              <v-card-title>Physics</v-card-title>
-              <v-card-subtitle>H C Verma</v-card-subtitle>
-            </v-card>
+            <router-link :to="'/books/:name'">
+              <v-card>
+                <v-img
+                  src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
+                  height="100px"
+                >
+                </v-img>
+                <v-card-title>Physics</v-card-title>
+                <v-card-subtitle>H C Verma</v-card-subtitle>
+              </v-card>
+            </router-link>
           </v-col>
         </v-row>
       </v-container>
