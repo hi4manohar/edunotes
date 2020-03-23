@@ -102,3 +102,6 @@ ul li {
 .v-text-field__details{
   display: none !important;
 }
+.v-toolbar__title{
+  font-size: 1.1rem !important;
+}

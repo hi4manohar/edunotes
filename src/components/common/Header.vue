@@ -7,6 +7,16 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" width="85%" app>
+      <v-list-item dark class="left-drawer-header">
+        <v-list-item-content>
+          <v-list-item-title class="title" >
+            Edunotes
+          </v-list-item-title>
+          <v-list-item-subtitle class="caption">
+            A simplest learning Platform
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
       <v-divider></v-divider>
       <v-list nav dense>
         <v-list-item-group v-model="item" color="primary">
@@ -76,5 +86,8 @@ export default {
 <style scoped="">
 .v-navigation-drawer {
   max-width: 300px;
+}
+.left-drawer-header{
+  background:#1565C0;
 }
 </style>
