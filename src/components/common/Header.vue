@@ -2,7 +2,7 @@
   <div>
     <v-app-bar app clipped-right color="#1565C0" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" white />
-      <v-toolbar-title title class="pl-2">{{ pagetitle }}</v-toolbar-title>
+      <v-toolbar-title title class="pl-0">{{ pagetitle }}</v-toolbar-title>
       <v-spacer />
     </v-app-bar>
 
@@ -51,8 +51,8 @@ export default {
       { text: "Change Board", icon: "mdi-account-cog-outline" },
       { text: "Change Class", icon: "mdi-account-cog-outline" },
       { text: "About Us", icon: "mdi-star" },
-      { text: "Notifications", icon: "mdi-bell-outline" },
-      { text: "Help", icon: "mdi-help-circle-outline" }
+      { text: "Notifications", icon: "mdi-bell-outline" }
+      // { text: "Help", icon: "mdi-help-circle-outline" }
     ]
   }),
 

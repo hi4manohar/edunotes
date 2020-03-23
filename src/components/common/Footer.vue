@@ -11,11 +11,11 @@
     </router-link>
     <router-link to="/question">
       <div
-        class="footbtn"
+        class="footbtn enc"
         :class="[active === 'question' ? 'active' : '']"
         ripple
       >
-        <v-icon>mdi-book-multiple</v-icon>Books
+        <v-icon>mdi-book-multiple</v-icon>Books/Notes
       </div>
     </router-link>
 
@@ -26,12 +26,6 @@
         ripple
       >
         <v-icon>mdi-book-open-page-variant </v-icon>Encyclopedia
-      </div>
-    </router-link>
-
-    <router-link to="notes">
-      <div class="footbtn" :class="[active === 'notes' ? 'active' : '']" ripple>
-        <v-icon>mdi-note-multiple</v-icon>Notes
       </div>
     </router-link>
 
@@ -67,8 +61,8 @@ export default {
   border-radius: 50%;
 }
 .footbtn {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   text-align: center;
   font-size: 10px;
@@ -79,7 +73,7 @@ export default {
   width: 55px;
 }
 .footbtn i {
-  font-size: 18px;
+  font-size: 22px;
   display: block !important;
 }
 </style>

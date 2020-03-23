@@ -12,18 +12,54 @@
         <v-spacer></v-spacer>
     </v-app-bar>
     <v-content class="pa-4 text-center">
-      <v-img src="https://picsum.photos/510/300?random" aspect-ratio="1.7" class="mx-auto"
-    max-width="200"></v-img>
+      <div class="book-img pa-2">
+        <v-img src="https://picsum.photos/510/300?random"></v-img>
+      </div>
       <br>
       <h3 class="mb-0">Book Full Name</h3>
       <p class="mb-2">H C Verma, S Chand</p>
-      
-      <p class="mb-2">These will override the conventional class names. This is especially useful when you want to combine Vue’s transition system with an existing CSS animation library, such as Animate.css.</p>
-      <br>
+      <p class="mb-2">These will override the conventional class names. This is especially useful when .</p>
+      <!-- if file type pdf -->
+      <v-list-item class="px-2 mb-2 elevation-2 text-left">
+         <v-list-item-content>
+          <v-list-item-title class="subtitle-2">01. This is Title of Book</v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-icon title="view file">
+          <v-btn icon color="primary"><v-icon>mdi-file-pdf-outline </v-icon></v-btn>
+        </v-list-item-icon>
+        <v-list-item-icon>
+          <v-btn icon color="success"><v-icon>mdi-download</v-icon></v-btn>
+        </v-list-item-icon>
+      </v-list-item>
+      <!-- if file type video -->
+      <v-list-item class="px-2 mb-2 elevation-2 text-left">
+         <v-list-item-content>
+          <v-list-item-title class="subtitle-2">02. This is Title of Book</v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-icon title="view file">
+          <v-btn icon color="primary"><v-icon>mdi-video-outline  </v-icon></v-btn>
+        </v-list-item-icon>
+        <v-list-item-icon>
+          <v-btn icon color="success"><v-icon>mdi-download</v-icon></v-btn>
+        </v-list-item-icon>
+      </v-list-item>
+      <!-- if file type image -->
+      <v-list-item class="px-2 mb-2 elevation-2 text-left">
+         <v-list-item-content>
+          <v-list-item-title class="subtitle-2">03. This is Title of Book</v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-icon title="view file">
+          <v-btn icon color="primary"><v-icon>mdi-file-image-outline</v-icon></v-btn>
+        </v-list-item-icon>
+        <v-list-item-icon>
+          <v-btn icon color="success"><v-icon>mdi-download </v-icon></v-btn>
+        </v-list-item-icon>
+      </v-list-item>
+      <!-- <br>
       <div class="text-center">
       	<v-btn rounded outlined color="indigo" class="mr-2">View</v-btn>
       	<v-btn rounded color="indigo" class="mr-2 white--text">Download</v-btn>
-      </div>
+      </div> -->
     </v-content>
   </v-app>
 </template>
@@ -49,5 +85,9 @@ export default {
     height: calc(100vh - 56px);
     overflow: auto;
     padding:10px;
+  }
+  .book-img{
+    background: #eee;
+    border:1px solid #ddd;
   }
 </style>

@@ -10,8 +10,8 @@
     <v-carousel
       cycle
       height="300"
-      show-arrows-on-hover
-      hide-delimiters
+      :show-arrows="false"
+      hide-delimiter-background
       interval="4000"
     >
       <v-carousel-item v-for="(item,i) in items" :key="i" :src="item.src">

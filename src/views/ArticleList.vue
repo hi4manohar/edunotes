@@ -20,7 +20,7 @@
             </v-list-item-content>
           </v-list-item>
         </div>
-        <v-container class="px-0 py-2 pt-0" v-else>
+        <v-container class="px-0 py-2" v-else>
           <div
             class="list-card mb-2"
             v-for="(name, index) in names"

@@ -2,41 +2,81 @@
   <v-app>
     <Header pagetitle="Notes" />
     <v-content class="pt-0">
-      <v-container fluid>
-        <v-card v-ripple class="mb-3" rounded-none>
-          <v-list-item>
-            <v-avatar class="mr-3" size="70" width="100" tile>
-              <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
-              ></v-img>
-            </v-avatar>
-            <v-list-item-content>
-              <v-list-item-title class="subtitle-2 mb-1"
-                >Hello This is notes of pysics</v-list-item-title
-              >
-              <v-list-item-subtitle class="caption"
-                >Notes Author Name</v-list-item-subtitle
-              >
-            </v-list-item-content>
-          </v-list-item>
-        </v-card>
-        <v-card v-ripple class="mb-3">
-          <v-list-item>
-            <v-avatar class="mr-3" width="100" size="70" tile>
-              <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
-              ></v-img>
-            </v-avatar>
-            <v-list-item-content>
-              <v-list-item-title class="subtitle-2 mb-1"
-                >Hello This is notes of pysics</v-list-item-title
-              >
-              <v-list-item-subtitle class="caption"
-                >Notes Author Name</v-list-item-subtitle
-              >
-            </v-list-item-content>
-          </v-list-item>
-        </v-card>
+      <v-container>
+        <h4>Latest Notes</h4>
+        <br>
+        <v-card
+      class="mx-auto mb-4"
+      max-width="400"
+    >
+      <v-system-bar
+        class="white--text"
+        height="100px"
+        color="green"
+      >
+        <v-card-title class="subtitle-1">Top 10 Australian beaches</v-card-title>
+      </v-system-bar>
+  
+      <v-card-subtitle class="pb-0">Number 10</v-card-subtitle>
+  
+      <v-card-text class="text--primary">
+        <div class="caption">Whitehaven Beach</div>
+  
+        <div class="caption">Whitsunday Island, Whitsunday Islands</div>
+      </v-card-text>
+  
+      <v-card-actions>
+        <v-btn
+          color="blue"
+          text
+        >
+          View
+        </v-btn>
+  
+        <v-btn
+          color="blue"
+          text
+        >
+          Download
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+    <v-card
+      class="mx-auto"
+      max-width="400"
+    >
+      <v-system-bar
+        class="white--text"
+        height="100px"
+        color="orange"
+      >
+        <v-card-title class="subtitle-1">Top 10 Australian beaches</v-card-title>
+      </v-system-bar>
+  
+      <v-card-subtitle class="pb-0">Number 10</v-card-subtitle>
+  
+      <v-card-text class="text--primary">
+        <div>Whitehaven Beach</div>
+  
+        <div>Whitsunday Island, Whitsunday Islands</div>
+      </v-card-text>
+  
+      <v-card-actions>
+        <v-btn
+          color="blue"
+          text
+        >
+          View
+        </v-btn>
+  
+        <v-btn
+          color="blue"
+          text
+        >
+          Download
+        </v-btn>
+      </v-card-actions>
+    </v-card>
       </v-container>
     </v-content>
     <Footer active="notes" />
@@ -62,22 +102,9 @@ export default {
   margin-bottom: 56px !important;
   overflow: auto;
 }
-.v-card {
-  overflow: hidden;
-  border-radius: 0px !important;
-  box-shadow: none;
-  border-bottom: 1px solid #f3f3f3;
-}
+
 .v-list-item {
   padding: 0px !important;
-}
-.v-card__title {
-  font-size: 14px;
-  padding: 5px 10px;
-}
-.v-card__subtitle {
-  font-size: 11px;
-  padding: 5px 10px;
 }
 .card-header{
   height: 80px;
