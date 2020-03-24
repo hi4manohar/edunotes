@@ -9,7 +9,7 @@
     <v-navigation-drawer v-model="drawer" width="85%" app>
       <v-list-item dark class="left-drawer-header">
         <v-list-item-content>
-          <v-list-item-title class="title" >
+          <v-list-item-title class="title">
             Edunotes
           </v-list-item-title>
           <v-list-item-subtitle class="caption">
@@ -35,7 +35,6 @@
 </template>
 
 <script>
-
 import { mapState, mapActions } from "vuex";
 
 export default {
@@ -68,17 +67,16 @@ export default {
     }),
 
     moveTo(key) {
-      if( key === 0 || key === 1 ) {
-        if( this.user.status.loggedIn === true ) {
+      if (key === 0 || key === 1) {
+        if (this.user.status.loggedIn === true) {
           this.resetConfig();
         } else {
-          this.$router.push('/');
+          this.$router.push("/");
         }
       }
 
-      key === 2 ? this.$router.push('/about') : '';
-      key === 3 ? this.$router.push('/notifications') : '';
-
+      key === 2 ? this.$router.push("/about") : "";
+      key === 3 ? this.$router.push("/notifications") : "";
     }
   }
 };
@@ -87,7 +85,7 @@ export default {
 .v-navigation-drawer {
   max-width: 300px;
 }
-.left-drawer-header{
-  background:#1565C0;
+.left-drawer-header {
+  background: #1565c0;
 }
 </style>

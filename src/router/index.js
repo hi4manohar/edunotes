@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import ArticleList from "../views/ArticleList";
-import ArticleContent from "../views/ArticleContent"
+import ArticleContent from "../views/ArticleContent";
 import Question from "../views/Question";
 import Encyclopedia from "../views/Encyclopedia";
 import Notes from "../views/Notes";
@@ -16,17 +16,33 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: "/", name: "Home", component: Home },
-  { path: "/about", name: "About", component: () => import("../views/About.vue") },
+  {
+    path: "/about",
+    name: "About",
+    component: () => import("../views/About.vue")
+  },
   { path: "/home/:viewtype", name: "Welcome", component: Home },
   { path: "/content", name: "ArticleList", component: ArticleList },
-  { path: "/post/:articleid", name: "ArticleContent", component: ArticleContent },
+  {
+    path: "/post/:articleid",
+    name: "ArticleContent",
+    component: ArticleContent
+  },
   { path: "/question", name: "Question", component: Question },
   { path: "/books/:name", name: "BookDescription", component: BookDescription },
   { path: "/encyclopedia", name: "Encyclopedia", component: Encyclopedia },
   { path: "/notes", name: "Notes", component: Notes },
   { path: "/syllabus", name: "Syllabus", component: Syllabus },
-  { path: "/syllabus/:subjects", name: "SubjectPosts", component: SubjectPosts },
-  { path: "/syllabus/:subjects/:chapter", name: "ChapterPosts", component: ChapterPosts },
+  {
+    path: "/syllabus/:subjects",
+    name: "SubjectPosts",
+    component: SubjectPosts
+  },
+  {
+    path: "/syllabus/:subjects/:chapter",
+    name: "ChapterPosts",
+    component: ChapterPosts
+  },
   { path: "/notifications", name: "Notifications", component: Notifications }
 ];
 

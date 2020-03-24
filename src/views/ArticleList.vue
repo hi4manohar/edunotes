@@ -35,7 +35,7 @@
                 </v-list-item-content>
               </v-list-item>
               <div class="ma-3 my-1 article-img">
-                <v-img v-if="index%2 == 0 && name.guid" :src="name.guid" :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`" height="150"></v-img>
+                <v-img v-if="index%2 == 0 && name.guid" :src="name.guid"  height="150"></v-img>
               </div>
               <v-card-text class="px-3 py-1"
                 v-html="trimmedData(name.post_content)">

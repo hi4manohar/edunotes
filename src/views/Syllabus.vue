@@ -1,9 +1,8 @@
 <template>
   <v-app>
-    <Header pagetitle="Syllabus"/>
+    <Header pagetitle="Syllabus" />
     <v-content class="pt-0">
       <v-container>
-
         <div class="skloader" v-if="skloader.loading">
           <v-skeleton-loader
             :loading="skloader.loading"
@@ -20,18 +19,18 @@
             </v-col>
           </v-row>
           <v-row>
-              <v-col cols="6" v-for="(subject, index) in subjects" :key="index">
-                <router-link :to="'/syllabus/' + subject.slug">
-                <v-card :elevation="3"  v-ripple>
-                  <div :class="'card-header '+ color[index]">
-                    <span class="text--white">{{ index+1 }}</span>
+            <v-col cols="6" v-for="(subject, index) in subjects" :key="index">
+              <router-link :to="'/syllabus/' + subject.slug">
+                <v-card :elevation="3" v-ripple>
+                  <div :class="'card-header ' + color[index]">
+                    <span class="text--white">{{ index + 1 }}</span>
                   </div>
                   <div class="card-footer">
                     {{ subject.name }}
                   </div>
                 </v-card>
               </router-link>
-              </v-col>
+            </v-col>
           </v-row>
         </div>
       </v-container>
@@ -40,7 +39,6 @@
   </v-app>
 </template>
 <script>
-
 import { mapState, mapActions } from "vuex";
 
 import Header from "@/components/common/Header.vue";
@@ -58,8 +56,8 @@ export default {
     }
   }),
   components: {
-      Header,
-      Footer
+    Header,
+    Footer
   },
   computed: {
     ...mapState({
@@ -68,7 +66,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      subjectList: "article/subjectList",
+      subjectList: "article/subjectList"
     })
   },
   created() {
@@ -85,7 +83,7 @@ export default {
         this.skloader.loading = false;
       }
     }
-  },
+  }
 };
 </script>
 <style scoped="">
@@ -95,26 +93,25 @@ export default {
   margin-bottom: 56px !important;
   overflow: auto;
 }
-.card-header{
+.card-header {
   height: 80px;
   position: relative;
 }
-.card-header span{
+.card-header span {
   position: absolute;
-  bottom:0px;
+  bottom: 0px;
   left: 0px;
-  padding:7px 15px;
+  padding: 7px 15px;
   font-weight: 800;
   color: #fff;
   border-radius: 0px 4px 0px 0px;
 }
-.card-footer{
-  padding:10px;
+.card-footer {
+  padding: 10px;
   font-size: 13px;
 }
-h4{
+h4 {
   font-size: 16px;
   margin-bottom: 0px;
 }
 </style>
-
