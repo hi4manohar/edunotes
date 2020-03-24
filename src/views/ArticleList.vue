@@ -8,7 +8,7 @@
         id="scroll-target"
       >
         <div class="skloader" v-if="skloader.loading">
-          <v-list-item v-for="n in 3" :key="n">
+          <v-list-item v-for="n in 3" :key="n" class="pa-0">
             <v-list-item-content>
               <v-skeleton-loader
                 :loading="skloader.loading"
@@ -31,20 +31,20 @@
               <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title class="subtitle-2" v-text="name.post_title"></v-list-item-title>
-                  <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+                  <v-list-item-subtitle>04 Feb, 2020</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
               <div class="ma-3 my-1 article-img">
-                <v-img v-if="index%2 == 0 && name.guid" :src="name.guid" height="150"></v-img>
+                <v-img v-if="index%2 == 0 && name.guid" :src="name.guid" :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`" height="150"></v-img>
               </div>
               <v-card-text class="px-3 py-1"
                 v-html="trimmedData(name.post_content)">
               </v-card-text>
-              <v-card-actions>
-                <v-btn text color="">
-                  Read
+              <v-card-actions class="px-3">
+                <v-btn outlined small color="grey" class="text-capitalize font-weight-regular">
+                  Continue Reading
                 </v-btn>
-                <v-btn text color="" @click="saveArticle($event, index)">Save</v-btn>
+                <v-btn outlined small color="grey" class="text-capitalize font-weight-regular" @click="saveArticle($event, index)">Save</v-btn>
                 <v-spacer></v-spacer>
                 <v-btn icon>
                   <v-icon>mdi-heart</v-icon>

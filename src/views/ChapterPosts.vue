@@ -13,7 +13,7 @@
       <v-content class="pa-4">
         <h4>Q.Chemical reactions and equations tions and equations?</h4>
         <p>Ans.Material Design Icons' growing icon collection allows designers and developers targeting various platforms to download icons in the format, color and size they need for any project.</p>
-        <v-img src="https://picsum.photos/510/300?random" aspect-ratio="1.7"></v-img>
+        <v-img src="https://picsum.photos/510/300?random"  aspect-ratio="1.7"></v-img>
         <br>
         <p>Material Design Icons' growing icon collection allows designers and developers targeting various platforms to download icons in the format, color and size they need for any project.</p>
 
