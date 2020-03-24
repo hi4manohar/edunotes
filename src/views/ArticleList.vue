@@ -27,24 +27,48 @@
             @click="$router.push('/post/' + index)"
             :key="index"
           >
-            <v-card class="mx-auto elevation-0" :class="{ active: activeIndex === index }">
+            <v-card
+              class="mx-auto elevation-0"
+              :class="{ active: activeIndex === index }"
+            >
               <v-list-item>
                 <v-list-item-content>
-                  <v-list-item-title class="subtitle-2" v-text="name.post_title"></v-list-item-title>
+                  <v-list-item-title
+                    class="subtitle-2"
+                    v-text="name.post_title"
+                  ></v-list-item-title>
                   <v-list-item-subtitle>04 Feb, 2020</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
               <div class="ma-3 my-1 article-img">
-                <v-img v-if="index%2 == 0 && name.guid" :src="name.guid"  height="150"></v-img>
+                <v-img
+                  v-if="index % 2 == 0 && name.guid"
+                  :src="name.guid"
+                  height="150"
+                ></v-img>
               </div>
-              <v-card-text class="px-3 py-1"
-                v-html="trimmedData(name.post_content)">
+              <v-card-text
+                class="px-3 py-1"
+                v-html="trimmedData(name.post_content)"
+              >
               </v-card-text>
               <v-card-actions class="px-3">
-                <v-btn outlined small color="grey" class="text-capitalize font-weight-regular">
+                <v-btn
+                  outlined
+                  small
+                  color="grey"
+                  class="text-capitalize font-weight-regular"
+                >
                   Continue Reading
                 </v-btn>
-                <v-btn outlined small color="grey" class="text-capitalize font-weight-regular" @click="saveArticle($event, index)">Save</v-btn>
+                <v-btn
+                  outlined
+                  small
+                  color="grey"
+                  class="text-capitalize font-weight-regular"
+                  @click="saveArticle($event, index)"
+                  >Save</v-btn
+                >
                 <v-spacer></v-spacer>
                 <v-btn icon>
                   <v-icon>mdi-heart</v-icon>
@@ -55,8 +79,8 @@
               </v-card-actions>
             </v-card>
           </div>
-        </v-container>      
-      </v-content>      
+        </v-container>
+      </v-content>
       <Footer active="home" />
     </div>
     <transition name="slide-fade">
@@ -126,7 +150,7 @@ export default {
     },
     saveArticle(e, val) {
       e.stopPropagation();
-      console.log('save this article', val);
+      console.log("save this article", val);
     },
     trimmedData(str) {
       if (str === null || str === "") return false;
@@ -164,9 +188,10 @@ export default {
 
     watch: {
       $route(to, from) {
-        const toDepth = to.path.split('/').length
-        const fromDepth = from.path.split('/').length
-        this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+        const toDepth = to.path.split("/").length;
+        const fromDepth = from.path.split("/").length;
+        this.transitionName =
+          toDepth < fromDepth ? "slide-right" : "slide-left";
       }
     }
   },
@@ -204,23 +229,22 @@ export default {
 .skloader .v-list-item__content {
   padding: 0px;
 }
-h4{
+h4 {
   font-size: 16px !important;
   margin-bottom: 0px;
 }
-.article-img{
+.article-img {
   border-radius: 4px;
   overflow: hidden;
   background: #f5f5f5;
 }
-.v-card{
+.v-card {
   border-radius: 0px !important;
 }
-.v-btn{
+.v-btn {
   font-size: 12px;
 }
-.v-btn span i{
+.v-btn span i {
   font-size: 18px !important;
 }
-
 </style>

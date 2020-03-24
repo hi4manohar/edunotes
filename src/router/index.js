@@ -29,7 +29,11 @@ const routes = [
     component: ArticleContent
   },
   { path: "/question", name: "Question", component: Question },
-  { path: "/books/:name", name: "BookDescription", component: BookDescription },
+  {
+    path: "/books/:bookid",
+    name: "BookDescription",
+    component: BookDescription
+  },
   { path: "/encyclopedia", name: "Encyclopedia", component: Encyclopedia },
   { path: "/notes", name: "Notes", component: Notes },
   { path: "/syllabus", name: "Syllabus", component: Syllabus },

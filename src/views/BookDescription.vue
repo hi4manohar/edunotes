@@ -7,75 +7,43 @@
       <v-toolbar-title class="pl-1 subtitle-1">Book Details</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
-    <v-content class="pa-4 text-center">
+    <v-content class="pa-4 text-center" v-if="bookDescription">
       <div class="book-img pa-2">
-        <v-img src="https://picsum.photos/510/300?random"></v-img>
+        <v-img :src="bookDescription.reflink"></v-img>
       </div>
       <br />
-      <h3 class="mb-0">Book Full Name</h3>
+      <h3 class="mb-0">{{ bookDescription.post_title }}</h3>
       <p class="mb-2">H C Verma, S Chand</p>
-      <p class="mb-2">
-        These will override the conventional class names. This is especially
-        useful when .
-      </p>
+      <p class="mb-2" v-html="bookDescription.post_content"></p>
       <!-- if file type pdf -->
-      <v-list-item class="px-2 mb-2 elevation-2 text-left">
+      <v-list-item
+        class="px-2 mb-2 elevation-2 text-left"
+        v-for="(item, index) in attachmentDetails"
+        :key="index"
+      >
         <v-list-item-content>
-          <v-list-item-title class="subtitle-2"
-            >01. This is Title of Book</v-list-item-title
-          >
+          <v-list-item-title class="subtitle-2">{{
+            item.post_title
+          }}</v-list-item-title>
         </v-list-item-content>
         <v-list-item-icon title="view file">
-          <v-btn icon color="primary"
-            ><v-icon>mdi-file-pdf-outline </v-icon></v-btn
-          >
+          <a :href="item.reflink" target="_blank">
+            <v-btn icon color="primary"
+              ><v-icon>mdi-file-pdf-outline </v-icon></v-btn
+            >
+          </a>
         </v-list-item-icon>
         <v-list-item-icon>
           <v-btn icon color="success"><v-icon>mdi-download</v-icon></v-btn>
         </v-list-item-icon>
       </v-list-item>
-      <!-- if file type video -->
-      <v-list-item class="px-2 mb-2 elevation-2 text-left">
-        <v-list-item-content>
-          <v-list-item-title class="subtitle-2"
-            >02. This is Title of Book</v-list-item-title
-          >
-        </v-list-item-content>
-        <v-list-item-icon title="view file">
-          <v-btn icon color="primary"
-            ><v-icon>mdi-video-outline </v-icon></v-btn
-          >
-        </v-list-item-icon>
-        <v-list-item-icon>
-          <v-btn icon color="success"><v-icon>mdi-download</v-icon></v-btn>
-        </v-list-item-icon>
-      </v-list-item>
-      <!-- if file type image -->
-      <v-list-item class="px-2 mb-2 elevation-2 text-left">
-        <v-list-item-content>
-          <v-list-item-title class="subtitle-2"
-            >03. This is Title of Book</v-list-item-title
-          >
-        </v-list-item-content>
-        <v-list-item-icon title="view file">
-          <v-btn icon color="primary"
-            ><v-icon>mdi-file-image-outline</v-icon></v-btn
-          >
-        </v-list-item-icon>
-        <v-list-item-icon>
-          <v-btn icon color="success"><v-icon>mdi-download </v-icon></v-btn>
-        </v-list-item-icon>
-      </v-list-item>
-      <!-- <br>
-      <div class="text-center">
-      	<v-btn rounded outlined color="indigo" class="mr-2">View</v-btn>
-      	<v-btn rounded color="indigo" class="mr-2 white--text">Download</v-btn>
-      </div> -->
     </v-content>
   </v-app>
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
   name: "BookDescription",
   data() {
@@ -85,8 +53,51 @@ export default {
         { title: "Photos", icon: "mdi-image" },
         { title: "About", icon: "mdi-help-box" }
       ],
-      right: null
+      right: null,
+      bookDescription: null,
+      attachmentDetails: []
     };
+  },
+
+  computed: {
+    ...mapState({
+      bookDetail: state => state.article.bookDetail
+    })
+  },
+
+  methods: {
+    ...mapActions({
+      getBookDetail: "article/getBookDetail"
+    })
+  },
+
+  created() {
+    let bookid = this.$route.params.bookid;
+    if (!this.bookDetail || !this.bookDetail[bookid]) {
+      this.getBookDetail({ bookid: bookid }).then(response => {
+        if (response.status) {
+          response.data.forEach(item => {
+            if (item.post_type === "post") {
+              this.bookDescription = item;
+            } else {
+              this.attachmentDetails.push(item);
+            }
+          });
+        }
+      });
+    } else {
+      if (Array.isArray(this.bookDetail[bookid])) {
+        this.bookDetail[bookid].forEach(item => {
+          if (item.post_type === "post") {
+            this.bookDescription = item;
+          } else {
+            this.attachmentDetails.push(item);
+          }
+        });
+      }
+
+      console.log(this.attachmentDetails);
+    }
   }
 };
 </script>

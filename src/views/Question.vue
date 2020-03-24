@@ -4,15 +4,11 @@
     <v-content class="pt-0">
       <v-container fluid>
         <v-row>
-          <v-col cols="6">
-            <router-link :to="'/books/:name'">
+          <v-col cols="6" v-for="(item, index) in booksList" :key="index">
+            <router-link :to="'/books/' + item.ID">
               <v-card>
-                <v-img
-                  src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
-                  height="100px"
-                >
-                </v-img>
-                <v-card-title>Physics</v-card-title>
+                <v-img :src="item.guid" height="100px"> </v-img>
+                <v-card-title>{{ item.post_title }}</v-card-title>
                 <v-card-subtitle>H C Verma</v-card-subtitle>
               </v-card>
             </router-link>
@@ -27,6 +23,7 @@
 <script>
 import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Question",
@@ -34,6 +31,24 @@ export default {
   components: {
     Header,
     Footer
+  },
+
+  computed: {
+    ...mapState({
+      booksList: state => state.article.booksList
+    })
+  },
+
+  methods: {
+    ...mapActions({
+      getBooksList: "article/getBooksList"
+    })
+  },
+
+  created() {
+    if (!this.booksList.length) {
+      this.getBooksList();
+    }
   }
 };
 </script>

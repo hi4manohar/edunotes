@@ -5,7 +5,9 @@ import store from "../store";
 export const articleService = {
   articleList,
   articleDetails,
-  subjectList
+  subjectList,
+  getBooksList,
+  getBookDetails
 };
 
 function articleList() {
@@ -69,6 +71,58 @@ function subjectList() {
   return new Promise((resolve, reject) => {
     axios
       .get(appConfig.API_URL + "class/get")
+      .then(function(response) {
+        if (response.data.status === true) {
+          resolve({
+            status: true,
+            data: response.data.data
+          });
+        } else {
+          reject({
+            status: false,
+            msg: response.data.msg
+          });
+        }
+      })
+      .catch(function(error) {
+        reject({
+          status: false,
+          msg: error
+        });
+      });
+  });
+}
+
+function getBooksList() {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(appConfig.API_URL + "books")
+      .then(function(response) {
+        if (response.data.status === true) {
+          resolve({
+            status: true,
+            data: response.data.data
+          });
+        } else {
+          reject({
+            status: false,
+            msg: response.data.msg
+          });
+        }
+      })
+      .catch(function(error) {
+        reject({
+          status: false,
+          msg: error
+        });
+      });
+  });
+}
+
+function getBookDetails(param) {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(appConfig.API_URL + "books/" + param.bookid)
       .then(function(response) {
         if (response.data.status === true) {
           resolve({
