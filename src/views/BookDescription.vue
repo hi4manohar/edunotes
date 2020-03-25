@@ -7,9 +7,9 @@
       <v-toolbar-title class="pl-1 subtitle-1">Book Details</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
-    <v-content class="pa-4 text-center" v-if="bookDescription">
+    <v-content class="pa-4" v-if="bookDescription">
       <div class="book-img pa-2">
-        <v-img :src="bookDescription.reflink"></v-img>
+        <v-img :src="bookDescription.reflink" height="200"></v-img>
       </div>
       <br />
       <h3 class="mb-0">{{ bookDescription.post_title }}</h3>
@@ -17,11 +17,12 @@
       <p class="mb-2" v-html="bookDescription.post_content"></p>
       <!-- if file type pdf -->
       <v-list-item
-        class="px-2 mb-2 elevation-2 text-left"
+        class="px-2 mb-4 elevation-2 text-left"
         v-for="(item, index) in attachmentDetails"
         :key="index"
       >
         <v-list-item-content>
+          <v-list-item-subtitle class="caption">01:Chapter</v-list-item-subtitle>
           <v-list-item-title class="subtitle-2">{{
             item.post_title
           }}</v-list-item-title>
@@ -33,7 +34,7 @@
             >
           </a>
         </v-list-item-icon>
-        <v-list-item-icon>
+        <v-list-item-icon class="mx-0">
           <v-btn icon color="success"><v-icon>mdi-download</v-icon></v-btn>
         </v-list-item-icon>
       </v-list-item>
@@ -111,5 +112,10 @@ export default {
 .book-img {
   background: #eee;
   border: 1px solid #ddd;
+  max-width: 400px;
+  margin:0 auto;
+}
+.caption{
+  line-height: 10px !important;
 }
 </style>

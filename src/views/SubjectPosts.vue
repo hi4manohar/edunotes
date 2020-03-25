@@ -1,14 +1,14 @@
 <template>
   <v-app>
     <v-container>
-      <v-app-bar absolute color="white" elevate-on-scroll>
+      <v-app-bar absolute color="dark" elevate-on-scroll>
         <v-btn icon light @click="$router.go(-1)">
           <v-icon color="grey darken-2">mdi-arrow-left</v-icon>
         </v-btn>
         <v-toolbar-title class="pl-1">Choose Chapter</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-app-bar>
-      <div class="mt-10">
+      <div class="mt-12">
         <p class="text-center ma-0 pa-2">
           For webkit browsers, you can use the following pseudo elements to
           customize the
@@ -39,6 +39,8 @@
           </router-link>
         </div>
       </div>
+      <br>
+      <p class="text-center"><strong>v1.00</strong><br />App Updated</p>
     </v-container>
   </v-app>
 </template>
