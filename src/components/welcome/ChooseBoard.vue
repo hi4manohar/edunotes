@@ -28,6 +28,9 @@
 </template>
 
 <script>
+
+import * as appConfig from "../../config/index.config";
+
 export default {
   name: "ChooseBoard",
   data: () => ({
@@ -44,7 +47,7 @@ export default {
     loadBoard() {
       this.items = [
         {
-          avatar: this.publicPath + "Bordicon/CBSE.jpg",
+          avatar: appConfig.API_URL + "uploads/static/images/bordicon/cbse.jpg",
           title: "CBSE",
           subtitle: "Central Board "
         },
