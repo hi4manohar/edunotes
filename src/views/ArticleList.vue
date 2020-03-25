@@ -20,7 +20,7 @@
             </v-list-item-content>
           </v-list-item>
         </div>
-        <v-container class="px-0 py-2" v-else>
+        <v-container  class="px-0 py-2 blue-grey lighten-5 " v-else>
           <div
             class="list-card mb-2"
             v-for="(name, index) in names"
@@ -210,7 +210,6 @@ export default {
   height: calc(100vh - 112px);
   margin-bottom: 56px !important;
   overflow: auto;
-  background: #eee;
 }
 /*.v-list-item {
   box-shadow: 0px 1px 4px #ddd;

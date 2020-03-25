@@ -9,7 +9,7 @@
               <v-card>
                 <v-img :src="item.guid" height="100px"> </v-img>
                 <v-card-title>{{ item.post_title }}</v-card-title>
-                <v-card-subtitle>H C Verma</v-card-subtitle>
+                <v-card-subtitle>H C Verma 9th</v-card-subtitle>
               </v-card>
             </router-link>
           </v-col>
@@ -60,13 +60,14 @@ export default {
   overflow: auto;
 }
 .v-card__title {
-  font-size: 14px;
-  padding: 5px 10px;
+  font-size: 12px;
+  padding: 7px;
   margin-bottom: 5px;
+  line-height: 16px;
+  word-break: normal;
 }
 .v-card__subtitle {
   font-size: 11px;
-  padding: 5px 10px;
-  line-height: 12px;
+  padding: 3px 7px;
 }
 </style>
