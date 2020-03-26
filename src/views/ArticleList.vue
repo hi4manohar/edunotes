@@ -4,6 +4,7 @@
       <Header pagetitle="Read Article" />
       <v-content
         class="pt-0"
+        v-scroll:#scroll-target="onScroll"
         id="scroll-target"
       >
         <div class="skloader" v-if="skloader.loading">
