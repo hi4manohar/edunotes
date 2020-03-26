@@ -8,8 +8,11 @@
 
     <v-navigation-drawer v-model="drawer" width="85%" app>
       <v-list-item dark class="left-drawer-header">
+        <v-list-item-avatar tile >
+          <img src="sidebar-logo.png">
+        </v-list-item-avatar>
         <v-list-item-content>
-          <v-list-item-title class="title">
+          <v-list-item-title class="subtitle">
             Edunotes
           </v-list-item-title>
           <v-list-item-subtitle class="caption">
@@ -49,7 +52,7 @@ export default {
     items: [
       { text: "Change Board", icon: "mdi-account-cog-outline" },
       { text: "Change Class", icon: "mdi-account-cog-outline" },
-      { text: "About Us", icon: "mdi-star" },
+      { text: "About Us", icon: "mdi-information-outline" },
       { text: "Notifications", icon: "mdi-bell-outline" }
       // { text: "Help", icon: "mdi-help-circle-outline" }
     ]

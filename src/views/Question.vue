@@ -7,9 +7,12 @@
           <v-col cols="6" v-for="(item, index) in booksList" :key="index">
             <router-link :to="'/books/' + item.ID">
               <v-card>
-                <v-img :src="item.guid" height="100px"> </v-img>
-                <v-card-title>{{ item.post_title }}</v-card-title>
-                <v-card-subtitle>H C Verma 9th</v-card-subtitle>
+                <v-img :src="item.guid" width="90" height="90px" class="mx-auto"> </v-img>
+                <v-card-title class="subtitle-2">{{ item.post_title }}</v-card-title>
+                <v-card-subtitle class="pb-0">H C Verma 9th</v-card-subtitle>
+                <v-card-text class="text--primary caption">
+                  <div>This is Paragraph details of this book</div>
+                </v-card-text>
               </v-card>
             </router-link>
           </v-col>
@@ -59,15 +62,6 @@ export default {
   margin-bottom: 56px !important;
   overflow: auto;
 }
-.v-card__title {
-  font-size: 12px;
-  padding: 7px;
-  margin-bottom: 5px;
-  line-height: 16px;
-  word-break: normal;
-}
-.v-card__subtitle {
-  font-size: 11px;
-  padding: 3px 7px;
-}
+
+
 </style>

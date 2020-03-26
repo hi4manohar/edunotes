@@ -24,22 +24,23 @@
 </template>
 
 <script>
+import * as appConfig from "../../config/index.config";
 export default {
   name: "Welcome",
   data() {
     return {
       items: [
         {
-          src: "slider1.jpg"
+          src: appConfig.API_URL + "uploads/static/images/slider1.jpg"
         },
         {
-          src: "slider1.jpg"
+          src: appConfig.API_URL + "uploads/static/images/slider1.jpg"
         },
         {
-          src: "slider1.jpg"
+          src: appConfig.API_URL + "uploads/static/images/slider1.jpg"
         },
         {
-          src: "slider1.jpg"
+          src: appConfig.API_URL + "uploads/static/images/slider1.jpg"
         }
       ]
     };
