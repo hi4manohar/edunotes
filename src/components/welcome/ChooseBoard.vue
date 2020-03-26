@@ -52,22 +52,22 @@ export default {
           subtitle: "Central Board "
         },
         {
-          avatar: this.publicPath + "Bordicon/ICSE.jpg",
+          avatar: appConfig.API_URL + "uploads/static/images/bordicon/icse.jpg",
           title: "ICSE",
           subtitle: "Foreign Board"
         },
         {
-          avatar: this.publicPath + "Bordicon/bseb.jpg",
+          avatar: appConfig.API_URL + "uploads/static/images/bordicon/bseb.jpg",
           title: "BSEB",
           subtitle: "Bihar Board"
         },
         {
-          avatar: this.publicPath + "Bordicon/UP.jpg",
+          avatar: appConfig.API_URL + "uploads/static/images/bordicon/up.jpg",
           title: "UPMSP",
           subtitle: "Uttar Pradesh Madhyamik Shiksha Parishad"
         },
         {
-          avatar: this.publicPath + "Bordicon/mp.jpg",
+          avatar: appConfig.API_URL + "uploads/static/images/bordicon/mp.jpg",
           title: "MPSC",
           subtitle: "Madhya Pradesh Board"
         }

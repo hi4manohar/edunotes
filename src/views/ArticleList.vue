@@ -45,7 +45,17 @@
                   v-if="index % 2 == 0 && name.guid"
                   :src="name.guid"
                   height="150"
-                ></v-img>
+                >
+                <template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                  </v-row>
+                </template>
+                </v-img>
               </div>
               <v-card-text
                 class="px-3 py-1"
@@ -56,26 +66,28 @@
                 <v-btn
                   outlined
                   small
-                  color="grey"
+                  color="primary"
                   class="text-capitalize font-weight-regular"
                 >
                   Continue Reading
                 </v-btn>
-                <v-btn
-                  outlined
-                  small
-                  color="grey"
-                  class="text-capitalize font-weight-regular"
-                  @click="saveArticle($event, index)"
-                  >Save</v-btn
-                >
                 <v-spacer></v-spacer>
-                <v-btn icon>
-                  <v-icon>mdi-heart</v-icon>
-                </v-btn>
-                <v-btn icon>
-                  <v-icon>mdi-share-variant</v-icon>
-                </v-btn>
+                <v-menu offset-y>
+                  <template v-slot:activator="{ on }">
+                    <v-btn icon v-on="on">
+                      <v-icon>mdi-share-variant</v-icon>
+                    </v-btn>
+                  </template>
+                  <v-list>
+                    <v-list-item
+                      v-for="(item, index) in items"
+                      :key="index">
+                      <v-list-item-title class="subtitle-2">
+                        <v-icon>{{ item.icon }}</v-icon> {{ item.title }}
+                      </v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                </v-menu>
               </v-card-actions>
             </v-card>
           </div>
@@ -111,7 +123,11 @@ export default {
     },
     articleContent: false,
     articleData: {},
-    activeIndex: false
+    activeIndex: false,
+    items: [
+        { icon:'mdi-whatsapp', title: 'Whatsapp' },
+        { icon:'mdi-facebook', title: 'Facebook' },
+      ],
   }),
   components: {
     Header,
