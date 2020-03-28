@@ -20,7 +20,7 @@
             </v-list-item-content>
           </v-list-item>
         </div>
-        <v-container  class="px-0 py-2 blue-grey lighten-5 " v-else>
+        <v-container class="px-0 py-2 blue-grey lighten-5 " v-else>
           <div
             class="list-card mb-2"
             v-for="(name, index) in names"
@@ -46,15 +46,18 @@
                   :src="name.guid"
                   height="150"
                 >
-                <template v-slot:placeholder>
-                  <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center"
-                  >
-                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                  </v-row>
-                </template>
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular
+                        indeterminate
+                        color="grey lighten-5"
+                      ></v-progress-circular>
+                    </v-row>
+                  </template>
                 </v-img>
               </div>
               <v-card-text
@@ -79,9 +82,7 @@
                     </v-btn>
                   </template>
                   <v-list>
-                    <v-list-item
-                      v-for="(item, index) in items"
-                      :key="index">
+                    <v-list-item v-for="(item, index) in items" :key="index">
                       <v-list-item-title class="subtitle-2">
                         <v-icon>{{ item.icon }}</v-icon> {{ item.title }}
                       </v-list-item-title>
@@ -125,9 +126,9 @@ export default {
     articleData: {},
     activeIndex: false,
     items: [
-        { icon:'mdi-whatsapp', title: 'Whatsapp' },
-        { icon:'mdi-facebook', title: 'Facebook' },
-      ],
+      { icon: "mdi-whatsapp", title: "Whatsapp" },
+      { icon: "mdi-facebook", title: "Facebook" }
+    ]
   }),
   components: {
     Header,
@@ -202,13 +203,10 @@ export default {
       }
     },
 
-    watch: {
-      $route(to, from) {
-        const toDepth = to.path.split("/").length;
-        const fromDepth = from.path.split("/").length;
-        this.transitionName =
-          toDepth < fromDepth ? "slide-right" : "slide-left";
-      }
+    $route(to, from) {
+      const toDepth = to.path.split("/").length;
+      const fromDepth = from.path.split("/").length;
+      this.transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
     }
   },
   mounted() {

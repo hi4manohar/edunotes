@@ -25,6 +25,7 @@ function articleList() {
             data: response.data.data
           });
         } else {
+          console.log("articleListError", response);
           reject({
             status: false,
             msg: response.data.msg
@@ -43,7 +44,11 @@ function articleList() {
 function articleDetails() {
   return new Promise((resolve, reject) => {
     axios
-      .get(appConfig.API_URL + "article-list")
+      .get(appConfig.API_URL + "article-list", {
+        headers: {
+          "auth-token": store.state.user.token_id
+        }
+      })
       .then(function(response) {
         console.log(response);
         if (response.data.status === true) {
@@ -70,7 +75,11 @@ function articleDetails() {
 function subjectList() {
   return new Promise((resolve, reject) => {
     axios
-      .get(appConfig.API_URL + "class/get")
+      .get(appConfig.API_URL + "class/get", {
+        headers: {
+          "auth-token": store.state.user.token_id
+        }
+      })
       .then(function(response) {
         if (response.data.status === true) {
           resolve({
@@ -96,7 +105,11 @@ function subjectList() {
 function getBooksList() {
   return new Promise((resolve, reject) => {
     axios
-      .get(appConfig.API_URL + "books")
+      .get(appConfig.API_URL + "books", {
+        headers: {
+          "auth-token": store.state.user.token_id
+        }
+      })
       .then(function(response) {
         if (response.data.status === true) {
           resolve({
@@ -122,7 +135,11 @@ function getBooksList() {
 function getBookDetails(param) {
   return new Promise((resolve, reject) => {
     axios
-      .get(appConfig.API_URL + "books/" + param.bookid)
+      .get(appConfig.API_URL + "books/" + param.bookid, {
+        headers: {
+          "auth-token": store.state.user.token_id
+        }
+      })
       .then(function(response) {
         if (response.data.status === true) {
           resolve({

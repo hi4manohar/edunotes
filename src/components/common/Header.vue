@@ -8,8 +8,8 @@
 
     <v-navigation-drawer v-model="drawer" width="85%" app>
       <v-list-item dark class="left-drawer-header">
-        <v-list-item-avatar tile >
-          <img src="sidebar-logo.png">
+        <v-list-item-avatar tile>
+          <img src="sidebar-logo.png" />
         </v-list-item-avatar>
         <v-list-item-content>
           <v-list-item-title class="subtitle">

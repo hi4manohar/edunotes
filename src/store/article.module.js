@@ -13,6 +13,7 @@ const actions = {
         let json = await articleService.articleList();
         if (json.status === true) commit("saveArticle", json.data);
       } catch (err) {
+        console.log("err", err);
         dispatch("alert/error", err.msg, { root: true });
       }
     } else {

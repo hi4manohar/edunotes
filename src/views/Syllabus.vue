@@ -22,7 +22,7 @@
             <v-col cols="6" v-for="(subject, index) in subjects" :key="index">
               <router-link :to="'/syllabus/' + subject.slug">
                 <v-card :elevation="3" v-ripple>
-                  <div class="card-header" :style="{background: getColor()}">
+                  <div class="card-header" :style="{ background: getColor() }">
                     <span class="text--white">{{ index + 1 }}</span>
                   </div>
                   <div class="card-footer">
@@ -62,7 +62,7 @@ export default {
   computed: {
     ...mapState({
       subjects: state => state.article.subjectList
-    })    
+    })
   },
   methods: {
     ...mapActions({
@@ -70,8 +70,8 @@ export default {
     }),
 
     getColor() {
-      var letters = '0123456789ABCDEF';
-      var color = '#';
+      var letters = "0123456789ABCDEF";
+      var color = "#";
       for (var i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
       }

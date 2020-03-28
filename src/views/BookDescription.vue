@@ -9,16 +9,20 @@
     </v-app-bar>
     <v-content class="pa-4" v-if="bookDescription">
       <div class="book-img pa-2">
-        <v-img :src="bookDescription.reflink" width="170" height="170px" class="mx-auto">
+        <v-img
+          :src="bookDescription.reflink"
+          width="170"
+          height="170px"
+          class="mx-auto"
+        >
           <template v-slot:placeholder>
-                  <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center"
-                  >
-                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                  </v-row>
-                </template>
+            <v-row class="fill-height ma-0" align="center" justify="center">
+              <v-progress-circular
+                indeterminate
+                color="grey lighten-5"
+              ></v-progress-circular>
+            </v-row>
+          </template>
         </v-img>
       </div>
       <br />
@@ -32,7 +36,9 @@
         :key="index"
       >
         <v-list-item-content>
-          <v-list-item-subtitle class="caption">01:Chapter</v-list-item-subtitle>
+          <v-list-item-subtitle class="caption"
+            >01:Chapter</v-list-item-subtitle
+          >
           <v-list-item-title class="subtitle-2">{{
             item.post_title
           }}</v-list-item-title>
@@ -123,9 +129,9 @@ export default {
   background: #eee;
   border: 1px solid #ddd;
   max-width: 400px;
-  margin:0 auto;
+  margin: 0 auto;
 }
-.caption{
+.caption {
   line-height: 10px !important;
 }
 </style>

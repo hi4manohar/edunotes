@@ -3,6 +3,10 @@ const state = {
     home: {
       x: 0,
       y: 0
+    },
+    books: {
+      x: 0,
+      y: 0
     }
   }
 };

@@ -26,13 +26,21 @@ export default {
       alert: state => state.alert
     }),
 
-    snackbar() {
-      return this.alert.type ? true : false;
+    snackbar: {
+      get() {
+        return this.alert.type ? true : false;
+      },
+      set(val, message) {
+        if (val === false) {
+          this.successAlert(message);
+        }
+      }
     }
   },
   methods: {
     ...mapActions({
-      clearAlert: "alert/clear"
+      clearAlert: "alert/clear",
+      successAlert: "alert/success"
     }),
 
     updatesnackbar(val) {

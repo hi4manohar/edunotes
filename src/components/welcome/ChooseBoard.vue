@@ -28,7 +28,6 @@
 </template>
 
 <script>
-
 import * as appConfig from "../../config/index.config";
 
 export default {

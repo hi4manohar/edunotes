@@ -39,7 +39,7 @@
           </router-link>
         </div>
       </div>
-      <br>
+      <br />
       <p class="text-center"><strong>v1.00</strong><br />App Updated</p>
     </v-container>
   </v-app>
