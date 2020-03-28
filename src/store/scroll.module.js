@@ -7,6 +7,10 @@ const state = {
     books: {
       x: 0,
       y: 0
+    },
+    subjectPosts: {
+      x: 0,
+      y: 0
     }
   }
 };

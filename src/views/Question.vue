@@ -28,8 +28,8 @@
                 <v-card>
                   <v-img
                     :src="item.guid"
-                    width="90"
-                    height="90px"
+                    width="100%"
+                    max-height="90px"
                     class="mx-auto"
                   >
                   </v-img>

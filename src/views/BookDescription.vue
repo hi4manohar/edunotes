@@ -11,8 +11,8 @@
       <div class="book-img pa-2">
         <v-img
           :src="bookDescription.reflink"
-          width="170"
-          height="170px"
+          width="100%"
+          max-height="200px"
           class="mx-auto"
         >
           <template v-slot:placeholder>
@@ -26,9 +26,11 @@
         </v-img>
       </div>
       <br />
-      <h3 class="mb-0">{{ bookDescription.post_title }}</h3>
-      <p class="mb-2">H C Verma, S Chand</p>
-      <p class="mb-2" v-html="bookDescription.post_content"></p>
+      <div class="class-article ml-2">
+        <h3 class="mb-0">{{ bookDescription.post_title }}</h3>
+        <p class="mb-2">H C Verma, S Chand</p>
+        <p class="mb-2" v-html="bookDescription.post_content"></p>
+      </div>
       <!-- if file type pdf -->
       <v-list-item
         class="px-2 mb-4 elevation-2 text-left"

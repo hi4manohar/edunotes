@@ -8,7 +8,7 @@
             :loading="skloader.loading"
             :transition-group="skloader.transition"
             :height="skloader.height"
-            :type="skloader.types"
+            :type="skloader.types"            
           >
           </v-skeleton-loader>
         </div>
@@ -52,7 +52,7 @@ export default {
       loading: true,
       transition: "none",
       height: 388,
-      types: "article, card-avatar"
+      types: "list-item-avatar-three-line, image"
     }
   }),
   components: {
