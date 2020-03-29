@@ -6,9 +6,9 @@
           <div class="skloader" v-if="skloader.loading">
             <v-skeleton-loader
               :loading="skloader.loading"
-              :transition-group="skloader.transition"
-              :height="skloader.height"
-              :type="skloader.types"
+              transition-group="none"
+              height="388"
+              type="article, card-avatar"
             >
             </v-skeleton-loader>
           </div>
@@ -39,10 +39,7 @@ export default {
   name: "ArticleContent",
   data: () => ({
     skloader: {
-      loading: true,
-      transition: "none",
-      height: 388,
-      types: "article, card-avatar"
+      loading: true
     },
     article: {}
   }),

@@ -52,17 +52,12 @@
 import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
 import { mapState, mapActions } from "vuex";
+import { skloaderMixin } from "../mixins";
 
 export default {
   name: "Question",
-  data: () => ({
-    skloader: {
-      loading: true,
-      transition: "none",
-      height: 72,
-      type: "list-item-avatar-three-line"
-    }
-  }),
+  mixins: [skloaderMixin],
+  data: () => ({}),
   components: {
     Header,
     Footer

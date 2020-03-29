@@ -41,11 +41,7 @@
                 </v-list-item-content>
               </v-list-item>
               <div class="ma-3 my-1 article-img">
-                <v-img
-                  v-if="index % 2 == 0 && name.guid"
-                  :src="name.guid"
-                  height="150"
-                >
+                <v-img v-if="name.guid" :src="name.guid" height="150">
                   <template v-slot:placeholder>
                     <v-row
                       class="fill-height ma-0"
@@ -112,16 +108,12 @@ import Footer from "@/components/common/Footer.vue";
 // import { articleService } from "../service/article.service";
 import articleContent from "../components/article/ArticleContent";
 import { mapState, mapActions } from "vuex";
+import { skloaderMixin } from "../mixins";
 
 export default {
   name: "ArticleList",
+  mixins: [skloaderMixin],
   data: () => ({
-    skloader: {
-      loading: true,
-      transition: "none",
-      height: 72,
-      type: "list-item-avatar-three-line"
-    },
     articleContent: false,
     articleData: {},
     activeIndex: false,
@@ -151,7 +143,6 @@ export default {
         component: "home",
         axis: { x: 0, y: e.target.scrollTop }
       });
-      // console.log(this.homeScroll);
     },
     getUrlStringFromTitle(str) {
       if (str === null || str === "") return false;
@@ -177,17 +168,6 @@ export default {
         .trim()
         .substring(0, 100);
     }
-
-    // async loadArticleList() {
-
-    //   try {
-    //     let json = await articleService.articleList();
-    //     if (json.status === true) this.names = json.data;
-    //     this.skloader.loading = false;
-    //   } catch (err) {
-    //     console.log("err", err);
-    //   }
-    // }
   },
   created() {
     if (!this.names.length) {
@@ -225,12 +205,6 @@ export default {
   margin-bottom: 56px !important;
   overflow: auto;
 }
-/*.v-list-item {
-  box-shadow: 0px 1px 4px #ddd;
-  border-radius: 1px;
-  background: #fff;
-  margin: 10px;
-}*/
 .v-list-item__title {
   font-size: 18px !important;
   max-width: 90%;

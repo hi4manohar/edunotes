@@ -7,51 +7,62 @@
       <v-toolbar-title class="pl-1">Choose Chapter</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
+
     <v-content class="pa-4">
-      <div class="mt-12">
-        <p class="text-center ma-0 pa-2">
-          For webkit browsers, you can use the following pseudo elements to
-          customize the
-        </p>
+      <div class="skloader" v-show="skloader.loading">
+        <v-skeleton-loader
+          :loading="skloader.loading"
+          transition-group="none"
+          height="388"
+          type="article, card-avatar"
+        >
+        </v-skeleton-loader>
       </div>
-      <div class="slidercon">
-        <v-container id="scroll-target" class="overflow-y-auto">
-          <div
-            class="sliderconin"
-            :style="{ width: getsliderWidth }"
-            v-scroll:#scroll-target="onScroll"
-          >
-            <router-link
-              to="/syllabus/maths/real-numbers"
-              v-for="(item, index) in articles"
-              :key="index"
+      <div v-show="!skloader.loading">
+        <div class="mt-12">
+          <p class="text-center ma-0 pa-2">
+            For webkit browsers, you can use the following pseudo elements to
+            customize the
+          </p>
+        </div>
+        <div class="slidercon">
+          <v-container id="scroll-target" class="overflow-y-auto">
+            <div
+              class="sliderconin"
+              :style="{ width: getsliderWidth }"
+              v-scroll:#scroll-target="onScroll"
             >
-              <v-card
-                :elevation="5"
-                width="260"
-                height="320"
-                overflow-x="hidden"
+              <router-link
+                to="/syllabus/maths/real-numbers"
+                v-for="(item, index) in articles"
+                :key="index"
               >
-                <v-img
-                  height="150"
-                  src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                ></v-img>
-                <v-card-title
-                  class="py-2 title-text"
-                  :title="item.post_title"
-                  >{{ item.post_title }}</v-card-title
+                <v-card
+                  :elevation="5"
+                  width="260"
+                  height="320"
+                  overflow-x="hidden"
                 >
-                <v-card-text>
-                  <div class="subtitle-1" title="Real Number">Real Number</div>
-                  <div
-                    class="subtitle-text"
-                    v-html="trimmedData(item.post_content)"
-                  ></div>
-                </v-card-text>
-              </v-card>
-            </router-link>
-          </div>
-        </v-container>
+                  <v-img height="150" :src="item.guid"></v-img>
+                  <v-card-title
+                    class="py-2 title-text"
+                    :title="item.post_title"
+                    >{{ item.post_title }}</v-card-title
+                  >
+                  <v-card-text>
+                    <div class="subtitle-1" title="Real Number">
+                      Real Number
+                    </div>
+                    <div
+                      class="subtitle-text"
+                      v-html="trimmedData(item.post_content)"
+                    ></div>
+                  </v-card-text>
+                </v-card>
+              </router-link>
+            </div>
+          </v-container>
+        </div>
       </div>
       <p class="text-center"><strong>v1.00</strong><br />App Updated</p>
     </v-content>
@@ -64,6 +75,9 @@ import { mapState, mapActions } from "vuex";
 export default {
   name: "SubjectPosts",
   data: () => ({
+    skloader: {
+      loading: true
+    },
     sliderWidth: "280",
     subjectname: null,
     articleCount: 0,
@@ -109,6 +123,7 @@ export default {
     if (this.subjectname && this.syllabusArticleList[this.subjectname]) {
       this.articles = this.syllabusArticleList[this.subjectname];
       this.articleCount = this.syllabusArticleList[this.subjectname].length;
+      this.skloader.loading = false;
     } else {
       this.getsyllabusArticleList({
         subject: this.subjectname
@@ -116,8 +131,17 @@ export default {
         if (response) {
           this.articles = response;
           this.articleCount = response.length;
+          this.skloader.loading = false;
         }
       });
+    }
+  },
+
+  watch: {
+    articles(n) {
+      if (n.length > 0) {
+        this.skloader.loading = false;
+      }
     }
   },
 
