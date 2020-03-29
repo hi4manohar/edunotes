@@ -1,5 +1,5 @@
 module.exports = {
   transpileDependencies: ["vuetify"],
-  publicPath: process.env.NODE_ENV === "production" ? "/edunotes/" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "/" : "/",
   productionSourceMap: false
 };

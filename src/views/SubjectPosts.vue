@@ -15,17 +15,19 @@
         </p>
       </div>
       <div class="slidercon">
-
-        <v-container id="scroll-target"  class="overflow-y-auto">
-          <div class="sliderconin" :style="{ width: getsliderWidth }"
+        <v-container id="scroll-target" class="overflow-y-auto">
+          <div
+            class="sliderconin"
+            :style="{ width: getsliderWidth }"
             v-scroll:#scroll-target="onScroll"
           >
-            <router-link to="/syllabus/maths/real-numbers" 
+            <router-link
+              to="/syllabus/maths/real-numbers"
               v-for="(item, index) in articles"
               :key="index"
             >
               <v-card
-                :elevation="5" 
+                :elevation="5"
                 width="260"
                 height="320"
                 overflow-x="hidden"
@@ -34,27 +36,33 @@
                   height="150"
                   src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                 ></v-img>
-                <v-card-title class="py-2 title-text" :title="item.post_title">{{ item.post_title }}</v-card-title>
+                <v-card-title
+                  class="py-2 title-text"
+                  :title="item.post_title"
+                  >{{ item.post_title }}</v-card-title
+                >
                 <v-card-text>
                   <div class="subtitle-1" title="Real Number">Real Number</div>
-                  <div class="subtitle-text" v-html="trimmedData(item.post_content)"></div>
+                  <div
+                    class="subtitle-text"
+                    v-html="trimmedData(item.post_content)"
+                  ></div>
                 </v-card-text>
               </v-card>
             </router-link>
           </div>
         </v-container>
       </div>
-    <p class="text-center"><strong>v1.00</strong><br />App Updated</p>
+      <p class="text-center"><strong>v1.00</strong><br />App Updated</p>
     </v-content>
   </v-app>
 </template>
 
 <script>
-
 import { mapState, mapActions } from "vuex";
 
 export default {
-  name: 'SubjectPosts',
+  name: "SubjectPosts",
   data: () => ({
     sliderWidth: "280",
     subjectname: null,
@@ -62,7 +70,6 @@ export default {
     articles: []
   }),
   computed: {
-
     ...mapState({
       syllabusArticleList: state => state.syllabus.syllabusArticleList,
       homeScroll: state => state.scroll.component.subjectPosts
@@ -93,30 +100,24 @@ export default {
         component: "subjectPosts",
         axis: { x: e.target.scrollLeft, y: 0 }
       });
-    },
+    }
   },
 
   created() {
-
     this.subjectname = this.$route.params.subjects;
 
-    if ( this.subjectname && this.syllabusArticleList[this.subjectname]) {
-
+    if (this.subjectname && this.syllabusArticleList[this.subjectname]) {
       this.articles = this.syllabusArticleList[this.subjectname];
       this.articleCount = this.syllabusArticleList[this.subjectname].length;
-
     } else {
-
       this.getsyllabusArticleList({
         subject: this.subjectname
-      }).then( response => {
-        if( response ) {
-
+      }).then(response => {
+        if (response) {
           this.articles = response;
           this.articleCount = response.length;
-
         }
-      })
+      });
     }
   },
 
@@ -129,7 +130,6 @@ export default {
 };
 </script>
 <style scoped="">
-
 .v-content {
   height: calc(100vh - 56px);
   overflow: auto;
@@ -147,7 +147,8 @@ export default {
 ::-webkit-scrollbar {
   width: 0px;
 }
-.subtitle-1, .title-text {
+.subtitle-1,
+.title-text {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

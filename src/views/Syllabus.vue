@@ -8,7 +8,7 @@
             :loading="skloader.loading"
             :transition-group="skloader.transition"
             :height="skloader.height"
-            :type="skloader.types"            
+            :type="skloader.types"
           >
           </v-skeleton-loader>
         </div>

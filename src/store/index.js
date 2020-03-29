@@ -4,7 +4,7 @@ import { article } from "./article.module";
 import { user } from "./user.module";
 import { scroll } from "./scroll.module";
 import { alert } from "./alert.module";
-import { syllabus } from './syllabus.module';
+import { syllabus } from "./syllabus.module";
 
 Vue.use(Vuex);
 

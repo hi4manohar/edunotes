@@ -5,13 +5,10 @@ const state = {
 };
 const actions = {
   async syllabusArticleList({ dispatch, commit }, param) {
-
-    return new Promise(( resolve, reject ) =>  {
-
-      if ( param && param.subject) {
+    return new Promise((resolve, reject) => {
+      if (param && param.subject) {
         try {
-          articleService.syllabusArticleList(param).then(json =>  {
-            
+          articleService.syllabusArticleList(param).then(json => {
             if (json.status === true) {
               param.data = json.data;
               commit("savesyllabusArticleList", param);
@@ -25,11 +22,10 @@ const actions = {
           reject(false);
         }
       } else {
-        dispatch("alert/error", 'Invalid Subject', { root: true });
+        dispatch("alert/error", "Invalid Subject", { root: true });
         reject(false);
       }
-
-    })
+    });
   }
 };
 const mutations = {
