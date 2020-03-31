@@ -11,10 +11,12 @@ export const articleService = {
   syllabusArticleList
 };
 
-function articleList() {
+function articleList(param) {
   return new Promise((resolve, reject) => {
+
+    param.page = param.page ? param.page : '';
     axios
-      .get(appConfig.API_URL + "article-list", {
+      .get(appConfig.API_URL + "article-list?page=" + param.page, {
         headers: {
           "auth-token": store.state.user.token_id
         }

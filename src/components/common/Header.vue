@@ -7,7 +7,7 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" width="85%" app>
-      <v-list-item dark class="left-drawer-header">
+      <v-list-item dark class="left-drawer-header" style="height:100px;">
         <v-list-item-avatar tile>
           <img src="sidebar-logo.png" />
         </v-list-item-avatar>
@@ -22,7 +22,7 @@
       </v-list-item>
       <v-divider></v-divider>
       <v-list nav dense>
-        <v-list-item-group v-model="item" color="primary">
+        <v-list-item-group color="primary">
           <v-list-item v-for="(item, i) in items" :key="i" @click="moveTo(i)">
             <v-list-item-icon>
               <v-icon v-text="item.icon"></v-icon>
@@ -50,7 +50,7 @@ export default {
     left: false,
     item: 0,
     items: [
-      { text: "Change Board", icon: "mdi-account-cog-outline" },
+      { text: "Change Board", icon: "mdi-account-switch" },
       { text: "Change Class", icon: "mdi-account-cog-outline" },
       { text: "About Us", icon: "mdi-information-outline" },
       { text: "Notifications", icon: "mdi-bell-outline" }

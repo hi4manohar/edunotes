@@ -25,18 +25,37 @@
           <v-row>
             <v-col cols="6" v-for="(item, index) in booksList" :key="index">
               <router-link :to="'/books/' + item.ID">
-                <v-card>
+                <v-card height="170px">
                   <v-img
                     :src="item.guid"
                     width="100%"
                     max-height="90px"
                     class="mx-auto"
                   >
+
+                    <template v-slot:placeholder>
+                      <v-row
+                        class="fill-height ma-0"
+                        align="center"
+                        justify="center"
+                      >
+                        <v-progress-circular
+                          indeterminate
+                          color="black lighten-5"
+                        ></v-progress-circular>
+                      </v-row>
+                    </template>
                   </v-img>
-                  <v-card-title class="subtitle-2">{{
+                  <v-card-title 
+                    class="subtitle-2 d-inline-block text-truncate pb-0"
+                    style="max-width: 150px;"
+                  >{{
                     item.post_title
                   }}</v-card-title>
-                  <v-card-subtitle class="pb-0">H C Verma 9th</v-card-subtitle>
+                  <v-card-subtitle 
+                    class="pb-0 d-inline-block text-truncate"
+                    style="max-width: 150px;"
+                  >H C Verma 9th</v-card-subtitle>
                 </v-card>
               </router-link>
             </v-col>

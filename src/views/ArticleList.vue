@@ -37,7 +37,7 @@
                     class="subtitle-2"
                     v-text="name.post_title"
                   ></v-list-item-title>
-                  <v-list-item-subtitle>04 Feb, 2020</v-list-item-subtitle>
+                  <v-list-item-subtitle style="font-size:15px">04 Feb, 2020</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
               <div class="ma-3 my-1 article-img">
@@ -50,14 +50,14 @@
                     >
                       <v-progress-circular
                         indeterminate
-                        color="grey lighten-5"
+                        color="black lighten-5"
                       ></v-progress-circular>
                     </v-row>
                   </template>
                 </v-img>
               </div>
               <v-card-text
-                class="px-3 py-1"
+                class="px-3 py-1 article-description"
                 v-html="trimmedData(name.post_content)"
               >
               </v-card-text>
@@ -88,25 +88,18 @@
               </v-card-actions>
             </v-card>
           </div>
+          <div style="text-align:center;" class="ma-4">
+            <v-btn :disabled="!articleCount" :loading="loadMore" @click="loadArticles('page')" depressed small color="primary text-center">Load More</v-btn>
+          </div>
         </v-container>
       </v-content>
       <Footer active="home" />
     </div>
-    <transition name="slide-fade">
-      <div v-if="articleContent">
-        <articleContent
-          :content="articleData"
-          v-on:showListArticle="showListArticle()"
-        />
-      </div>
-    </transition>
   </v-app>
 </template>
 <script>
 import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
-// import { articleService } from "../service/article.service";
-import articleContent from "../components/article/ArticleContent";
 import { mapState, mapActions } from "vuex";
 import { skloaderMixin } from "../mixins";
 
@@ -117,20 +110,22 @@ export default {
     articleContent: false,
     articleData: {},
     activeIndex: false,
+    loadMore: false,
     items: [
       { icon: "mdi-whatsapp", title: "Whatsapp" },
       { icon: "mdi-facebook", title: "Facebook" }
-    ]
+    ],
+    page: 0
   }),
   components: {
     Header,
-    Footer,
-    articleContent
+    Footer
   },
   computed: {
     ...mapState({
       names: state => state.article.articleList,
-      homeScroll: state => state.scroll.component.home
+      homeScroll: state => state.scroll.component.home,
+      articleCount: state => state.article.articleCount
     })
   },
   methods: {
@@ -144,22 +139,6 @@ export default {
         axis: { x: 0, y: e.target.scrollTop }
       });
     },
-    getUrlStringFromTitle(str) {
-      if (str === null || str === "") return false;
-      else return encodeURI(str.replace(/ /g, "-"));
-    },
-    showContent(index) {
-      this.articleContent = true;
-      this.articleData = this.names[index];
-      this.activeIndex = index;
-    },
-    showListArticle(val) {
-      this.articleContent = val;
-    },
-    saveArticle(e, val) {
-      e.stopPropagation();
-      console.log("save this article", val);
-    },
     trimmedData(str) {
       if (str === null || str === "") return false;
       else str = str.toString();
@@ -167,18 +146,30 @@ export default {
         .replace(/(<([^>]+)>)/gi, "")
         .trim()
         .substring(0, 100);
+    },
+    loadArticles(type) {
+
+      if( type === 'initial' ) {
+
+        if (!this.names.length) {
+          this.loadArticleList({page: this.page});
+        } else {
+          this.skloader.loading = false;
+        }
+      } else if( type === 'page' ) {
+        this.page = this.page + 1;
+        this.loadMore = true;
+        this.loadArticleList({page: this.page});
+      }
     }
   },
   created() {
-    if (!this.names.length) {
-      this.loadArticleList();
-    } else {
-      this.skloader.loading = false;
-    }
+    this.loadArticles('initial');    
   },
   watch: {
     names: function(n) {
       if (n.length > 0) {
+        this.loadMore = false;
         this.skloader.loading = false;
       }
     },
@@ -207,7 +198,6 @@ export default {
 }
 .v-list-item__title {
   font-size: 18px !important;
-  max-width: 90%;
 }
 .v-list-item__subtitle {
   font-size: 11px;

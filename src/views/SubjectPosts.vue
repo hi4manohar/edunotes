@@ -40,21 +40,22 @@
                 <v-card
                   :elevation="5"
                   width="260"
-                  height="320"
+                  height="350"
                   overflow-x="hidden"
                 >
-                  <v-img height="150" :src="item.guid"></v-img>
+                  <v-img height="170" :src="item.guid"></v-img>
                   <v-card-title
-                    class="py-2 title-text"
+                    class="py-4 title-text"
                     :title="item.post_title"
                     >{{ item.post_title }}</v-card-title
                   >
-                  <v-card-text>
+                  <v-card-text class="pb-0">
                     <div class="subtitle-1" title="Real Number">
                       Real Number
                     </div>
                     <div
                       class="subtitle-text"
+                      style="max-height: 65px"
                       v-html="trimmedData(item.post_content)"
                     ></div>
                   </v-card-text>
@@ -177,11 +178,5 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
-}
-.subtitle-text {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 58px;
 }
 </style>

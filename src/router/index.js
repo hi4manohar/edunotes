@@ -11,6 +11,7 @@ import SubjectPosts from "../views/SubjectPosts";
 import Notifications from "../views/Notifications";
 import ChapterPosts from "../views/ChapterPosts";
 import BookDescription from "../views/BookDescription";
+import Pdf from '../views/Pdf';
 
 Vue.use(VueRouter);
 
@@ -47,7 +48,8 @@ const routes = [
     name: "ChapterPosts",
     component: ChapterPosts
   },
-  { path: "/notifications", name: "Notifications", component: Notifications }
+  { path: "/notifications", name: "Notifications", component: Notifications },
+  { path: "/pdf", name: "Pdf", component: Pdf }
 ];
 
 export const router = new VueRouter({

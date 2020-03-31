@@ -17,7 +17,26 @@
               <h2>{{ article.title }}</h2>
               <hr />
             </div>
-            <div class="description" v-html="article.content"></div>
+
+            <div class="book-img pa-2">
+              <v-img
+                :src="article.guid"
+                width="100%"
+                max-height="200px"
+                class="mx-auto"
+              >
+                <template v-slot:placeholder>
+                  <v-row class="fill-height ma-0" align="center" justify="center">
+                    <v-progress-circular
+                      indeterminate
+                      color="grey lighten-5"
+                    ></v-progress-circular>
+                  </v-row>
+                </template>
+              </v-img>
+            </div>
+
+            <div class="description pa-4" v-html="article.content"></div>
           </div>
         </v-container>
       </v-content>
@@ -57,7 +76,8 @@ export default {
       if (this.names[id]) {
         this.article = {
           title: this.names[id].post_title,
-          content: this.names[id].post_content
+          content: this.names[id].post_content,
+          guid: this.names[id].guid
         };
       } else {
         console.log("hello");
@@ -87,5 +107,11 @@ export default {
 }
 .v-footer {
   box-shadow: 0px 0px 2px #888;
+}
+.book-img {
+  background: #eee;
+  border: 1px solid #ddd;
+  max-width: 400px;
+  margin: 0 auto;
 }
 </style>

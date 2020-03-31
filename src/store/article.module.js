@@ -4,13 +4,14 @@ const state = {
   articleList: [],
   subjectList: [],
   booksList: [],
-  bookDetail: {}
+  bookDetail: {},
+  articleCount: true
 };
 const actions = {
-  async articleList({ dispatch, commit, state }) {
-    if (!state.articleList.length) {
+  async articleList({ dispatch, commit, state }, param) {
+    if ( !state.articleList.length || (param.page && param.page > 0) ) {
       try {
-        let json = await articleService.articleList();
+        let json = await articleService.articleList(param);
         if (json.status === true) commit("saveArticle", json.data);
       } catch (err) {
         console.log("err", err);
@@ -77,7 +78,8 @@ const actions = {
 };
 const mutations = {
   saveArticle(state, lists) {
-    state.articleList = lists;
+    state.articleCount = lists.length > 0 ? true : false;
+    state.articleList.push(...lists);
   },
 
   saveSubject(state, lists) {
