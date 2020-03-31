@@ -11,7 +11,7 @@ import SubjectPosts from "../views/SubjectPosts";
 import Notifications from "../views/Notifications";
 import ChapterPosts from "../views/ChapterPosts";
 import BookDescription from "../views/BookDescription";
-import Pdf from '../views/Pdf';
+import Pdf from "../views/Pdf";
 
 Vue.use(VueRouter);
 

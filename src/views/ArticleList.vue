@@ -37,7 +37,9 @@
                     class="subtitle-2"
                     v-text="name.post_title"
                   ></v-list-item-title>
-                  <v-list-item-subtitle style="font-size:15px">04 Feb, 2020</v-list-item-subtitle>
+                  <v-list-item-subtitle style="font-size:15px">{{
+                    name.post_date | dateFormat
+                  }}</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
               <div class="ma-3 my-1 article-img">
@@ -89,7 +91,15 @@
             </v-card>
           </div>
           <div style="text-align:center;" class="ma-4">
-            <v-btn :disabled="!articleCount" :loading="loadMore" @click="loadArticles('page')" depressed small color="primary text-center">Load More</v-btn>
+            <v-btn
+              :disabled="!articleCount"
+              :loading="loadMore"
+              @click="loadArticles('page')"
+              depressed
+              small
+              color="primary text-center"
+              >Load More</v-btn
+            >
           </div>
         </v-container>
       </v-content>
@@ -102,10 +112,14 @@ import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
 import { mapState, mapActions } from "vuex";
 import { skloaderMixin } from "../mixins";
+import { momentFilter } from "../filters";
 
 export default {
   name: "ArticleList",
   mixins: [skloaderMixin],
+  filters: {
+    dateFormat: momentFilter.dateFormat
+  },
   data: () => ({
     articleContent: false,
     articleData: {},
@@ -148,23 +162,21 @@ export default {
         .substring(0, 100);
     },
     loadArticles(type) {
-
-      if( type === 'initial' ) {
-
+      if (type === "initial") {
         if (!this.names.length) {
-          this.loadArticleList({page: this.page});
+          this.loadArticleList({ page: this.page });
         } else {
           this.skloader.loading = false;
         }
-      } else if( type === 'page' ) {
+      } else if (type === "page") {
         this.page = this.page + 1;
         this.loadMore = true;
-        this.loadArticleList({page: this.page});
+        this.loadArticleList({ page: this.page });
       }
     }
   },
   created() {
-    this.loadArticles('initial');    
+    this.loadArticles("initial");
   },
   watch: {
     names: function(n) {

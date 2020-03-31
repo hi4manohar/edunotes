@@ -9,7 +9,7 @@ const state = {
 };
 const actions = {
   async articleList({ dispatch, commit, state }, param) {
-    if ( !state.articleList.length || (param.page && param.page > 0) ) {
+    if (!state.articleList.length || (param.page && param.page > 0)) {
       try {
         let json = await articleService.articleList(param);
         if (json.status === true) commit("saveArticle", json.data);

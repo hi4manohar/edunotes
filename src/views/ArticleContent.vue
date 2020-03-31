@@ -26,7 +26,11 @@
                 class="mx-auto"
               >
                 <template v-slot:placeholder>
-                  <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
                     <v-progress-circular
                       indeterminate
                       color="grey lighten-5"

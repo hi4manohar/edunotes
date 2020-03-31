@@ -32,7 +32,6 @@
                     max-height="90px"
                     class="mx-auto"
                   >
-
                     <template v-slot:placeholder>
                       <v-row
                         class="fill-height ma-0"
@@ -46,16 +45,16 @@
                       </v-row>
                     </template>
                   </v-img>
-                  <v-card-title 
+                  <v-card-title
                     class="subtitle-2 d-inline-block text-truncate pb-0"
                     style="max-width: 150px;"
-                  >{{
-                    item.post_title
-                  }}</v-card-title>
-                  <v-card-subtitle 
+                    >{{ item.post_title }}</v-card-title
+                  >
+                  <v-card-subtitle
                     class="pb-0 d-inline-block text-truncate"
                     style="max-width: 150px;"
-                  >H C Verma 9th</v-card-subtitle>
+                    >H C Verma 9th</v-card-subtitle
+                  >
                 </v-card>
               </router-link>
             </v-col>
