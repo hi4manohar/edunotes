@@ -14,40 +14,46 @@
         hide-delimiter-background
         interval="4000"
       >
-        <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src">
+        <v-carousel-item v-for="(item, i) in items" :key="i" :src="API_URL + '' + item.src">
         </v-carousel-item>
       </v-carousel>
 
       <v-btn fixed block color="primary" @click="showBoard">Get Started</v-btn>
+      <v-overlay :value="overlays" opacity="0.02">
+        <v-progress-circular color="blue" indeterminate size="32"></v-progress-circular>
+      </v-overlay>
     </div>
   </v-app>
 </template>
 
 <script>
 import * as appConfig from "../../config/index.config";
+import { welcomeService } from '../../service/welcome.service';
+import { mapActions } from "vuex";
 export default {
   name: "Welcome",
   data() {
     return {
-      items: [
-        {
-          src: appConfig.API_URL + "uploads/static/images/slider1.jpg"
-        },
-        {
-          src: appConfig.API_URL + "uploads/static/images/slider1.jpg"
-        },
-        {
-          src: appConfig.API_URL + "uploads/static/images/slider1.jpg"
-        },
-        {
-          src: appConfig.API_URL + "uploads/static/images/slider1.jpg"
-        }
-      ]
+      overlays: true,
+      API_URL: appConfig.API_URL,
+      items: false
     };
   },
   methods: {
+    ...mapActions({
+      showerror: "alert/error"
+    }),
     showBoard() {
       this.$emit("changesteps", "chooseboard");
+    }
+  },
+  async created() {
+    try {
+      let welcomeContent = await welcomeService.getWelcomeData();
+      this.items = welcomeContent.data;
+      this.overlays = false;
+    } catch(err) {
+      this.showerror(err);
     }
   }
 };

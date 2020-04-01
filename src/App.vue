@@ -1,13 +1,15 @@
 <template>
-  <div class="main-view">
-    <v-snackbar v-model="snackbar">
-      {{ alert.message }}
-      <v-btn color="pink" text @click="updatesnackbar(false)">
-        Close
-      </v-btn>
-    </v-snackbar>
-    <router-view></router-view>
-  </div>
+  <v-app>
+    <div class="main-view">
+      <v-snackbar v-model="snackbar">
+        {{ alert.message }}
+        <v-btn color="pink" text @click="updatesnackbar(false)">
+          Close
+        </v-btn>
+      </v-snackbar>
+      <router-view></router-view>
+    </div>
+  </v-app>
 </template>
 
 <script>

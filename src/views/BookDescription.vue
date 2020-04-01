@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar absolute color="green lighten-5" elevate-on-scroll>
+    <v-app-bar fixed color="green lighten-5" elevate-on-scroll>
       <v-btn icon light @click="$router.go(-1)">
         <v-icon color="grey darken-2">mdi-arrow-left</v-icon>
       </v-btn>
@@ -40,19 +40,15 @@
         <br />
         <div class="class-article ml-2">
           <h3 class="mb-0">{{ bookDescription.post_title }}</h3>
-          <p class="mb-2">H C Verma, S Chand</p>
-          <p class="mb-2" v-html="bookDescription.post_content"></p>
+          <div class="mb-3 mt-3 book-description" v-html="bookDescription.post_content"></div>
         </div>
         <!-- if file type pdf -->
         <v-list-item
-          class="px-2 mb-4 elevation-2 text-left"
+          class="mb-4 elevation-2 text-left"
           v-for="(item, index) in attachmentDetails"
           :key="index"
         >
           <v-list-item-content>
-            <v-list-item-subtitle class="caption"
-              >01:Chapter</v-list-item-subtitle
-            >
             <v-list-item-title class="subtitle-2">{{
               item.post_title
             }}</v-list-item-title>
@@ -71,7 +67,9 @@
             </a>
           </v-list-item-icon>
           <v-list-item-icon class="mx-0">
-            <v-btn icon color="success"><v-icon>mdi-download</v-icon></v-btn>
+            <a :href="item.reflink" target="_blank">
+              <v-btn icon color="success"><v-icon>mdi-download</v-icon></v-btn>
+            </a>
           </v-list-item-icon>
         </v-list-item>
       </div>
@@ -142,7 +140,6 @@ export default {
 <style scoped="">
 .v-content {
   margin-top: 56px;
-  height: calc(100vh - 56px);
   overflow: auto;
   padding: 10px;
 }
@@ -154,5 +151,12 @@ export default {
 }
 .caption {
   line-height: 10px !important;
+}
+.book-description {
+  white-space: pre-wrap;
+  line-height: 0.8;
+}
+.v-list-item__title, .v-list-item__subtitle {
+  white-space: normal;
 }
 </style>

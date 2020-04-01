@@ -9,68 +9,67 @@
       </v-toolbar>
       <v-list three-line>
         <template v-for="item in items">
-          <v-list-item :key="item.title" class="mb-2" @click="showClass">
+          <v-list-item :key="item.name" class="mb-2" @click="showClass(item.slug)">
             <v-list-item-avatar>
-              <v-img :src="item.avatar"></v-img>
+              <v-img :src="iconFullPath + '' + item.slug + '.jpg'"></v-img>
             </v-list-item-avatar>
 
             <v-list-item-content>
-              <v-list-item-title v-html="item.title"></v-list-item-title>
+              <v-list-item-title v-html="item.name" class="font-weight-bold"></v-list-item-title>
               <v-list-item-subtitle
-                v-html="item.subtitle"
+              style="line-height: 1.5;"
+                v-html="item.description"
               ></v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </template>
       </v-list>
+      <v-overlay :value="overlays" opacity="0.02">
+        <v-progress-circular color="blue" indeterminate size="32"></v-progress-circular>
+      </v-overlay>
     </div>
   </v-app>
 </template>
 
 <script>
 import * as appConfig from "../../config/index.config";
+import { welcomeService } from '../../service/welcome.service';
+import { mapActions } from "vuex";
 
 export default {
   name: "ChooseBoard",
   data: () => ({
     publicPath: process.env.BASE_URL,
-    items: {}
+    items: {},
+    overlays: true,
+    API_URL: appConfig.API_URL,
+    iconFullPath: appConfig.API_URL + 'uploads/static/images/bordicon/'
   }),
   methods: {
+
+    ...mapActions({
+      showerror: "alert/error"
+    }),
+
     showHome() {
       this.$emit("changesteps", "welcome");
     },
-    showClass() {
-      this.$emit("changesteps", "chooseclass");
+    showClass(board) {
+      this.$emit("changesteps", "chooseclass", {
+        'board': board
+      });
     },
-    loadBoard() {
-      this.items = [
-        {
-          avatar: appConfig.API_URL + "uploads/static/images/bordicon/cbse.jpg",
-          title: "CBSE",
-          subtitle: "Central Board "
-        },
-        {
-          avatar: appConfig.API_URL + "uploads/static/images/bordicon/icse.jpg",
-          title: "ICSE",
-          subtitle: "Foreign Board"
-        },
-        {
-          avatar: appConfig.API_URL + "uploads/static/images/bordicon/bseb.jpg",
-          title: "BSEB",
-          subtitle: "Bihar Board"
-        },
-        {
-          avatar: appConfig.API_URL + "uploads/static/images/bordicon/up.jpg",
-          title: "UPMSP",
-          subtitle: "Uttar Pradesh Madhyamik Shiksha Parishad"
-        },
-        {
-          avatar: appConfig.API_URL + "uploads/static/images/bordicon/mp.jpg",
-          title: "MPSC",
-          subtitle: "Madhya Pradesh Board"
-        }
-      ];
+    async loadBoard() {
+
+      try {
+        let boardList = await welcomeService.getBoardList();
+        this.items = boardList.data;
+        this.overlays = false;
+        console.log(this.items);
+      } catch(err) {
+        this.overlays = false;
+        this.showerror(err);
+      }
     }
   },
   created() {

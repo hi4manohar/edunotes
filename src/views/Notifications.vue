@@ -112,7 +112,6 @@ export default {
 <style scoped="">
 .v-content {
   margin-top: 56px;
-  height: calc(100vh - 56px);
   overflow: auto;
   padding: 10px;
 }

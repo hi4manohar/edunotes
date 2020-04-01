@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar absolute color="amber lighten-5" elevate-on-scroll>
+    <v-app-bar fixed color="amber lighten-5" elevate-on-scroll>
       <v-btn icon light @click="$router.go(-1)">
         <v-icon color="grey darken-2">mdi-arrow-left</v-icon>
       </v-btn>
@@ -71,7 +71,6 @@ export default {
 <style scoped="">
 .v-content {
   margin-top: 56px;
-  height: calc(100vh - 112px);
   margin-bottom: 56px !important;
   overflow: auto;
   padding: 10px;

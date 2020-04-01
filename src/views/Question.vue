@@ -26,34 +26,31 @@
             <v-col cols="6" v-for="(item, index) in booksList" :key="index">
               <router-link :to="'/books/' + item.ID">
                 <v-card height="170px">
-                  <v-img
-                    :src="item.guid"
-                    width="100%"
-                    max-height="90px"
-                    class="mx-auto"
-                  >
-                    <template v-slot:placeholder>
-                      <v-row
-                        class="fill-height ma-0"
-                        align="center"
-                        justify="center"
+                  <div class="img-container" style="height:90px;">                    
+                      <v-img
+                        :src="item.guid"
+                        width="100%"
+                        max-height="90px"
+                        class="mx-auto"
                       >
-                        <v-progress-circular
-                          indeterminate
-                          color="black lighten-5"
-                        ></v-progress-circular>
-                      </v-row>
-                    </template>
-                  </v-img>
+                      <template v-slot:placeholder>
+                        <v-row
+                          class="fill-height ma-0"
+                          align="center"
+                          justify="center"
+                        >
+                          <v-progress-circular
+                            indeterminate
+                            color="black lighten-5"
+                          ></v-progress-circular>
+                        </v-row>
+                      </template>
+                    </v-img>
+                  </div>
                   <v-card-title
-                    class="subtitle-2 d-inline-block text-truncate pb-0"
-                    style="max-width: 150px;"
+                    class="subtitle-2 d-inline-block pb-0"
+                    style="max-width: 150px; max-height: 60px; word-break: break-word;"
                     >{{ item.post_title }}</v-card-title
-                  >
-                  <v-card-subtitle
-                    class="pb-0 d-inline-block text-truncate"
-                    style="max-width: 150px;"
-                    >H C Verma 9th</v-card-subtitle
                   >
                 </v-card>
               </router-link>
@@ -129,7 +126,6 @@ export default {
 <style scoped="">
 .v-content {
   margin-top: 56px;
-  height: calc(100vh - 112px);
   margin-bottom: 56px !important;
   overflow: auto;
 }

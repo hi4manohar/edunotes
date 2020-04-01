@@ -9,7 +9,7 @@
     <v-navigation-drawer v-model="drawer" width="85%" app>
       <v-list-item dark class="left-drawer-header" style="height:100px;">
         <v-list-item-avatar tile>
-          <img src="sidebar-logo.png" />
+          <img src="../../assets/img/logo/sidebar-logo.png" />
         </v-list-item-avatar>
         <v-list-item-content>
           <v-list-item-title class="subtitle">
@@ -73,8 +73,10 @@ export default {
       if (key === 0 || key === 1) {
         if (this.user.status.loggedIn === true) {
           this.resetConfig();
+          window.location.reload();
         } else {
           this.$router.push("/");
+          window.location.reload();
         }
       }
 

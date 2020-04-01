@@ -204,7 +204,6 @@ export default {
 <style scoped>
 .v-content {
   margin-top: 56px;
-  height: calc(100vh - 112px);
   margin-bottom: 56px !important;
   overflow: auto;
 }

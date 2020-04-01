@@ -5,13 +5,13 @@ export const userService = {
   setConfig
 };
 
-function setConfig() {
+function setConfig(param) {
   return new Promise((resolve, reject) => {
     axios
       .get(appConfig.API_URL + "auth/config", {
         params: {
-          board: "bsed",
-          class: "123"
+          board: param.board,
+          class: param.class
         }
       })
       .then(function(response) {
