@@ -66,6 +66,16 @@ p {
   margin-top: 22px;
   line-height: 1.25em;
 }
+
+.description h1 {
+  margin-bottom: 24px;
+  line-height: 1.25em;
+  font-size:  26px;
+}
+.description img {
+  margin-top: 22px;
+  max-width:  100%
+}
 .description table{
   width: 100%;
   margin-bottom:10px;

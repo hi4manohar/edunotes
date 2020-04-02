@@ -8,7 +8,8 @@ export const articleService = {
   subjectList,
   getBooksList,
   getBookDetails,
-  syllabusArticleList
+  syllabusArticleList,
+  getArticleByChapter
 };
 
 function articleList(param) {
@@ -130,6 +131,34 @@ function syllabusArticleList(param) {
           status: false,
           msg: error
         });
+      });
+  });
+}
+
+function getArticleByChapter(param) {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(appConfig.API_URL + "class/get/chapters/" + param.chaptername, {
+        headers: {
+          "auth-token": store.state.user.token_id
+        }
+      })
+      .then(function(response) {
+        if( response.status === 200 ) {
+          if (response.data.status === true) {
+            resolve({
+              status: true,
+              data: response.data.data
+            });
+          } else {
+            reject(response.data.msg);
+          }
+        } else {
+          reject('No Data Found');
+        }
+      })
+      .catch(function(error) {
+        reject(error);
       });
   });
 }

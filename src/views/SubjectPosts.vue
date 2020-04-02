@@ -33,7 +33,7 @@
               v-scroll:#scroll-target="onScroll"
             >
               <router-link
-                to="/syllabus/maths/real-numbers"
+                :to="'/syllabus/chapters/' + item.post_name"
                 v-for="(item, index) in articles"
                 :key="index"
               >

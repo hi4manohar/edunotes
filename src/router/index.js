@@ -44,7 +44,7 @@ const routes = [
     component: SubjectPosts
   },
   {
-    path: "/syllabus/:subjects/:chapter",
+    path: "/syllabus/chapters/:chapter",
     name: "ChapterPosts",
     component: ChapterPosts
   },

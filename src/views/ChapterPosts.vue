@@ -9,29 +9,16 @@
       >
       <v-spacer></v-spacer>
     </v-app-bar>
-    <v-content class="pa-4">
-      <h4>Q.Chemical reactions and equations tions and equations?</h4>
-      <p>
-        Ans.Material Design Icons' growing icon collection allows designers and
-        developers targeting various platforms to download icons in the format,
-        color and size they need for any project.
-      </p>
-      <v-img
-        src="https://picsum.photos/510/300?random"
-        aspect-ratio="1.7"
-      ></v-img>
-      <br />
-      <p>
-        Material Design Icons' growing icon collection allows designers and
-        developers targeting various platforms to download icons in the format,
-        color and size they need for any project.
-      </p>
-      <p>
-        Material Design Icons' growing icon collection allows designers and
-        developers targeting various platforms to download icons in the format,
-        color and size they need for any project.
-      </p>
-    </v-content>
+    
+      <v-content class="pa-4">
+        <v-container>
+          <div class="description"
+            v-for="(item, index) in articles" 
+            :key="index" 
+            v-html="item.post_content"
+          ></div>
+        </v-container>
+      </v-content>
     <v-footer fixed class="font-weight-medium d-flex justify-space-between">
       <v-btn icon>
         <v-icon>mdi-dots-vertical</v-icon>
@@ -53,6 +40,9 @@
 </template>
 
 <script>
+
+import { mapState, mapActions, mapGetters } from "vuex";
+
 export default {
   name: "ChapterPosts",
   data() {
@@ -62,8 +52,39 @@ export default {
         { title: "Photos", icon: "mdi-image" },
         { title: "About", icon: "mdi-help-box" }
       ],
-      right: null
+      right: null,
+      chaptername: null,
+      articles: null
     };
+  },
+  computed: {
+    ...mapState({
+      chapterArticle: state => state.syllabus.chapterArticle
+    }),
+
+    ...mapGetters({
+      getchapterArticle: "syllabus/getchapterArticle"
+    })
+  },
+
+  methods: {
+    ...mapActions({
+      getArticleByChapter: "syllabus/getArticleByChapter"
+    })
+  },
+
+  created() {
+    this.chaptername = this.$route.params.chapter;
+
+    if( this.chaptername && !this.chapterArticle[this.chaptername] ) {
+      this.getArticleByChapter({
+        chaptername: this.chaptername
+      }).then(response => {
+        this.articles = response;
+      })
+    } else {
+      this.articles = this.chapterArticle[this.chaptername];
+    }
   }
 };
 </script>
