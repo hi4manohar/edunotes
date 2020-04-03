@@ -52,6 +52,9 @@
             <v-list-item-title class="subtitle-2">{{
               item.post_title
             }}</v-list-item-title>
+            <v-list-item-subtitle
+              style="line-height: 1.5;"
+            >{{ item.post_content }}</v-list-item-subtitle>
           </v-list-item-content>
           <v-list-item-icon title="view file">
             <a

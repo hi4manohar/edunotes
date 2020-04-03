@@ -95,7 +95,6 @@ export default {
     this.loadArticle(this.$route.params.articleid);
   },
   mounted() {
-    this.$vuetify.goTo(0);
     this.$nextTick(function() {
       this.skloader.loading = false;
     });

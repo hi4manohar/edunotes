@@ -11,6 +11,7 @@ import SubjectPosts from "../views/SubjectPosts";
 import Notifications from "../views/Notifications";
 import ChapterPosts from "../views/ChapterPosts";
 import BookDescription from "../views/BookDescription";
+import Notfound from "../views/Notfound";
 import Pdf from "../views/Pdf";
 
 Vue.use(VueRouter);
@@ -49,19 +50,25 @@ const routes = [
     component: ChapterPosts
   },
   { path: "/notifications", name: "Notifications", component: Notifications },
-  { path: "/pdf", name: "Pdf", component: Pdf }
+  { path: "/pdf", name: "Pdf", component: Pdf },
+  { path: "*", name: "404", component: Notfound }
 ];
 
 export const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   // scrollBehavior (to, from, savedPosition) {
-  //   console.log(savedPosition);
   //   if (savedPosition) {
-  //     console.log('hello')
   //     return savedPosition
   //   } else {
-  //     // return { x: 0, y: 100 }
+  //     if( to.name === 'BookDescription' ) {
+  //       return { x: 0, y: 0 };
+  //     }
+
+  //     if( to.name === 'ArticleContent' ) {
+  //       return { x: 0, y: 0 } 
+  //     }
+      
   //   }
   // },
   routes

@@ -2,7 +2,8 @@ import { articleService } from "../service/article.service";
 
 const state = {
   syllabusArticleList: {},
-  chapterArticle: []
+  chapterArticle: [],
+  activeArticle: 0
 };
 const actions = {
   async syllabusArticleList({ dispatch, commit }, param) {
@@ -68,14 +69,23 @@ const actions = {
 
     })
     
+  },
+
+  async changeactiveArticle({commit}, type) {
+    commit('changeactiveArticle', type)
   }
 };
 const mutations = {
   savesyllabusArticleList(state, param) {
     state.syllabusArticleList[param.subject] = param.data;
   },
+  
   saveChapterArticle(state, param) {
     state.chapterArticle[param.chaptername] = param.data
+  },
+
+  changeactiveArticle(state, type) {
+    state.activeArticle = type === 'in' ? state.activeArticle + 1 : state.activeArticle -1;
   }
 };
 

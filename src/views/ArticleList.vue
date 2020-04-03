@@ -205,7 +205,10 @@ export default {
 .v-content {
   margin-top: 56px;
   margin-bottom: 56px !important;
-  overflow: auto;
+  height: calc(100vh - 122px);
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  width: 100vw;
 }
 .v-list-item__title {
   font-size: 18px !important;

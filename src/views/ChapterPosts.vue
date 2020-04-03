@@ -5,30 +5,29 @@
         <v-icon color="grey darken-2">mdi-arrow-left</v-icon>
       </v-btn>
       <v-toolbar-title class="pl-1 subtitle-2"
-        >01 | Chemical reactions and equations</v-toolbar-title
+        v-if="articles"
+        >{{ articles[activeArticle].post_title }}</v-toolbar-title
       >
       <v-spacer></v-spacer>
     </v-app-bar>
     
       <v-content class="pa-4">
-        <v-container>
+        <v-container v-if="articles">
           <div class="description"
-            v-for="(item, index) in articles" 
-            :key="index" 
-            v-html="item.post_content"
+            v-html="articles[activeArticle].post_content"
           ></div>
         </v-container>
       </v-content>
-    <v-footer fixed class="font-weight-medium d-flex justify-space-between">
+    <v-footer fixed v-if="articles" class="font-weight-medium d-flex justify-space-between">
       <v-btn icon>
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
       <div>
-        <v-btn icon disabled>
+        <v-btn icon :disabled="activeArticle ? false : true" @click="changeactiveArticle('de')">
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
-        <p>01/10</p>
-        <v-btn icon>
+        <p>{{ ('0' + (activeArticle+1)).slice(-2) }} / {{ ('0' + articles.length).slice(-2) }}</p>
+        <v-btn icon :disabled="(activeArticle+1) === (articles.length) ? true : false" @click="changeactiveArticle('in')">
           <v-icon>mdi-chevron-right</v-icon>
         </v-btn>
       </div>
@@ -59,7 +58,8 @@ export default {
   },
   computed: {
     ...mapState({
-      chapterArticle: state => state.syllabus.chapterArticle
+      chapterArticle: state => state.syllabus.chapterArticle,
+      activeArticle: state => state.syllabus.activeArticle
     }),
 
     ...mapGetters({
@@ -69,7 +69,8 @@ export default {
 
   methods: {
     ...mapActions({
-      getArticleByChapter: "syllabus/getArticleByChapter"
+      getArticleByChapter: "syllabus/getArticleByChapter",
+      changeactiveArticle: "syllabus/changeactiveArticle"
     })
   },
 
@@ -84,6 +85,7 @@ export default {
       })
     } else {
       this.articles = this.chapterArticle[this.chaptername];
+      console.log(this.articles);
     }
   }
 };
