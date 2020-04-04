@@ -161,7 +161,8 @@ export default {
 }
 .slidercon {
   max-width: 94vh;
-  overflow: auto;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   margin: 0 auto;
 }
 .v-card {

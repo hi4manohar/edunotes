@@ -4,7 +4,7 @@
       <Header pagetitle="Read Article" />
       <v-content
         class="pt-0"
-        v-scroll:#scroll-target="onScroll"
+        v-scroll="onScroll"
         id="scroll-target"
       >
         <div class="skloader" v-if="skloader.loading">
@@ -111,12 +111,12 @@
 import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
 import { mapState, mapActions } from "vuex";
-import { skloaderMixin } from "../mixins";
+import { skloaderMixin, cordovaMixin } from "../mixins";
 import { momentFilter } from "../filters";
 
 export default {
   name: "ArticleList",
-  mixins: [skloaderMixin],
+  mixins: [skloaderMixin, cordovaMixin],
   filters: {
     dateFormat: momentFilter.dateFormat
   },
@@ -147,10 +147,10 @@ export default {
       loadArticleList: "article/articleList",
       setHomeScroll: "scroll/setHomeScroll"
     }),
-    onScroll(e) {
+    onScroll() {
       this.setHomeScroll({
         component: "home",
-        axis: { x: 0, y: e.target.scrollTop }
+        axis: { x: 0, y: window.scrollY }
       });
     },
     trimmedData(str) {
@@ -192,11 +192,10 @@ export default {
       this.transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
     }
   },
-  mounted() {
+  mounted() {    
     // this.skloader.loading = false;
     this.$nextTick(() => {
-      this.container = document.getElementById("scroll-target");
-      this.container.scrollTop = Number(this.homeScroll.y);
+      window.scrollTo(0, Number(this.homeScroll.y))
     });
   }
 };
@@ -205,10 +204,6 @@ export default {
 .v-content {
   margin-top: 56px;
   margin-bottom: 56px !important;
-  height: calc(100vh - 122px);
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-  width: 100vw;
 }
 .v-list-item__title {
   font-size: 18px !important;

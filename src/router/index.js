@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
@@ -55,22 +57,15 @@ const routes = [
 ];
 
 export const router = new VueRouter({
-  mode: "history",
   base: process.env.BASE_URL,
-  // scrollBehavior (to, from, savedPosition) {
-  //   if (savedPosition) {
-  //     return savedPosition
-  //   } else {
-  //     if( to.name === 'BookDescription' ) {
-  //       return { x: 0, y: 0 };
-  //     }
-
-  //     if( to.name === 'ArticleContent' ) {
-  //       return { x: 0, y: 0 } 
-  //     }
-      
-  //   }
-  // },
+  scrollBehavior (to, from, savedPosition) {
+    if( to.name === 'BookDescription' || to.name === 'ArticleContent' ) {
+      return { x: 0, y: 0 };
+    }
+    if (savedPosition) {
+      return savedPosition
+    }
+  },
   routes
 });
 

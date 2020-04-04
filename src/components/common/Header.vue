@@ -9,7 +9,7 @@
     <v-navigation-drawer v-model="drawer" width="85%" app>
       <v-list-item dark class="left-drawer-header" style="height:100px;">
         <v-list-item-avatar tile>
-          <img src="../../assets/img/logo/sidebar-logo.png" />
+          <img :src="`${publicPath}img/logo/sidebar-logo.png`" />
         </v-list-item-avatar>
         <v-list-item-content>
           <v-list-item-title class="subtitle">
@@ -55,7 +55,8 @@ export default {
       { text: "About Us", icon: "mdi-information-outline" },
       { text: "Notifications", icon: "mdi-bell-outline" }
       // { text: "Help", icon: "mdi-help-circle-outline" }
-    ]
+    ],
+    publicPath: process.env.BASE_URL,
   }),
 
   computed: {
@@ -73,15 +74,20 @@ export default {
       if (key === 0 || key === 1) {
         if (this.user.status.loggedIn === true) {
           this.resetConfig();
-          window.location.reload();
+          window.location.reload(true);
+          return;
         } else {
           this.$router.push("/");
-          window.location.reload();
+          window.location.reload(true);
+          return;
         }
       }
 
-      key === 2 ? this.$router.push("/about") : "";
-      key === 3 ? this.$router.push("/notifications") : "";
+      if( key === 2 ) {
+        this.$router.push("/about")
+      } else if( key === 3 ) {
+        this.$router.push("/notifications")
+      }
     }
   }
 };

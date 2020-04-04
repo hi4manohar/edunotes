@@ -3,7 +3,7 @@
     <Header pagetitle="Books & Notes" />
     <v-content
       class="pt-0"
-      v-scroll:#scroll-target="onScroll"
+      v-scroll="onScroll"
       id="scroll-target"
     >
       <v-container fluid>
@@ -22,13 +22,13 @@
         </div>
 
         <div class="item-container" v-else>
-          <v-row>
+          <v-row v-if="booksList">
             <v-col cols="6" v-for="(item, index) in booksList" :key="index">
               <router-link :to="'/books/' + item.ID">
                 <v-card height="170px">
                   <div class="img-container" style="height:90px;">                    
                       <v-img
-                        :src="item.guid"
+                        :src="item.guid ? item.guid : ''"
                         width="100%"
                         max-height="90px"
                         class="mx-auto"
@@ -91,10 +91,10 @@ export default {
       setHomeScroll: "scroll/setHomeScroll"
     }),
 
-    onScroll(e) {
+    onScroll() {
       this.setHomeScroll({
         component: "books",
-        axis: { x: 0, y: e.target.scrollTop }
+        axis: { x: 0, y: window.scrollY }
       });
     }
   },
@@ -109,8 +109,7 @@ export default {
 
   mounted() {
     this.$nextTick(() => {
-      this.container = document.getElementById("scroll-target");
-      this.container.scrollTop = Number(this.homeScroll.y);
+      window.scrollTo(0, Number(this.homeScroll.y))
     });
   },
 
