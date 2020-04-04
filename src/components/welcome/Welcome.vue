@@ -14,13 +14,21 @@
         hide-delimiter-background
         interval="4000"
       >
-        <v-carousel-item v-for="(item, i) in items" :key="i" :src="API_URL + '' + item.src">
+        <v-carousel-item
+          v-for="(item, i) in items"
+          :key="i"
+          :src="API_URL + '' + item.src"
+        >
         </v-carousel-item>
       </v-carousel>
 
       <v-btn fixed block color="primary" @click="showBoard">Get Started</v-btn>
       <v-overlay :value="overlays" opacity="0.02">
-        <v-progress-circular color="blue" indeterminate size="32"></v-progress-circular>
+        <v-progress-circular
+          color="blue"
+          indeterminate
+          size="32"
+        ></v-progress-circular>
       </v-overlay>
     </div>
   </v-app>
@@ -28,7 +36,7 @@
 
 <script>
 import * as appConfig from "../../config/index.config";
-import { welcomeService } from '../../service/welcome.service';
+import { welcomeService } from "../../service/welcome.service";
 import { mapActions } from "vuex";
 export default {
   name: "Welcome",
@@ -52,7 +60,7 @@ export default {
       let welcomeContent = await welcomeService.getWelcomeData();
       this.items = welcomeContent.data;
       this.overlays = false;
-    } catch(err) {
+    } catch (err) {
       this.showerror(err);
     }
   }

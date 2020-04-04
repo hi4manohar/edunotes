@@ -1,11 +1,7 @@
 <template>
   <v-app>
     <Header pagetitle="Books & Notes" />
-    <v-content
-      class="pt-0"
-      v-scroll="onScroll"
-      id="scroll-target"
-    >
+    <v-content class="pt-0" v-scroll="onScroll" id="scroll-target">
       <v-container fluid>
         <div class="skloader" v-if="skloader.loading">
           <v-list-item v-for="n in 3" :key="n" class="pa-0">
@@ -26,13 +22,13 @@
             <v-col cols="6" v-for="(item, index) in booksList" :key="index">
               <router-link :to="'/books/' + item.ID">
                 <v-card height="170px">
-                  <div class="img-container" style="height:90px;">                    
-                      <v-img
-                        :src="item.guid ? item.guid : ''"
-                        width="100%"
-                        max-height="90px"
-                        class="mx-auto"
-                      >
+                  <div class="img-container" style="height:90px;">
+                    <v-img
+                      :src="item.guid ? item.guid : ''"
+                      width="100%"
+                      max-height="90px"
+                      class="mx-auto"
+                    >
                       <template v-slot:placeholder>
                         <v-row
                           class="fill-height ma-0"
@@ -109,7 +105,7 @@ export default {
 
   mounted() {
     this.$nextTick(() => {
-      window.scrollTo(0, Number(this.homeScroll.y))
+      window.scrollTo(0, Number(this.homeScroll.y));
     });
   },
 

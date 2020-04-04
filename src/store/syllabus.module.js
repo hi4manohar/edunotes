@@ -14,10 +14,10 @@ const actions = {
             if (json.status === true) {
               param.data = json.data;
 
-              if( param.data.length > 0 ) {
+              if (param.data.length > 0) {
                 commit("savesyllabusArticleList", param);
               } else {
-                dispatch("alert/error", 'No Chapters Found', { root: true });
+                dispatch("alert/error", "No Chapters Found", { root: true });
               }
               resolve(param.data);
             } else {
@@ -36,61 +36,55 @@ const actions = {
   },
 
   async getArticleByChapter({ dispatch, commit }, param) {
-
-    return new Promise((resolve) => {
-
+    return new Promise(resolve => {
       if (param && param.chaptername) {
         try {
           articleService.getArticleByChapter(param).then(json => {
-
             if (json.status === true) {
               param.data = json.data;
-              if( param.data.length > 0 ) {
+              if (param.data.length > 0) {
                 commit("saveChapterArticle", param);
                 resolve(param.data);
               } else {
-                dispatch("alert/error", 'No Chapters Found', { root: true });
+                dispatch("alert/error", "No Chapters Found", { root: true });
               }
             } else {
               dispatch("alert/error", json.msg, { root: true });
             }
             resolve(null);
-
           });
-          
         } catch (err) {
           dispatch("alert/error", err, { root: true });
-          resolve(null)
+          resolve(null);
         }
       } else {
         dispatch("alert/error", "Invalid Subject", { root: true });
         resolve(null);
       }
-
-    })
-    
+    });
   },
 
-  async changeactiveArticle({commit}, type) {
-    commit('changeactiveArticle', type)
+  async changeactiveArticle({ commit }, type) {
+    commit("changeactiveArticle", type);
   }
 };
 const mutations = {
   savesyllabusArticleList(state, param) {
     state.syllabusArticleList[param.subject] = param.data;
   },
-  
+
   saveChapterArticle(state, param) {
-    state.chapterArticle[param.chaptername] = param.data
+    state.chapterArticle[param.chaptername] = param.data;
   },
 
   changeactiveArticle(state, type) {
-    state.activeArticle = type === 'in' ? state.activeArticle + 1 : state.activeArticle -1;
+    state.activeArticle =
+      type === "in" ? state.activeArticle + 1 : state.activeArticle - 1;
   }
 };
 
 const getters = {
-  getchapterArticle: (state) => (chaptername) => {
+  getchapterArticle: state => chaptername => {
     return state.chapterArticle[chaptername];
   }
 };

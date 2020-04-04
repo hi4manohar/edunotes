@@ -64,9 +64,7 @@ function getclasslist() {
     axios
       .get(appConfig.API_URL + "start/getclasslist")
       .then(function(response) {
-
-        if( response.status === 200 ) {
-
+        if (response.status === 200) {
           if (response.data.status === true) {
             resolve({
               status: true,
@@ -76,7 +74,7 @@ function getclasslist() {
             reject(response.data.msg);
           }
         } else {
-          reject('No Content Found');
+          reject("No Content Found");
         }
       })
       .catch(function(error) {

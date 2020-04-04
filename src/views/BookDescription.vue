@@ -40,7 +40,10 @@
         <br />
         <div class="class-article ml-2">
           <h3 class="mb-0">{{ bookDescription.post_title }}</h3>
-          <div class="mb-3 mt-3 book-description" v-html="bookDescription.post_content"></div>
+          <div
+            class="mb-3 mt-3 book-description"
+            v-html="bookDescription.post_content"
+          ></div>
         </div>
         <!-- if file type pdf -->
         <v-list-item
@@ -52,9 +55,9 @@
             <v-list-item-title class="subtitle-2">{{
               item.post_title
             }}</v-list-item-title>
-            <v-list-item-subtitle
-              style="line-height: 1.5;"
-            >{{ item.post_content }}</v-list-item-subtitle>
+            <v-list-item-subtitle style="line-height: 1.5;">{{
+              item.post_content
+            }}</v-list-item-subtitle>
           </v-list-item-content>
           <v-list-item-icon title="view file">
             <a
@@ -159,7 +162,8 @@ export default {
   white-space: pre-wrap;
   line-height: 0.8;
 }
-.v-list-item__title, .v-list-item__subtitle {
+.v-list-item__title,
+.v-list-item__subtitle {
   white-space: normal;
 }
 </style>

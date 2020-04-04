@@ -56,7 +56,7 @@ export default {
       { text: "Notifications", icon: "mdi-bell-outline" }
       // { text: "Help", icon: "mdi-help-circle-outline" }
     ],
-    publicPath: process.env.BASE_URL,
+    publicPath: process.env.BASE_URL
   }),
 
   computed: {
@@ -83,10 +83,10 @@ export default {
         }
       }
 
-      if( key === 2 ) {
-        this.$router.push("/about")
-      } else if( key === 3 ) {
-        this.$router.push("/notifications")
+      if (key === 2) {
+        this.$router.push("/about");
+      } else if (key === 3) {
+        this.$router.push("/notifications");
       }
     }
   }

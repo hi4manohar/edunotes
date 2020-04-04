@@ -144,7 +144,7 @@ function getArticleByChapter(param) {
         }
       })
       .then(function(response) {
-        if( response.status === 200 ) {
+        if (response.status === 200) {
           if (response.data.status === true) {
             resolve({
               status: true,
@@ -154,7 +154,7 @@ function getArticleByChapter(param) {
             reject(response.data.msg);
           }
         } else {
-          reject('No Data Found');
+          reject("No Data Found");
         }
       })
       .catch(function(error) {

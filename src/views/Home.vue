@@ -2,7 +2,11 @@
   <div class="home">
     <Welcome v-if="welcome" v-on:changesteps="changeComponentStatus" />
     <ChooseBoard v-if="chooseboard" v-on:changesteps="changeComponentStatus" />
-    <ChooseClass v-if="chooseclass" :board="board" v-on:changesteps="changeComponentStatus" />
+    <ChooseClass
+      v-if="chooseclass"
+      :board="board"
+      v-on:changesteps="changeComponentStatus"
+    />
   </div>
 </template>
 
@@ -19,7 +23,7 @@ export default {
     chooseboard: false,
     welcome: true,
     chooseclass: false,
-    board: null,
+    board: null
   }),
   components: {
     Welcome,
@@ -32,21 +36,18 @@ export default {
   methods: {
     changeComponentStatus(val, data) {
       if (val === "chooseboard") {
-
         this.chooseboard = true;
         this.welcome = false;
         this.chooseclass = false;
       } else if (val === "welcome") {
-
         this.chooseboard = false;
         this.welcome = true;
         this.chooseclass = false;
       } else if (val === "chooseclass") {
-
         this.chooseboard = false;
         this.welcome = false;
         this.chooseclass = true;
-        this.board = data ? data.board : null
+        this.board = data ? data.board : null;
       }
     }
   },

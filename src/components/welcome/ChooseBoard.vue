@@ -9,15 +9,22 @@
       </v-toolbar>
       <v-list three-line>
         <template v-for="item in items">
-          <v-list-item :key="item.name" class="mb-2" @click="showClass(item.slug)">
+          <v-list-item
+            :key="item.name"
+            class="mb-2"
+            @click="showClass(item.slug)"
+          >
             <v-list-item-avatar>
               <v-img :src="iconFullPath + '' + item.slug + '.jpg'"></v-img>
             </v-list-item-avatar>
 
             <v-list-item-content>
-              <v-list-item-title v-html="item.name" class="font-weight-bold"></v-list-item-title>
+              <v-list-item-title
+                v-html="item.name"
+                class="font-weight-bold"
+              ></v-list-item-title>
               <v-list-item-subtitle
-              style="line-height: 1.5;"
+                style="line-height: 1.5;"
                 v-html="item.description"
               ></v-list-item-subtitle>
             </v-list-item-content>
@@ -25,7 +32,11 @@
         </template>
       </v-list>
       <v-overlay :value="overlays" opacity="0.02">
-        <v-progress-circular color="blue" indeterminate size="32"></v-progress-circular>
+        <v-progress-circular
+          color="blue"
+          indeterminate
+          size="32"
+        ></v-progress-circular>
       </v-overlay>
     </div>
   </v-app>
@@ -33,7 +44,7 @@
 
 <script>
 import * as appConfig from "../../config/index.config";
-import { welcomeService } from '../../service/welcome.service';
+import { welcomeService } from "../../service/welcome.service";
 import { mapActions } from "vuex";
 
 export default {
@@ -43,10 +54,9 @@ export default {
     items: {},
     overlays: true,
     API_URL: appConfig.API_URL,
-    iconFullPath: appConfig.API_URL + 'uploads/static/images/bordicon/'
+    iconFullPath: appConfig.API_URL + "uploads/static/images/bordicon/"
   }),
   methods: {
-
     ...mapActions({
       showerror: "alert/error"
     }),
@@ -56,17 +66,16 @@ export default {
     },
     showClass(board) {
       this.$emit("changesteps", "chooseclass", {
-        'board': board
+        board: board
       });
     },
     async loadBoard() {
-
       try {
         let boardList = await welcomeService.getBoardList();
         this.items = boardList.data;
         this.overlays = false;
         console.log(this.items);
-      } catch(err) {
+      } catch (err) {
         this.overlays = false;
         this.showerror(err);
       }

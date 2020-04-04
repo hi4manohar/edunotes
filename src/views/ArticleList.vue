@@ -2,11 +2,7 @@
   <v-app>
     <div v-show="!articleContent">
       <Header pagetitle="Read Article" />
-      <v-content
-        class="pt-0"
-        v-scroll="onScroll"
-        id="scroll-target"
-      >
+      <v-content class="pt-0" v-scroll="onScroll" id="scroll-target">
         <div class="skloader" v-if="skloader.loading">
           <v-list-item v-for="n in 3" :key="n" class="pa-0">
             <v-list-item-content>
@@ -192,10 +188,10 @@ export default {
       this.transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
     }
   },
-  mounted() {    
+  mounted() {
     // this.skloader.loading = false;
     this.$nextTick(() => {
-      window.scrollTo(0, Number(this.homeScroll.y))
+      window.scrollTo(0, Number(this.homeScroll.y));
     });
   }
 };

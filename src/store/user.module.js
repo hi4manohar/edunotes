@@ -18,10 +18,9 @@ const state = token_id
 const actions = {
   async setConfig({ dispatch, commit }, param) {
     try {
-
-      if( param.board && param.class ) {
+      if (param.board && param.class) {
         var configStatus = await userService.setConfig(param);
-      } else throw('Preference not configured');
+      } else throw "Preference not configured";
       if (configStatus.status === true) {
         localStorage.setItem("token_id", configStatus.data);
         commit("loginSuccess", configStatus.data);

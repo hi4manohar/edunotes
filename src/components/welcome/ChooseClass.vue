@@ -26,7 +26,10 @@
             </div>
 
             <v-list-item-content class="pl-2">
-              <v-list-item-title v-html="item.name" class="font-weight-bold"></v-list-item-title>
+              <v-list-item-title
+                v-html="item.name"
+                class="font-weight-bold"
+              ></v-list-item-title>
               <v-list-item-subtitle
                 style="line-height: 1.5;"
                 v-html="item.description"
@@ -36,7 +39,11 @@
         </template>
       </v-list>
       <v-overlay :value="overlays" opacity="0">
-        <v-progress-circular color="blue" indeterminate size="32"></v-progress-circular>
+        <v-progress-circular
+          color="blue"
+          indeterminate
+          size="32"
+        ></v-progress-circular>
       </v-overlay>
     </div>
   </v-app>
@@ -44,20 +51,20 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
-import { welcomeService } from '../../service/welcome.service';
+import { welcomeService } from "../../service/welcome.service";
 import * as appConfig from "../../config/index.config";
 
 export default {
   name: "chooseboard",
-  props: ['board'],
+  props: ["board"],
   data: () => ({
     items: [],
     overlays: true,
     API_URL: appConfig.API_URL,
-    iconFullPath: appConfig.API_URL + 'uploads/static/images/classicon/'
+    iconFullPath: appConfig.API_URL + "uploads/static/images/classicon/"
   }),
   created() {
-    this.board ? '' : this.$emit("changesteps", "chooseboard");
+    this.board ? "" : this.$emit("changesteps", "chooseboard");
     this.loadClass();
   },
   methods: {
@@ -82,14 +89,14 @@ export default {
         let classList = await welcomeService.getclasslist();
         this.items = classList.data;
         this.overlays = false;
-      } catch(err) {
+      } catch (err) {
         this.overlays = false;
         this.showerror(err);
       }
     }
   },
   computed: {
-    ...mapState('user', ['token_id'])
+    ...mapState("user", ["token_id"])
   }
 };
 </script>
