@@ -61,11 +61,9 @@
           </v-list-item-content>
           <v-list-item-icon title="view file">
             <a
-              :href="
-                'https://docs.google.com/gview?embedded=true&url=' +
-                  item.reflink
-              "
+              :href="`${pdfViewBaseUrl}${item.reflink}`"
               target="_blank"
+              @click="openPdfLink($event, `${pdfViewBaseUrl}${item.reflink}`)"
             >
               <v-btn icon color="primary"
                 ><v-icon>mdi-file-pdf-outline </v-icon></v-btn
@@ -73,7 +71,10 @@
             </a>
           </v-list-item-icon>
           <v-list-item-icon class="mx-0">
-            <a :href="item.reflink" target="_blank">
+            <a 
+              :href="item.reflink" 
+              target="_blank"
+            >
               <v-btn icon color="success"><v-icon>mdi-download</v-icon></v-btn>
             </a>
           </v-list-item-icon>
@@ -85,9 +86,11 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import { cordovaMixin } from "../mixins";
 
 export default {
   name: "BookDescription",
+  mixins: [cordovaMixin],
   data() {
     return {
       items: [
@@ -97,7 +100,8 @@ export default {
       ],
       right: null,
       bookDescription: null,
-      attachmentDetails: []
+      attachmentDetails: [],
+      pdfViewBaseUrl: 'https://docs.google.com/gview?embedded=true&url='
     };
   },
 

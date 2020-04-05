@@ -1,20 +1,28 @@
+/* eslint-disable */
+
 export const cordovaMixin = {
   methods: {
     deviceReady() {
-      document.addEventListener("backbutton", this.onBackKeyDown, false);
+      window.open = cordova.InAppBrowser.open;
+      console.log('redady');
     },
 
-    onBackKeyDown(e) {
-      e.preventDefault();
+    openPdfLink(e, strUrl) {
+
+      if( process.env.CORDOVA_PLATFORM === 'android' ) {
+        e.preventDefault();
+        window.open(strUrl, '_blank', 'location=yes')
+      }
     }
   },
 
   mounted() {
-    let self = this;
-    this.$nextTick(() => {
-      document.addEventListener("deviceReady", self.deviceReady, false);
-      document.addEventListener("backbutton", self.onBackKeyDown, false);
-      // document.getElementsByTagName('body')[0].addEventListener("click", self.onBackKeyDown);
-    });
+
+    if( process.env.CORDOVA_PLATFORM === 'android' ) {
+      let self = this;
+      this.$nextTick(() => {
+        document.addEventListener("deviceReady", self.deviceReady, false);
+      });
+    }
   }
-};
+}
