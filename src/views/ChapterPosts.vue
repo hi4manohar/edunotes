@@ -11,8 +11,18 @@
     </v-app-bar>
 
     <v-content class="pa-4">
-      <v-container v-if="articles">
+      <v-container>
+        <div class="skloader" v-if="!articles">
+          <v-skeleton-loader
+            :loading="true"
+            transition-group="none"
+            height="388"
+            type="article, card-avatar"
+          >
+          </v-skeleton-loader>
+        </div>
         <div
+          v-else
           class="description"
           v-html="articles[activeArticle].post_content"
         ></div>
@@ -30,7 +40,7 @@
         <v-btn
           icon
           :disabled="activeArticle ? false : true"
-          @click="changeactiveArticle('de')"
+          @click="changeArticleMethod('de')"
         >
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
@@ -41,7 +51,7 @@
         <v-btn
           icon
           :disabled="activeArticle + 1 === articles.length ? true : false"
-          @click="changeactiveArticle('in')"
+          @click="changeArticleMethod('in')"
         >
           <v-icon>mdi-chevron-right</v-icon>
         </v-btn>
@@ -85,7 +95,12 @@ export default {
     ...mapActions({
       getArticleByChapter: "syllabus/getArticleByChapter",
       changeactiveArticle: "syllabus/changeactiveArticle"
-    })
+    }),
+
+    changeArticleMethod(type) {
+      this.changeactiveArticle(type);
+      window.scrollTo(0, 0);
+    }
   },
 
   created() {
@@ -99,8 +114,13 @@ export default {
       });
     } else {
       this.articles = this.chapterArticle[this.chaptername];
-      console.log(this.articles);
     }
+  },
+
+  mounted() {
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
   }
 };
 </script>

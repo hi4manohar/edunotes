@@ -21,8 +21,8 @@
       <div v-show="!skloader.loading">
         <div class="mt-12">
           <p class="text-center ma-0 pa-2">
-            For webkit browsers, you can use the following pseudo elements to
-            customize the
+            Start Learning step by step with chapters that you need to prepare.
+            You can browse and read chapters you want anytime, anywhere.
           </p>
         </div>
         <div class="slidercon">
@@ -40,7 +40,7 @@
                 <v-card
                   :elevation="5"
                   width="260"
-                  height="350"
+                  height="385"
                   overflow-x="hidden"
                 >
                   <v-img height="170" :src="item.guid"></v-img>
@@ -49,13 +49,12 @@
                     :title="item.post_title"
                     >{{ item.post_title }}</v-card-title
                   >
-                  <v-card-text class="pb-0">
-                    <div class="subtitle-1" title="Real Number">
-                      Real Number
-                    </div>
+                  <v-card-text
+                    class="pb-0"
+                    style="max-height: 110px; overflow:hidden;"
+                  >
                     <div
                       class="subtitle-text"
-                      style="max-height: 65px"
                       v-html="trimmedData(item.post_content)"
                     ></div>
                   </v-card-text>
@@ -107,7 +106,7 @@ export default {
       return str
         .replace(/(<([^>]+)>)/gi, "")
         .trim()
-        .substring(0, 100);
+        .substring(0, 200);
     },
 
     onScroll(e) {
@@ -172,11 +171,10 @@ export default {
 ::-webkit-scrollbar {
   width: 0px;
 }
-.subtitle-1,
 .title-text {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: block;
+  word-break: break-word;
+  height: 84px;
+  overflow: hidden;
 }
 </style>

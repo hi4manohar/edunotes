@@ -1,8 +1,13 @@
+var publicPath = "";
+if (process.env.CORDOVA_PLATFORM === "android") {
+  publicPath = "";
+} else {
+  publicPath = process.env.NODE_ENV === "production" ? "/" : "/";
+}
+
 module.exports = {
   transpileDependencies: ["vuetify"],
-  publicPath: "",
-  // for web production
-  //publicPath: process.env.NODE_ENV === "production" ? "/edunotes/" : "/",
+  publicPath: publicPath,
   productionSourceMap: false,
 
   pwa: {

@@ -9,7 +9,7 @@ export const cordovaMixin = {
 
     openPdfLink(e, strUrl) {
 
-      if( process.env.CORDOVA_PLATFORM === 'android' ) {
+      if(window.hasOwnProperty("cordova")){
         e.preventDefault();
         window.open(strUrl, '_blank', 'location=yes')
       }
@@ -18,7 +18,7 @@ export const cordovaMixin = {
 
   mounted() {
 
-    if( process.env.CORDOVA_PLATFORM === 'android' ) {
+    if(window.hasOwnProperty("cordova")){
       let self = this;
       this.$nextTick(() => {
         document.addEventListener("deviceReady", self.deviceReady, false);

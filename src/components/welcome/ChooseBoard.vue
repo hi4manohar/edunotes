@@ -72,12 +72,16 @@ export default {
     async loadBoard() {
       try {
         let boardList = await welcomeService.getBoardList();
-        this.items = boardList.data;
+
+        if (boardList.status === true) {
+          this.items = boardList.data;
+        } else {
+          this.showerror(boardList.msg);
+        }
         this.overlays = false;
-        console.log(this.items);
       } catch (err) {
         this.overlays = false;
-        this.showerror(err);
+        this.showerror(err.message);
       }
     }
   },

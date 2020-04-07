@@ -18,17 +18,14 @@ function getWelcomeData() {
             data: response.data.data
           });
         } else {
-          reject({
+          resolve({
             status: false,
             msg: response.data.msg
           });
         }
       })
       .catch(function(error) {
-        reject({
-          status: false,
-          msg: error
-        });
+        reject(error);
       });
   });
 }
