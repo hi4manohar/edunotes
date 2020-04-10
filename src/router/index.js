@@ -70,6 +70,12 @@ export const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+
+  //check if width of the display
+  if (window.innerWidth > 991) {
+    return false;
+  }
+
   // redirect to login page if not logged in and trying to access a restricted page
   const publicPages = ["/"];
   const authRequired = !publicPages.includes(to.path);

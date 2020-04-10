@@ -130,3 +130,15 @@ ul li {
 .v-toolbar__title{
   font-size: 1.1rem !important;
 }
+
+.welcome-carousel .mdi-circle {
+  font-size: 10px!important;
+  color: black !important;
+}
+.welcome-carousel .v-item--active {
+  color: black !important;
+}
+.welcome-carousel .v-carousel__controls__item {
+  margin: 0;
+  padding: 0;
+}

@@ -155,7 +155,7 @@ export default {
       return str
         .replace(/(<([^>]+)>)/gi, "")
         .trim()
-        .substring(0, 100);
+        .substring(0, 200);
     },
     loadArticles(type) {
       if (type === "initial") {

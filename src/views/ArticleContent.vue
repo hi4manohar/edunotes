@@ -14,11 +14,11 @@
           </div>
           <div class="article" v-else>
             <div class="title">
-              <h2>{{ article.title }}</h2>
+              <h2 class="ps-4">{{ article.title }}</h2>
               <hr />
             </div>
 
-            <div class="book-img pa-2">
+            <div class="book-img pa-2" v-if="article.guid">
               <v-img
                 :src="article.guid"
                 width="100%"

@@ -9,16 +9,25 @@
       </p>
       <v-carousel
         cycle
-        height="300"
+        height="375"
         :show-arrows="false"
-        hide-delimiter-background
+        :hide-delimiter-background="true"
         interval="4000"
+        :hide-delimiters="delimiter"
+        :continuous="true"
+        class="welcome-carousel"
       >
-        <v-carousel-item
-          v-for="(item, i) in items"
-          :key="i"
-          :src="API_URL + '' + item.src"
-        >
+        <v-carousel-item v-for="(item, i) in items" :key="i">
+          <v-img
+            :src="API_URL + '' + item.src"
+            height="190"
+            position="0px 25px"
+            overflow="hidden"
+          ></v-img>
+          <div class="slider-content mt-5 ms-2">
+            <h2>{{ item.title }}</h2>
+            <p style="font-size:14px;">{{ item.subtitle }}</p>
+          </div>
         </v-carousel-item>
       </v-carousel>
 
@@ -44,7 +53,9 @@ export default {
     return {
       overlays: true,
       API_URL: appConfig.API_URL,
-      items: false
+      items: false,
+      windowHeight: window.innerHeight,
+      delimiter: window.innerHeight > 600 ? false : true
     };
   },
   methods: {

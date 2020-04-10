@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.fresherscode.edunotes" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.fresherscode.edunotes" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Edunotes</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        An App to download your study notes at ease.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
+    <author email="hi4manohar@gmail.com" href="https://fresherscode.com">
         Edunotes Team
     </author>
     <!-- this hook will point your config.xml to the DevServer on Serve -->
@@ -51,6 +51,9 @@
         <preference name="SplashScreenSpinnerColor" value="white" />
         <preference name="SplashMaintainAspectRatio" value="true"/>
         <preference name="Orientation" value="portrait" />
+
+        <preference name="android-minSdkVersion" value="19" />
+        <preference name="android-targetSdkVersion" value="28" />
 
 
     </platform>

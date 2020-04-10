@@ -7,6 +7,8 @@ Vue.config.productionTip = false;
 import vuetify from "./plugins/vuetify";
 import "./registerServiceWorker";
 
+import "./plugins/tiptap-vuetify";
+
 new Vue({
   router,
   store,

@@ -1,0 +1,11 @@
+{
+  "android": {
+    "release": {
+      "keystore": "J:\\Desktop\\edunotes.keystore",
+      "storePassword": "keytool890",
+      "alias": "edunotes",
+      "password": "keytool890",
+      "keystoreType": ""
+    }
+  }
+}
