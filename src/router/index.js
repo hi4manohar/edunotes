@@ -6,13 +6,14 @@ import Home from "../views/Home.vue";
 import ArticleList from "../views/ArticleList";
 import ArticleContent from "../views/ArticleContent";
 import Question from "../views/Question";
-import Encyclopedia from "../views/Encyclopedia";
+import Answers from "../views/Answers";
 import Notes from "../views/Notes";
 import Syllabus from "../views/Syllabus";
 import SubjectPosts from "../views/SubjectPosts";
 import Notifications from "../views/Notifications";
 import ChapterPosts from "../views/ChapterPosts";
 import BookDescription from "../views/BookDescription";
+import WriteAnswer from "../views/WriteAnswer";
 import Notfound from "../views/Notfound";
 import Pdf from "../views/Pdf";
 
@@ -23,37 +24,38 @@ const routes = [
   {
     path: "/about",
     name: "About",
-    component: () => import("../views/About.vue")
+    component: () => import("../views/About.vue"),
   },
   { path: "/home/:viewtype", name: "Welcome", component: Home },
   { path: "/content", name: "ArticleList", component: ArticleList },
   {
     path: "/post/:articleid",
     name: "ArticleContent",
-    component: ArticleContent
+    component: ArticleContent,
   },
   { path: "/question", name: "Question", component: Question },
   {
     path: "/books/:bookid",
     name: "BookDescription",
-    component: BookDescription
+    component: BookDescription,
   },
-  { path: "/encyclopedia", name: "Encyclopedia", component: Encyclopedia },
+  { path: "/answers", name: "Answers", component: Answers },
   { path: "/notes", name: "Notes", component: Notes },
   { path: "/syllabus", name: "Syllabus", component: Syllabus },
   {
     path: "/syllabus/:subjects",
     name: "SubjectPosts",
-    component: SubjectPosts
+    component: SubjectPosts,
   },
   {
     path: "/syllabus/chapters/:chapter",
     name: "ChapterPosts",
-    component: ChapterPosts
+    component: ChapterPosts,
   },
+  { path: "/write/:quid", name: "WriteAnswer", component: WriteAnswer },
   { path: "/notifications", name: "Notifications", component: Notifications },
   { path: "/pdf", name: "Pdf", component: Pdf },
-  { path: "*", name: "404", component: Notfound }
+  { path: "*", name: "404", component: Notfound },
 ];
 
 export const router = new VueRouter({
