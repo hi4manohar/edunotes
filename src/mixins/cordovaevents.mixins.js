@@ -13,6 +13,14 @@ export const cordovaMixin = {
         e.preventDefault();
         window.open(strUrl, '_blank', 'location=yes')
       }
+    },
+
+    isCordova() {
+      if( window.hasOwnProperty("cordova") ) {
+        return true;
+      } else {
+        return false;
+      }
     }
   },
 

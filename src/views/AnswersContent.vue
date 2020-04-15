@@ -13,8 +13,18 @@
             </v-skeleton-loader>
           </div>
           <div class="article" v-else>
-            <div class="title">
-              <h2 class="ps-4">{{ article.title }}</h2>
+            <div class="title ps-4">
+              <h2 class="mb-0">{{ article.title }}</h2>
+              <v-chip
+                v-for="(tag, tagindex) in article.tags.split(',')"
+                :key="tagindex"
+                class="mr-2"
+                color="pink"
+                x-small
+                label
+                text-color="white"
+              >{{ tag }}
+              </v-chip>
               <hr />
             </div>
 
@@ -39,8 +49,7 @@
                 </template>
               </v-img>
             </div>
-
-            <div class="description pa-4" v-html="wpautop(article.content)"></div>
+            <div class="description px-4" v-html="wpautop(article.content)"></div>
           </div>
         </v-container>
       </v-content>
@@ -55,13 +64,14 @@
   </v-app>
 </template>
 <script>
+/* eslint-disable */
 import { mapState, mapActions } from "vuex";
 import { contentMixin } from "../mixins";
 
 export default {
   props: ["content"],
   mixins: [contentMixin],
-  name: "ArticleContent",
+  name: "AnswersContent",
   data: () => ({
     skloader: {
       loading: true
@@ -70,31 +80,32 @@ export default {
   }),
   computed: {
     ...mapState({
-      names: state => state.article.articleList
+      names: state => state.answers.answersList
     })
   },
   methods: {
     ...mapActions({
-      loadArticleList: "article/articleList"
+      loadAnswersList: "answers/answersList"
     }),
 
-    loadArticle(id) {
+    loadAnswer(id) {
       if (this.names[id]) {
         this.article = {
           title: this.names[id].post_title,
           content: this.names[id].post_content,
+          tags: this.names[id].tags,
           guid: this.names[id].guid
         };
       } else {
         console.log("hello");
       }
     },
-    showListArticle() {
-      this.$emit("showListArticle", true);
+    showListAnswers() {
+      this.$emit("showListAnswers", true);
     }
   },
   created() {
-    this.loadArticle(this.$route.params.articleid);
+    this.loadAnswer(this.$route.params.articleid);
   },
   mounted() {
     this.$nextTick(function() {

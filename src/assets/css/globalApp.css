@@ -3,9 +3,6 @@
 p {
 	font-size: 15px;
 }
-h2 {
-	font-size: 24px
-}
 
 a {
   text-decoration: none;
@@ -16,35 +13,42 @@ img{
   height: auto;
 }
 h2 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom:10px;
+  line-height: 1.6;
+}
+h3 {
   font-size: 20px;
   font-weight: 500;
   margin-bottom:10px;
-}
-h3 {
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom:10px;
+  line-height: 1.6;
 }
 h3 span{
-  font-size: 16px !important;
+  font-size: 18px !important;
   font-weight: 500;
   margin-bottom:10px;
+  line-height: 1.6;
 }
 h4 {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 500;
+  line-height: 1.6;
 }
 h5 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
+  line-height: 1.6;
 }
 h6 {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
+  line-height: 1.6;
 }
 p {
   font-size: 12px;
   color: #616161;
+  line-height: 1.25;
 }
 .description{
   line-height: 1.5em;
@@ -61,17 +65,6 @@ p {
   font-size: 16px;
 }
 
-.description h2 {
-  margin-bottom: 22px;
-  margin-top: 22px;
-  line-height: 1.25em;
-}
-
-.description h1 {
-  margin-bottom: 24px;
-  line-height: 1.25em;
-  font-size:  26px;
-}
 .description img {
   margin-top: 22px;
   max-width:  100%

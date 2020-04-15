@@ -25,7 +25,7 @@
         :class="[active === 'enc' ? 'active' : '']"
         ripple
       >
-        <v-icon>mdi-book-open-page-variant </v-icon>Answer
+        <v-icon>mdi-book-open-page-variant </v-icon>Answers
       </div>
     </router-link>
 

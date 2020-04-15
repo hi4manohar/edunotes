@@ -7,6 +7,7 @@ import ArticleList from "../views/ArticleList";
 import ArticleContent from "../views/ArticleContent";
 import Question from "../views/Question";
 import Answers from "../views/Answers";
+import AnswersContent from "../views/AnswersContent";
 import Notes from "../views/Notes";
 import Syllabus from "../views/Syllabus";
 import SubjectPosts from "../views/SubjectPosts";
@@ -24,38 +25,44 @@ const routes = [
   {
     path: "/about",
     name: "About",
-    component: () => import("../views/About.vue"),
+    component: () => import("../views/About.vue")
   },
   { path: "/home/:viewtype", name: "Welcome", component: Home },
   { path: "/content", name: "ArticleList", component: ArticleList },
   {
     path: "/post/:articleid",
     name: "ArticleContent",
-    component: ArticleContent,
+    component: ArticleContent
   },
   { path: "/question", name: "Question", component: Question },
   {
     path: "/books/:bookid",
     name: "BookDescription",
-    component: BookDescription,
+    component: BookDescription
   },
   { path: "/answers", name: "Answers", component: Answers },
+  {
+    path: "/answers/:articleid",
+    name: "AnswersContent",
+    component: AnswersContent,
+    meta: { transition: "flip-x" }
+  },
   { path: "/notes", name: "Notes", component: Notes },
   { path: "/syllabus", name: "Syllabus", component: Syllabus },
   {
     path: "/syllabus/:subjects",
     name: "SubjectPosts",
-    component: SubjectPosts,
+    component: SubjectPosts
   },
   {
     path: "/syllabus/chapters/:chapter",
     name: "ChapterPosts",
-    component: ChapterPosts,
+    component: ChapterPosts
   },
   { path: "/write/:quid", name: "WriteAnswer", component: WriteAnswer },
   { path: "/notifications", name: "Notifications", component: Notifications },
   { path: "/pdf", name: "Pdf", component: Pdf },
-  { path: "*", name: "404", component: Notfound },
+  { path: "*", name: "404", component: Notfound }
 ];
 
 export const router = new VueRouter({
@@ -86,7 +93,6 @@ router.beforeEach((to, from, next) => {
   if (authRequired && !loggedIn) {
     return next("/");
   }
-
   next();
 });
 

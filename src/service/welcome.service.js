@@ -4,7 +4,8 @@ import * as appConfig from "../config/index.config";
 export const welcomeService = {
   getWelcomeData,
   getBoardList,
-  getclasslist
+  getclasslist,
+  getappdetails
 };
 
 function getWelcomeData() {
@@ -75,6 +76,30 @@ function getclasslist() {
         }
       })
       .catch(function(error) {
+        reject(error);
+      });
+  });
+}
+
+function getappdetails() {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(appConfig.API_URL + "start/app_details")
+      .then(function (response) {
+        if (response.status === 200) {
+          if (response.data.status === true) {
+            resolve({
+              status: true,
+              data: response.data.data
+            });
+          } else {
+            reject(response.data.msg);
+          }
+        } else {
+          reject("No Content Found");
+        }
+      })
+      .catch(function (error) {
         reject(error);
       });
   });

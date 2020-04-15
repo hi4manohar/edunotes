@@ -11,6 +11,10 @@ const state = {
     subjectPosts: {
       x: 0,
       y: 0
+    },
+    answers: {
+      x: 0,
+      y: 0
     }
   }
 };

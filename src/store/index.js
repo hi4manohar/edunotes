@@ -5,6 +5,7 @@ import { user } from "./user.module";
 import { scroll } from "./scroll.module";
 import { alert } from "./alert.module";
 import { syllabus } from "./syllabus.module";
+import { answers } from "./answers.module";
 
 Vue.use(Vuex);
 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     user,
     scroll,
     alert,
-    syllabus
+    syllabus,
+    answers
   }
 });

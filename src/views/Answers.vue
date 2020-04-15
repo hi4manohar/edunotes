@@ -1,192 +1,161 @@
 <template>
   <v-app>
-    <div v-show="!articleContent">
-      <Header pagetitle="Read Article" />
+    <div>
+      <Header pagetitle="Questions and Answers" />
       <v-content class="pt-0" v-scroll="onScroll" id="scroll-target">
-        <div class="skloader" v-if="skloader.loading">
-          <v-list-item v-for="n in 3" :key="n" class="pa-0">
-            <v-list-item-content>
-              <v-skeleton-loader
-                :loading="skloader.loading"
-                :transition="skloader.transition"
-                :height="skloader.height"
-                :type="skloader.type"
-              >
-              </v-skeleton-loader>
-            </v-list-item-content>
-          </v-list-item>
-        </div>
-        <v-container class="px-0 py-2 blue-grey lighten-5 " v-else>
-          <div
-            class="list-card mb-2"
-            v-for="(name, index) in names"
-            :key="index"
-          >
-            <v-card
-              class="mx-auto elevation-0"
-              :class="{ active: activeIndex === index }"
-            >
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-subtitle class="mb-2" style="font-size:13px"
-                    >Physics</v-list-item-subtitle
-                  >
-                  <v-list-item-title
-                    class="subtitle-2 text-wrap"
-                    v-text="name.post_title"
-                  ></v-list-item-title>
-                  <v-list-item-subtitle style="font-size:12px"
-                    >Posted on:
-                    {{ name.post_date | dateFormat }}</v-list-item-subtitle
-                  >
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider></v-divider>
-              <v-card-actions class="px-3">
-                <router-link to="write/123">
-                  <v-btn
-                    text
-                    small
-                    class="text-capitalize font-weight-regular"
-                    @click="changewriteComponent()"
-                  >
-                    <v-icon>mdi-pencil-plus</v-icon>
-                    <span style="font-size:14px;" class="pl-2"
-                      >Write Answer</span
-                    >
-                  </v-btn>
-                </router-link>
-                <v-btn
-                  text
-                  small
-                  class="text-capitalize font-weight-regular"
-                  @click="$router.push('/post/' + index)"
+        <skloader :loading="loading" v-if="loading" />
+        <v-container class="px-0 py-2 blue-grey lighten-5" v-else>
+          <div class="list-card mb-2">
+            <v-card class="mx-auto elevation-0">
+              <v-list-item @click="getdrawer($event)" class="text-center">
+                <v-list-item-title class="subtitle-2 tex-center text-wrap"
+                  >{{ activeTagsName }}
+                  <v-icon>mdi-menu-down </v-icon></v-list-item-title
                 >
-                  <v-icon>mdi-eye </v-icon>
-                  <span style="font-size:14px;" class="pl-2">View Answer</span>
-                </v-btn>
-                <v-spacer></v-spacer>
-                <v-menu offset-y>
-                  <template v-slot:activator="{ on }">
-                    <v-btn icon v-on="on">
-                      <v-icon>mdi-share-variant</v-icon>
-                    </v-btn>
-                  </template>
-                  <v-list>
-                    <v-list-item v-for="(item, index) in items" :key="index">
-                      <v-list-item-title class="subtitle-2">
-                        <v-icon>{{ item.icon }}</v-icon> {{ item.title }}
-                      </v-list-item-title>
-                    </v-list-item>
-                  </v-list>
-                </v-menu>
-              </v-card-actions>
+              </v-list-item>
             </v-card>
           </div>
+
+          <AnswersContentContainer :names="names" />
+
           <div style="text-align:center;" class="ma-4">
             <v-btn
-              :disabled="!articleCount"
+              :disabled="!answersCount"
               :loading="loadMore"
-              @click="loadArticles('page')"
+              @click="loadAnswers('page')"
               depressed
               small
               color="primary text-center"
-              >Load More</v-btn
-            >
+              >Load More
+            </v-btn>
           </div>
         </v-container>
       </v-content>
       <Footer active="enc" />
+      <v-navigation-drawer
+        v-model="drawer"
+        v-if="drawer"
+        fixed
+        bottom
+        temporary
+      >
+        <TagNavigation
+          v-on:toggleTagsParent="toggleTags"
+        />
+      </v-navigation-drawer>
     </div>
   </v-app>
 </template>
 <script>
 import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
+import TagNavigation from "@/components/answers/TagNavigation.vue";
+import AnswersContentContainer from "@/components/answers/AnswersContentContainer.vue";
+import skloader from "@/components/answers/skloader.vue";
 import { mapState, mapActions } from "vuex";
-import { skloaderMixin, cordovaMixin } from "../mixins";
-import { momentFilter } from "../filters";
 
 export default {
-  name: "Encyclopedia",
-  mixins: [skloaderMixin, cordovaMixin],
-  filters: {
-    dateFormat: momentFilter.dateFormat
-  },
+  name: "Answers",
   data: () => ({
-    articleContent: false,
-    articleData: {},
-    activeIndex: false,
     loadMore: false,
-    items: [
-      { icon: "mdi-whatsapp", title: "Whatsapp" },
-      { icon: "mdi-facebook", title: "Facebook" }
-    ],
-    page: 0,
-    writeComponent: false
+    drawer: false,
+    group: null,
+    loading: true
   }),
   components: {
     Header,
-    Footer
+    Footer,
+    TagNavigation,
+    AnswersContentContainer,
+    skloader
   },
   computed: {
     ...mapState({
-      names: state => state.article.articleList,
-      homeScroll: state => state.scroll.component.home,
-      articleCount: state => state.article.articleCount
-    })
-  },
-  methods: {
-    ...mapActions({
-      loadArticleList: "article/articleList",
-      setHomeScroll: "scroll/setHomeScroll"
+      names: state => state.answers.answersList,
+      homeScroll: state => state.scroll.component.answers,
+      answersCount: state => state.answers.answersCount,
+      answersTags: state => state.answers.answersTags,
+      activePage: state => state.answers.activePage,
+      activeTagsIndex: state => state.answers.activeTagsIndex
     }),
-    onScroll() {
-      this.setHomeScroll({
-        component: "home",
-        axis: { x: 0, y: window.scrollY }
-      });
-    },
-    changewriteComponent() {
-      this.writeComponent = true;
-    },
-    trimmedData(str) {
-      if (str === null || str === "") return false;
-      else str = str.toString();
-      return str
-        .replace(/(<([^>]+)>)/gi, "")
-        .trim()
-        .substring(0, 200);
-    },
-    loadArticles(type) {
-      if (type === "initial") {
-        if (!this.names.length) {
-          this.loadArticleList({ page: this.page });
+    activeTagsName: {
+      get() {
+        if (
+          this.activeTagsIndex >= 0 &&
+          this.answersTags[this.activeTagsIndex]
+        ) {
+          return this.answersTags[this.activeTagsIndex].tags;
         } else {
-          this.skloader.loading = false;
+          return "All Tags";
         }
-      } else if (type === "page") {
-        this.page = this.page + 1;
-        this.loadMore = true;
-        this.loadArticleList({ page: this.page });
+      },
+      set() {
+        return "";
       }
     }
   },
+  methods: {
+    ...mapActions({
+      loadAnswersList: "answers/answersList",
+      setHomeScroll: "scroll/setHomeScroll",
+      saveActiveTagsIndex: "answers/saveActiveTagsIndex",
+      setActivePage: "answers/setActivePage"
+    }),
+    onScroll() {
+      this.setHomeScroll({
+        component: "answers",
+        axis: { x: 0, y: window.scrollY }
+      });
+    },
+    loadAnswers(type) {
+      if (type === "initial") {
+        this.loadAnswersList({
+          page: this.activePage,
+          tags:
+            this.answersTags.length > 0 && this.activeTagsIndex >= 0
+              ? this.answersTags[this.activeTagsIndex].slugs
+              : ""
+        });
+      } else if (type === "page") {
+        this.setActivePage(this.activePage + 1);
+        this.loadMore = true;
+        this.loadAnswersList({
+          page: this.activePage,
+          tags:
+            this.activeTagsIndex >= 0 && this.activeTagsIndex !== false
+              ? this.answersTags[this.activeTagsIndex].slugs
+              : ""
+        });
+      }
+    },
+    toggleTags(index) {
+      this.setActivePage(0);
+      this.saveActiveTagsIndex(index);
+      this.drawer = false;
+      this.loading = true;
+      this.loadAnswers("initial");
+    },
+    getdrawer() {
+      this.drawer = true;
+    },
+    setDrawer() {
+      console.log("umm");
+      this.drawer = false;
+    }
+  },
   created() {
-    this.loadArticles("initial");
+    if (!this.names.length > 0) {
+      this.loadAnswers("initial");
+    } else {
+      this.loading = false;
+    }
   },
   watch: {
     names: function(n) {
       if (n.length > 0) {
         this.loadMore = false;
-        this.skloader.loading = false;
+        this.loading = false;
       }
-    },
-
-    $route(to, from) {
-      const toDepth = to.path.split("/").length;
-      const fromDepth = from.path.split("/").length;
-      this.transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
     }
   },
   mounted() {
@@ -208,9 +177,6 @@ export default {
 .v-list-item__subtitle {
   font-size: 11px;
   max-width: 90%;
-}
-.skloader .v-list-item__content {
-  padding: 0px;
 }
 h4 {
   font-size: 16px !important;
