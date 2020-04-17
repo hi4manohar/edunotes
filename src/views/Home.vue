@@ -23,7 +23,7 @@ import UpgradeApp from "@/components/welcome/UpgradeApp.vue";
 // import { welcomeService } from "../../service/welcome.service";
 import { mapState, mapActions } from "vuex";
 import { cordovaMixin } from "../mixins";
-import { welcomeService } from '../service/welcome.service';
+import { welcomeService } from "../service/welcome.service";
 
 export default {
   name: "Home",
@@ -70,21 +70,21 @@ export default {
 
     async loadApp() {
       //get app version
-      if( this.isCordova() ) {
+      if (this.isCordova()) {
         try {
           let appdetails = await welcomeService.getappdetails();
 
-          if( appdetails.data.maintanance_mode === true ) {
+          if (appdetails.data.maintanance_mode === true) {
             this.welcome = false;
             this.maintainance = true;
-            return 'maintainance';
+            return "maintainance";
           }
-          if( appdetails.data.published_app_version != appConfig.appVersion ) {
+          if (appdetails.data.published_app_version != appConfig.appVersion) {
             this.welcome = false;
             this.upgradeapp = true;
-            return 'upgradeapp';
+            return "upgradeapp";
           }
-        } catch(err) {
+        } catch (err) {
           this.showerror(err);
         }
       }
@@ -92,14 +92,13 @@ export default {
       if (this.token_id) {
         return this.$router.push("/content");
       }
-
     }
   },
   created() {
     this.loadApp();
 
-    if( this.$route.query.start && this.$route.query.start === 'board' ) {
-      this.changeComponentStatus('chooseboard');
+    if (this.$route.query.start && this.$route.query.start === "board") {
+      this.changeComponentStatus("chooseboard");
     }
   }
 };

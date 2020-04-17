@@ -73,12 +73,11 @@
 </template>
 
 <script>
-
 import { momentFilter } from "../../filters";
 
 export default {
   props: ["names"],
-  name: 'AnswersContentContainer',
+  name: "AnswersContentContainer",
   filters: {
     dateFormat: momentFilter.dateFormat
   },
@@ -98,7 +97,7 @@ export default {
         .substring(0, 100);
     }
   }
-}
+};
 </script>
 
 <style scoped>

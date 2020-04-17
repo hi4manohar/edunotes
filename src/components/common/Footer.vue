@@ -15,7 +15,8 @@
         :class="[active === 'question' ? 'active' : '']"
         ripple
       >
-        <v-icon size="25">mdi-book-multiple</v-icon><span class="caption">Books/Notes</span>
+        <v-icon size="25">mdi-book-multiple</v-icon
+        ><span class="caption">Books/Notes</span>
       </div>
     </router-link>
 
@@ -25,7 +26,8 @@
         :class="[active === 'enc' ? 'active' : '']"
         ripple
       >
-        <v-icon size="25">mdi-book-open-page-variant </v-icon><span class="caption">Answers</span>
+        <v-icon size="25">mdi-book-open-page-variant </v-icon
+        ><span class="caption">Answers</span>
       </div>
     </router-link>
 
@@ -35,7 +37,8 @@
         :class="[active === 'syllabus' ? 'active' : '']"
         ripple
       >
-        <v-icon size="25">mdi-timer</v-icon><span class="caption">Syllabus</span>
+        <v-icon size="25">mdi-timer</v-icon
+        ><span class="caption">Syllabus</span>
       </div>
     </router-link>
   </v-footer>

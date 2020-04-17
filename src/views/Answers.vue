@@ -39,9 +39,7 @@
         bottom
         temporary
       >
-        <TagNavigation
-          v-on:toggleTagsParent="toggleTags"
-        />
+        <TagNavigation v-on:toggleTagsParent="toggleTags" />
       </v-navigation-drawer>
     </div>
     <AskRating />

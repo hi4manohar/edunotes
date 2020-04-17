@@ -5,14 +5,14 @@ const state = {
   answersCount: true,
   answersTags: [],
   activeTagsIndex: false,
-  activePage: 0,
+  activePage: 0
 };
 const actions = {
   async answersList({ dispatch, commit }, param) {
     try {
       let json = await answersService.answersList(param);
       if (json.status === true) {
-        if( json.data.length == 0 ) {
+        if (json.data.length == 0) {
           dispatch("alert/error", "No any answers found", { root: true });
         }
         json.page = param.page;
@@ -25,10 +25,10 @@ const actions = {
       dispatch("alert/error", err.msg, { root: true });
     }
   },
-  saveActiveTagsIndex({commit}, index) {
+  saveActiveTagsIndex({ commit }, index) {
     commit("setActiveTags", index);
   },
-  setActivePage({commit}, page) {
+  setActivePage({ commit }, page) {
     commit("saveActivePage", page);
   }
 };
@@ -52,12 +52,12 @@ const mutations = {
   },
 
   saveActivePage(state, page) {
-      state.activePage = page;
+    state.activePage = page;
   }
 };
 export const answers = {
-    namespaced: true,
-    state,
-    actions,
-    mutations
+  namespaced: true,
+  state,
+  actions,
+  mutations
 };

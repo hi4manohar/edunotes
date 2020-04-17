@@ -27,10 +27,10 @@ const actions = {
       try {
         let json = await articleService.subjectList();
         if (json.status === true) {
-
-          if( json.data.length == 0 ) {
-
-            dispatch("alert/error", 'No chapters found to Read.', { root: true });
+          if (json.data.length == 0) {
+            dispatch("alert/error", "No chapters found to Read.", {
+              root: true
+            });
           }
           commit("saveSubject", json.data);
         }

@@ -15,14 +15,13 @@
 </template>
 
 <script>
-
 import { skloaderMixin, cordovaMixin } from "../../mixins";
 
 export default {
-    name: 'skloader',
-    props: ['loading'],
-    mixins: [skloaderMixin, cordovaMixin]
-}
+  name: "skloader",
+  props: ["loading"],
+  mixins: [skloaderMixin, cordovaMixin]
+};
 </script>
 
 <style scoped>

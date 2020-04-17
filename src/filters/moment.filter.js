@@ -1,6 +1,6 @@
 import moment from "moment";
 
-const todayDate = moment().format('YYYY-MM-DD');
+const todayDate = moment().format("YYYY-MM-DD");
 
 export const momentFilter = {
   dateFormat(date, format = null) {
@@ -10,14 +10,16 @@ export const momentFilter = {
   },
 
   getCurrentDate() {
-    return moment().format('YYYY-MM-DD');
+    return moment().format("YYYY-MM-DD");
   },
 
   diffTodayDate(pdate) {
-    return moment(todayDate).diff(moment(pdate), 'days');
+    return moment(todayDate).diff(moment(pdate), "days");
   },
 
   getTwoDaysLater() {
-    return moment().add(2, 'days').format('YYYY-MM-DD');
+    return moment()
+      .add(2, "days")
+      .format("YYYY-MM-DD");
   }
 };

@@ -10,36 +10,36 @@
     <v-content class="pa-4">
       <h4 class="title">Edunotes Built in India for Students</h4>
       <ul>
-        <li class="subtitle-2">We help you to quick find explanation about any topic at our digital platform.</li>
+        <li class="subtitle-2">
+          We help you to quick find explanation about any topic at our digital
+          platform.
+        </li>
         <li class="subtitle-2">A Step by step guide to your study</li>
-        <li class="subtitle-2">Structured content help you to be on track with your course timeline</li>
+        <li class="subtitle-2">
+          Structured content help you to be on track with your course timeline
+        </li>
         <li class="subtitle-2">Your study notes by thousands of users</li>
         <li class="subtitle-2">Be it anywhere, start learning right away</li>
       </ul>
       <p class="body-2">Send Us Your Feedback on info@edunotes.com</p>
-        <p class="subtitle-2">Loved this App? Rate 5 star on the Playstore, Help us by Sharing to Your Friends.</p>
+      <p class="subtitle-2">
+        Loved this App? Rate 5 star on the Playstore, Help us by Sharing to Your
+        Friends.
+      </p>
 
-        <div class="text-center">
+      <div class="text-center">
+        <v-btn color="primary" class="ma-2 white--text" @click="shareAppLik()">
+          Share
+          <v-icon right dark>mdi-share</v-icon>
+        </v-btn>
 
-          <v-btn
-            color="primary"
-            class="ma-2 white--text"
-            @click="shareAppLik()"
-          >
-            Share
-            <v-icon right dark>mdi-share</v-icon>
+        <a :href="marketUrl">
+          <v-btn color="primary" class="ma-2 white--text">
+            Rate
+            <v-icon right dark>mdi-star</v-icon>
           </v-btn>
-
-          <a :href="marketUrl">
-            <v-btn
-              color="primary"
-              class="ma-2 white--text"
-            >
-              Rate
-              <v-icon right dark>mdi-star</v-icon>
-            </v-btn>
-          </a>
-        </div>
+        </a>
+      </div>
       <v-footer
         color="white lighten-1"
         class="d-flex justify-space-between py-2 px-5"
@@ -47,8 +47,9 @@
       >
         <div class="text-center col col-12">
           <v-btn icon color="pink">
-            <v-icon class="mr-2">mdi-heart</v-icon><span class="text-capitalize">Edunotes {{ appVersion }}</span>
-          </v-btn>        
+            <v-icon class="mr-2">mdi-heart</v-icon
+            ><span class="text-capitalize">Edunotes {{ appVersion }}</span>
+          </v-btn>
         </div>
       </v-footer>
     </v-content>
@@ -56,7 +57,6 @@
 </template>
 
 <script>
-
 import * as appConfig from "../config/index.config";
 import { cordovaMixin } from "../mixins";
 

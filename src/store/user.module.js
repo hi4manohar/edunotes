@@ -35,7 +35,7 @@ const actions = {
 
   async resetConfig({ commit }) {
     // localStorage.clear();
-    localStorage.removeItem('token_id');
+    localStorage.removeItem("token_id");
     commit("resetLogin");
     router.push("/");
   }
@@ -45,14 +45,18 @@ const mutations = {
     state.status = { loggedIn: true };
     state.token_id = token_id;
 
-    if (localStorage.getItem("configUser") && JSON.parse(localStorage.getItem("configUser"))) {
-
-      console.log('No Action');
-
+    if (
+      localStorage.getItem("configUser") &&
+      JSON.parse(localStorage.getItem("configUser"))
+    ) {
+      console.log("No Action");
     } else {
-      localStorage.setItem('configUser', JSON.stringify({
-        installation_date: momentFilter.getCurrentDate()
-      }))
+      localStorage.setItem(
+        "configUser",
+        JSON.stringify({
+          installation_date: momentFilter.getCurrentDate()
+        })
+      );
     }
   },
 

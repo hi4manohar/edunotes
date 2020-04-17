@@ -41,7 +41,10 @@
               </v-img>
             </div>
 
-            <div class="description pa-4" v-html="wpautop(article.content)"></div>
+            <div
+              class="description pa-4"
+              v-html="wpautop(article.content)"
+            ></div>
           </div>
         </v-container>
       </v-content>

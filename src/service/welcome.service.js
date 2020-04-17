@@ -85,7 +85,7 @@ function getappdetails() {
   return new Promise((resolve, reject) => {
     axios
       .get(appConfig.API_URL + "start/app_details")
-      .then(function (response) {
+      .then(function(response) {
         if (response.status === 200) {
           if (response.data.status === true) {
             resolve({
@@ -99,7 +99,7 @@ function getappdetails() {
           reject("No Content Found");
         }
       })
-      .catch(function (error) {
+      .catch(function(error) {
         reject(error);
       });
   });

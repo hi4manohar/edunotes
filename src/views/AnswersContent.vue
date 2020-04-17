@@ -23,7 +23,7 @@
                 x-small
                 label
                 text-color="white"
-              >{{ tag }}
+                >{{ tag }}
               </v-chip>
               <hr />
             </div>
@@ -50,7 +50,10 @@
                 </template>
               </v-img>
             </div>
-            <div class="description px-4" v-html="wpautop(article.content)"></div>
+            <div
+              class="description px-4"
+              v-html="wpautop(article.content)"
+            ></div>
           </div>
         </v-container>
       </v-content>

@@ -44,9 +44,10 @@
                     </v-img>
                   </div>
                   <v-list-item three-line min-height="73px">
-                    <v-list-item-subtitle 
-                    class="subtitle-1 pb-0" 
-                    style="max-width: 150px;">
+                    <v-list-item-subtitle
+                      class="subtitle-1 pb-0"
+                      style="max-width: 150px;"
+                    >
                       {{ item.post_title }}
                     </v-list-item-subtitle>
                   </v-list-item>

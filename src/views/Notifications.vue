@@ -14,7 +14,6 @@
     >
       <v-row align="center">
         <v-col>
-
           <v-icon size="60">mdi-bell</v-icon>
           <p class="subtitle-1 mt-2">You're All Cautch Up</p>
         </v-col>
