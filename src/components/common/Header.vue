@@ -8,14 +8,14 @@
 
     <v-navigation-drawer v-model="drawer" width="85%" app>
       <v-list-item dark class="left-drawer-header" style="height:100px;">
-        <v-list-item-avatar tile>
+        <v-list-item-avatar tile height="45px" width="45px">
           <img :src="`${publicPath}img/logo/sidebar-logo.png`" />
         </v-list-item-avatar>
         <v-list-item-content>
-          <v-list-item-title class="subtitle">
+          <v-list-item-title class="subtitle-1">
             Edunotes
           </v-list-item-title>
-          <v-list-item-subtitle class="caption">
+          <v-list-item-subtitle class="subtitle">
             A simplest learning Platform
           </v-list-item-subtitle>
         </v-list-item-content>
@@ -28,7 +28,7 @@
               <v-icon v-text="item.icon"></v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title v-text="item.text"></v-list-item-title>
+              <v-list-item-title class="subtitle-1" v-text="item.text"></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
@@ -74,6 +74,7 @@ export default {
       if (key === 0 || key === 1) {
         if (this.user.status.loggedIn === true) {
           this.resetConfig();
+          this.$router.push("/?start=board");
           window.location.reload(true);
           return;
         } else {

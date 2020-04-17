@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar absolute color="deep-orange lighten-5" elevate-on-scroll>
+    <v-app-bar fixed color="deep-orange lighten-5" elevate-on-scroll>
       <v-btn icon light @click="$router.go(-1)">
         <v-icon color="grey darken-2">mdi-arrow-left</v-icon>
       </v-btn>
@@ -8,28 +8,61 @@
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-content class="pa-4">
-      <v-img
-        src="https://picsum.photos/510/300?random"
-        aspect-ratio="1.7"
-      ></v-img>
-      <br />
-      <h4 class="text-center">Edunotes built in india for student</h4>
+      <h4 class="title">Edunotes Built in India for Students</h4>
       <ul>
-        <li>We Started Groww in 2020 to make student simplest way to learn.</li>
-        <li>We are providing all boards syllabus.</li>
-        <li>Also Providing notes of your nearby teachers.</li>
+        <li class="subtitle-2">We help you to quick find explanation about any topic at our digital platform.</li>
+        <li class="subtitle-2">A Step by step guide to your study</li>
+        <li class="subtitle-2">Structured content help you to be on track with your course timeline</li>
+        <li class="subtitle-2">Your study notes by thousands of users</li>
+        <li class="subtitle-2">Be it anywhere, start learning right away</li>
       </ul>
-      <p>Send Us Your Feedback On info@edunotes.com</p>
-      <br />
-      <br />
-      <p class="text-center"><strong>v1.00</strong><br />App Updated</p>
+      <p class="body-2">Send Us Your Feedback on info@edunotes.com</p>
+        <p class="subtitle-2">Loved this App? Rate 5 star on the Playstore, Help us by Sharing to Your Friends.</p>
+
+        <div class="text-center">
+
+          <v-btn
+            color="primary"
+            class="ma-2 white--text"
+            @click="shareAppLik()"
+          >
+            Share
+            <v-icon right dark>mdi-share</v-icon>
+          </v-btn>
+
+          <a :href="marketUrl">
+            <v-btn
+              color="primary"
+              class="ma-2 white--text"
+            >
+              Rate
+              <v-icon right dark>mdi-star</v-icon>
+            </v-btn>
+          </a>
+        </div>
+      <v-footer
+        color="white lighten-1"
+        class="d-flex justify-space-between py-2 px-5"
+        fixed
+      >
+        <div class="text-center col col-12">
+          <v-btn icon color="pink">
+            <v-icon class="mr-2">mdi-heart</v-icon><span class="text-capitalize">Edunotes {{ appVersion }}</span>
+          </v-btn>        
+        </div>
+      </v-footer>
     </v-content>
   </v-app>
 </template>
 
 <script>
+
+import * as appConfig from "../config/index.config";
+import { cordovaMixin } from "../mixins";
+
 export default {
   name: "About",
+  mixins: [cordovaMixin],
   data() {
     return {
       items: [
@@ -37,7 +70,9 @@ export default {
         { title: "Photos", icon: "mdi-image" },
         { title: "About", icon: "mdi-help-box" }
       ],
-      right: null
+      right: null,
+      marketUrl: appConfig.appMarketUrl,
+      appVersion: appConfig.appVersion
     };
   }
 };
@@ -45,8 +80,7 @@ export default {
 <style scoped="">
 .v-content {
   margin-top: 56px;
-  height: calc(100vh - 56px);
-  overflow: auto;
   padding: 10px;
+  margin-bottom: 56px !important;
 }
 </style>

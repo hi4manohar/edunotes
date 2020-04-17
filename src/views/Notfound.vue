@@ -6,9 +6,9 @@
   >
     <v-row align="center">
       <v-col>
-        <h1 class="display-2 primary--text">Whoops, 404</h1>
+        <h1 class="display-1 primary--text">Whoops, 404</h1>
 
-        <p>The page you were looking for does not exist</p>
+        <p class="subtitle-1">The page you were looking for does not exist</p>
 
         <router-link to="/">
           <v-btn color="primary" outlined>

@@ -43,11 +43,13 @@
                       </template>
                     </v-img>
                   </div>
-                  <v-card-title
-                    class="subtitle-2 d-inline-block pb-0"
-                    style="max-width: 150px; max-height: 60px; word-break: break-word;"
-                    >{{ item.post_title }}</v-card-title
-                  >
+                  <v-list-item three-line min-height="73px">
+                    <v-list-item-subtitle 
+                    class="subtitle-1 pb-0" 
+                    style="max-width: 150px;">
+                      {{ item.post_title }}
+                    </v-list-item-subtitle>
+                  </v-list-item>
                 </v-card>
               </router-link>
             </v-col>

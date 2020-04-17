@@ -20,7 +20,7 @@
       </div>
       <div v-show="!skloader.loading">
         <div class="mt-12">
-          <p class="text-center ma-0 pa-2">
+          <p class="text-center ma-0 pa-2 font-weight-bold">
             Start Learning step by step with chapters that you need to prepare.
             You can browse and read chapters you want anytime, anywhere.
           </p>

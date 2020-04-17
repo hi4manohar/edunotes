@@ -25,7 +25,7 @@
                   <div class="card-header" :style="{ background: getColor() }">
                     <span class="text--white">{{ index + 1 }}</span>
                   </div>
-                  <div class="card-footer">
+                  <div class="card-footer subtitle-1">
                     {{ subject.name }}
                   </div>
                 </v-card>

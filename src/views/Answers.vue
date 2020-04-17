@@ -44,6 +44,7 @@
         />
       </v-navigation-drawer>
     </div>
+    <AskRating />
   </v-app>
 </template>
 <script>
@@ -53,6 +54,7 @@ import TagNavigation from "@/components/answers/TagNavigation.vue";
 import AnswersContentContainer from "@/components/answers/AnswersContentContainer.vue";
 import skloader from "@/components/answers/skloader.vue";
 import { mapState, mapActions } from "vuex";
+import AskRating from "@/components/common/AskRating.vue";
 
 export default {
   name: "Answers",
@@ -67,7 +69,8 @@ export default {
     Footer,
     TagNavigation,
     AnswersContentContainer,
-    skloader
+    skloader,
+    AskRating
   },
   computed: {
     ...mapState({

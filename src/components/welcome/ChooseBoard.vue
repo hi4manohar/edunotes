@@ -3,7 +3,7 @@
     <div class="">
       <v-toolbar :elevation="0" class="mt-2">
         <v-icon @click="showHome" v-ripple>mdi-arrow-left</v-icon>
-        <h1 class="title pl-2">
+        <h1 class="title pl-2 mt-2">
           Choose Your <span class="font-weight-bold blue--text">Board</span>
         </h1>
       </v-toolbar>

@@ -26,7 +26,14 @@ const actions = {
     if (!state.subjectList.length) {
       try {
         let json = await articleService.subjectList();
-        if (json.status === true) commit("saveSubject", json.data);
+        if (json.status === true) {
+
+          if( json.data.length == 0 ) {
+
+            dispatch("alert/error", 'No chapters found to Read.', { root: true });
+          }
+          commit("saveSubject", json.data);
+        }
       } catch (err) {
         console.log("error", err);
         dispatch("alert/error", err.msg, { root: true });

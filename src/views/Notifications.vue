@@ -7,7 +7,20 @@
       <v-toolbar-title class="pl-1 subtitle-1">Notifications</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
-    <v-content justify="center">
+    <v-container
+      class="text-center"
+      fill-height
+      style="height: calc(100vh - 58px);"
+    >
+      <v-row align="center">
+        <v-col>
+
+          <v-icon size="60">mdi-bell</v-icon>
+          <p class="subtitle-1 mt-2">You're All Cautch Up</p>
+        </v-col>
+      </v-row>
+    </v-container>
+    <!-- <v-content justify="center">
       <v-card :elevation="0">
         <v-list two-line>
           <template v-for="(item, index) in items">
@@ -33,7 +46,7 @@
       </v-card>
       <br />
       <p class="text-center"><strong>v1.00</strong><br />App Updated</p>
-    </v-content>
+    </v-content> -->
   </v-app>
 </template>
 

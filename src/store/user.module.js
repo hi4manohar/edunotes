@@ -1,5 +1,6 @@
 import { userService } from "../service/index.service";
 import { router } from "../router/index";
+import { momentFilter } from "../filters";
 
 const token_id = localStorage.getItem("token_id");
 
@@ -33,7 +34,8 @@ const actions = {
   },
 
   async resetConfig({ commit }) {
-    localStorage.clear();
+    // localStorage.clear();
+    localStorage.removeItem('token_id');
     commit("resetLogin");
     router.push("/");
   }
@@ -42,6 +44,16 @@ const mutations = {
   loginSuccess(state, token_id) {
     state.status = { loggedIn: true };
     state.token_id = token_id;
+
+    if (localStorage.getItem("configUser") && JSON.parse(localStorage.getItem("configUser"))) {
+
+      console.log('No Action');
+
+    } else {
+      localStorage.setItem('configUser', JSON.stringify({
+        installation_date: momentFilter.getCurrentDate()
+      }))
+    }
   },
 
   resetLogin(state) {

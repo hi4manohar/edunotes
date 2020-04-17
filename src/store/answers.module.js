@@ -12,6 +12,9 @@ const actions = {
     try {
       let json = await answersService.answersList(param);
       if (json.status === true) {
+        if( json.data.length == 0 ) {
+          dispatch("alert/error", "No any answers found", { root: true });
+        }
         json.page = param.page;
         commit("saveAnswers", json);
       } else {

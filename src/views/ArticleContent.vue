@@ -24,6 +24,7 @@
                 width="100%"
                 max-height="200px"
                 class="mx-auto"
+                contain
               >
                 <template v-slot:placeholder>
                   <v-row

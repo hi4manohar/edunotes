@@ -96,7 +96,11 @@ export default {
     }
   },
   created() {
-    this.loadApp();    
+    this.loadApp();
+
+    if( this.$route.query.start && this.$route.query.start === 'board' ) {
+      this.changeComponentStatus('chooseboard');
+    }
   }
 };
 </script>
