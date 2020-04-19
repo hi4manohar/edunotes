@@ -25,7 +25,7 @@ const actions = {
       if (configStatus.status === true) {
         localStorage.setItem("token_id", configStatus.data);
         commit("loginSuccess", configStatus.data);
-        router.push("/content");
+        router.push("/homelist");
       }
     } catch (err) {
       dispatch("alert/error", err.msg);

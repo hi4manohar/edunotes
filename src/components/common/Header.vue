@@ -12,7 +12,7 @@
           <img :src="`${publicPath}img/logo/sidebar-logo.png`" />
         </v-list-item-avatar>
         <v-list-item-content>
-          <v-list-item-title class="subtitle-1">
+          <v-list-item-title class="subtitle-1 font-weight-medium">
             {{ brandName }}
           </v-list-item-title>
           <v-list-item-subtitle class="subtitle">
@@ -29,7 +29,7 @@
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title
-                class="subtitle-1"
+                class="subtitle"
                 v-text="item.text"
               ></v-list-item-title>
             </v-list-item-content>

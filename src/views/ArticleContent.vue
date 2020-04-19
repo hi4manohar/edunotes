@@ -50,7 +50,7 @@
       </v-content>
       <v-footer fixed class="font-weight-medium">
         <v-col class="text-center" cols="12">
-          <a @click="$router.go(-1)">
+          <a @click="$router.go(-1)" class="pa-4">
             <v-icon>mdi-close</v-icon>
           </a>
         </v-col>

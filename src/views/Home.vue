@@ -7,7 +7,6 @@
       :board="board"
       v-on:changesteps="changeComponentStatus"
     />
-    <HomeList v-if="homelist" />
     <Maintainance v-if="maintainance" />
     <UpgradeApp v-if="upgradeapp" />
   </div>
