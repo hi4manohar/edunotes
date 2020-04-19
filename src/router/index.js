@@ -3,6 +3,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import HomeList from "../views/HomeList.vue";
 import ArticleList from "../views/ArticleList";
 import ArticleContent from "../views/ArticleContent";
 import Question from "../views/Question";
@@ -27,6 +28,7 @@ const routes = [
     name: "About",
     component: () => import("../views/About.vue")
   },
+  { path: '/homelist', name: 'HomeList', component: HomeList },
   { path: "/home/:viewtype", name: "Welcome", component: Home },
   { path: "/content", name: "ArticleList", component: ArticleList },
   {

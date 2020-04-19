@@ -4,7 +4,7 @@
     class="d-flex justify-space-between py-2 px-5"
     fixed
   >
-    <router-link to="/content">
+    <router-link to="/homelist">
       <div class="footbtn" :class="[active === 'home' ? 'active' : '']" ripple>
         <v-icon size="25">mdi-home</v-icon><span class="caption">Home</span>
       </div>

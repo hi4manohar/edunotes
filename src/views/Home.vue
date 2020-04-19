@@ -7,6 +7,7 @@
       :board="board"
       v-on:changesteps="changeComponentStatus"
     />
+    <HomeList v-if="homelist" />
     <Maintainance v-if="maintainance" />
     <UpgradeApp v-if="upgradeapp" />
   </div>
@@ -30,7 +31,7 @@ export default {
   mixins: [cordovaMixin],
   data: () => ({
     chooseboard: false,
-    welcome: true,
+    welcome: false,
     chooseclass: false,
     maintainance: false,
     upgradeapp: false,
@@ -90,7 +91,10 @@ export default {
       }
 
       if (this.token_id) {
-        return this.$router.push("/content");
+        return this.$router.push("/homelist");
+      } else {
+        this.welcome = true;
+        return;
       }
     }
   },

@@ -5,7 +5,43 @@ export const cordovaMixin = {
   methods: {
     deviceReady() {
       window.open = cordova.InAppBrowser.open;
+      this.startPushNotf();
       console.log('redady');
+    },
+
+    startPushNotf() {
+      const push = PushNotification.init({
+        android: {
+        },
+        browser: {
+          pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+        },
+        ios: {
+          alert: "true",
+          badge: "true",
+          sound: "true"
+        },
+        windows: {}
+      });
+
+      push.on('registration', (data) => {
+        console.log('regdata', data);
+        // data.registrationId
+      });
+
+      push.on('notification', (data) => {
+        console.log('notdata', JSON.stringify(functor));
+        // data.message,
+        // data.title,
+        // data.count,
+        // data.sound,
+        // data.image,
+        // data.additionalData
+      });
+
+      push.on('error', (e) => {
+        // e.message
+      });
     },
 
     openPdfLink(e, strUrl) {
@@ -25,12 +61,12 @@ export const cordovaMixin = {
     },
 
     shareAppLik() {
-      var shareString = 'I recommend Edunotes app to study state board exams. Please download and share it using this link Android : ';
+      var shareString = `I recommend ${appConfig.brandName} app to study state board exams. Please download and share it using this link Android : `;
       if( this.isCordova() ) {
         // this is the complete list of currently supported params you can pass to the plugin (all optional)
         var options = {
           message: shareString, // not supported on some apps (Facebook, Instagram)
-          subject: 'Edunotes Recommendation', // fi. for email
+          subject: `${appConfig.brandName} Recommendation`, // fi. for email
           files: ['', ''], // an array of filenames either locally or remotely
           url: appConfig.appPlayUrl,
           chooserTitle: 'Pick an app', // Android only, you can override the default share sheet title
@@ -64,14 +100,11 @@ export const cordovaMixin = {
       }
     }
   },
-
-  mounted() {
-
-    if(window.hasOwnProperty("cordova")){
-      let self = this;
-      this.$nextTick(() => {
-        document.addEventListener("deviceReady", self.deviceReady, false);
-      });
+  
+  created() {
+    let self = this;
+    if( this.isCordova() ) {
+      document.addEventListener("deviceReady", self.deviceReady, false);
     }
   }
 }

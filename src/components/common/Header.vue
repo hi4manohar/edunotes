@@ -13,7 +13,7 @@
         </v-list-item-avatar>
         <v-list-item-content>
           <v-list-item-title class="subtitle-1">
-            Edunotes
+            {{ brandName }}
           </v-list-item-title>
           <v-list-item-subtitle class="subtitle">
             A simplest learning Platform
@@ -42,6 +42,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import * as appConfig from "../../config/index.config";
 
 export default {
   props: ["pagetitle"],
@@ -59,7 +60,8 @@ export default {
       { text: "Notifications", icon: "mdi-bell-outline" }
       // { text: "Help", icon: "mdi-help-circle-outline" }
     ],
-    publicPath: process.env.BASE_URL
+    publicPath: process.env.BASE_URL,
+    brandName: appConfig.brandName
   }),
 
   computed: {

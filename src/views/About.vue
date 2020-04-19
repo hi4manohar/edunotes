@@ -8,7 +8,7 @@
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-content class="pa-4">
-      <h4 class="title">Edunotes Built in India for Students</h4>
+      <h4 class="title">{{ brandName }} Built in India for Students</h4>
       <ul>
         <li class="subtitle-2">
           We help you to quick find explanation about any topic at our digital
@@ -48,7 +48,7 @@
         <div class="text-center col col-12">
           <v-btn icon color="pink">
             <v-icon class="mr-2">mdi-heart</v-icon
-            ><span class="text-capitalize">Edunotes {{ appVersion }}</span>
+            ><span class="text-capitalize">{{ brandName }} {{ appVersion }}</span>
           </v-btn>
         </div>
       </v-footer>
@@ -72,7 +72,8 @@ export default {
       ],
       right: null,
       marketUrl: appConfig.appMarketUrl,
-      appVersion: appConfig.appVersion
+      appVersion: appConfig.appVersion,
+      brandName: appConfig.brandName
     };
   }
 };

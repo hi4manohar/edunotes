@@ -7,6 +7,7 @@ export const appVersion = "1.0.2";
 export const appMarketUrl = "market://details?id=com.fresherscode.edunotes";
 export const appPlayUrl =
   "https://play.google.com/store/apps/details?id=com.fresherscode.edunotes";
+export const brandName = "Padhai Mantra";
 
 export const apiPath = "api/";
 

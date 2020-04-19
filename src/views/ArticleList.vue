@@ -99,7 +99,7 @@
           </div>
         </v-container>
       </v-content>
-      <Footer active="home" />
+      <Footer />
     </div>
   </v-app>
 </template>
