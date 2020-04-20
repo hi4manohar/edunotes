@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :class="$options.name">
     <v-app-bar fixed color="deep-orange lighten-5" elevate-on-scroll>
       <v-btn icon light @click="$router.go(-1)">
         <v-icon color="grey darken-2">mdi-arrow-left</v-icon>
@@ -21,7 +21,6 @@
         <li class="subtitle-2">Your study notes by thousands of users</li>
         <li class="subtitle-2">Be it anywhere, start learning right away</li>
       </ul>
-      <p class="body-2">Send Us Your Feedback on info@edunotes.com</p>
       <p class="subtitle-2">
         Loved this App? Rate 5 star on the Playstore, Help us by Sharing to Your
         Friends.

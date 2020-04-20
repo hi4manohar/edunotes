@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :class="$options.name">
     <Header pagetitle="Syllabus" />
     <v-content class="pt-0">
       <v-container>

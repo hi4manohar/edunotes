@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :class="$options.name">
     <v-app-bar fixed color="primary">
       <v-btn icon dark @click="$router.go(-1)">
         <v-icon>mdi-close</v-icon>

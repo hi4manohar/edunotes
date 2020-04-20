@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :class="$options.name">
     <v-app-bar fixed color="amber lighten-5" elevate-on-scroll>
       <v-btn icon light @click="$router.go(-1)">
         <v-icon color="grey darken-2">mdi-arrow-left</v-icon>

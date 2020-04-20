@@ -20,7 +20,7 @@
       </div>
     </router-link>
 
-    <router-link to="answers" ripple>
+    <router-link to="/answers" ripple>
       <div
         class="footbtn enc"
         :class="[active === 'enc' ? 'active' : '']"
@@ -31,7 +31,7 @@
       </div>
     </router-link>
 
-    <router-link to="syllabus">
+    <router-link to="/syllabus">
       <div
         class="footbtn"
         :class="[active === 'syllabus' ? 'active' : '']"

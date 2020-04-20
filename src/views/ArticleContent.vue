@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :class="$options.name">
     <div class="article-content">
       <v-content class="pt-0">
         <v-container>
@@ -16,29 +16,6 @@
             <div class="title">
               <h2 class="ps-4">{{ article.title }}</h2>
               <hr />
-            </div>
-
-            <div class="book-img pa-2" v-if="article.guid">
-              <v-img
-                :src="article.guid"
-                width="100%"
-                max-height="200px"
-                class="mx-auto"
-                contain
-              >
-                <template v-slot:placeholder>
-                  <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center"
-                  >
-                    <v-progress-circular
-                      indeterminate
-                      color="grey lighten-5"
-                    ></v-progress-circular>
-                  </v-row>
-                </template>
-              </v-img>
             </div>
 
             <div
@@ -115,11 +92,5 @@ export default {
 }
 .v-footer {
   box-shadow: 0px 0px 2px #888;
-}
-.book-img {
-  background: #eee;
-  border: 1px solid #ddd;
-  max-width: 400px;
-  margin: 0 auto;
 }
 </style>

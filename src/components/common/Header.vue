@@ -16,7 +16,7 @@
             {{ brandName }}
           </v-list-item-title>
           <v-list-item-subtitle class="subtitle">
-            A simplest learning Platform
+            A Free Learning Platform
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -56,8 +56,8 @@ export default {
     items: [
       { text: "Change Board", icon: "mdi-account-switch" },
       { text: "Change Class", icon: "mdi-account-cog-outline" },
-      { text: "About Us", icon: "mdi-information-outline" },
-      { text: "Notifications", icon: "mdi-bell-outline" }
+      { text: "Notifications", icon: "mdi-bell-outline" },
+      { text: "About Us", icon: "mdi-information-outline" }
       // { text: "Help", icon: "mdi-help-circle-outline" }
     ],
     publicPath: process.env.BASE_URL,

@@ -2,7 +2,7 @@
   <v-app>
     <div class="py-10 px-5 text-center">
       <h1 class="title">
-        Welcome To <span class="font-weight-bold blue--text">EduNotes</span>
+        Welcome To <span class="font-weight-bold blue--text">{{ brandName }}</span>
       </h1>
       <p class="caption mb-10">
         A Helping hand to study effectively.
@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import * as appConfig from "../../config/index.config";
 import { welcomeService } from "../../service/welcome.service";
+import * as appConfig from "../../config/index.config";
 import { mapActions } from "vuex";
 export default {
   name: "Welcome",
@@ -55,7 +55,8 @@ export default {
       API_URL: appConfig.API_URL,
       items: false,
       windowHeight: window.innerHeight,
-      delimiter: window.innerHeight > 600 ? false : true
+      delimiter: window.innerHeight > 600 ? false : true,
+      brandName: appConfig.brandName
     };
   },
   methods: {

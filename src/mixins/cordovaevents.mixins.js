@@ -30,7 +30,8 @@ export const cordovaMixin = {
       });
 
       push.on('notification', (data) => {
-        console.log('notdata', JSON.stringify(functor));
+        console.log('notdata', JSON.stringify(data));
+        alert(JSON.stringify(data));
         // data.message,
         // data.title,
         // data.count,

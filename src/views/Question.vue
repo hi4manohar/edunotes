@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :class="$options.name">
     <Header pagetitle="Books & Notes" />
     <v-content class="pt-0" v-scroll="onScroll" id="scroll-target">
       <v-container fluid>

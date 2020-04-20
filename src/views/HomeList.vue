@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :class="$options.name">
     <Header pagetitle="Home" />
     <v-content class="pt-0">
       <v-container>
@@ -86,9 +86,9 @@ export default {
         coming: true
       },
       {
-        title: "Study Motivation",
+        title: "Stay Motivated",
         icons: "mdi-lightbulb-group",
-        link: "/motivation",
+        link: "/content/motivation",
         coming: true
       },
       {

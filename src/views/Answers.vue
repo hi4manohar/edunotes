@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :class="$options.name">
     <div>
       <Header pagetitle="Questions and Answers" />
       <v-content class="pt-0" v-scroll="onScroll" id="scroll-target">

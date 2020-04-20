@@ -90,7 +90,7 @@ export default {
       }
 
       if (this.token_id) {
-        return this.$router.push("/homelist");
+        // return this.$router.push("/homelist");
       } else {
         this.welcome = true;
         return;
