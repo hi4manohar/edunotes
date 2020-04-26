@@ -15,7 +15,10 @@
             @click="showClass(item.slug)"
           >
             <v-list-item-avatar>
-              <v-img :src="iconFullPath + '' + item.slug + '.jpg'"></v-img>
+              <v-img
+                v-if="item.slug"
+                :src="iconFullPath + '' + item.slug + '.jpg'"
+              ></v-img>
             </v-list-item-avatar>
 
             <v-list-item-content>

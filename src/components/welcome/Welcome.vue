@@ -2,7 +2,8 @@
   <v-app>
     <div class="py-10 px-5 text-center">
       <h1 class="title">
-        Welcome To <span class="font-weight-bold blue--text">{{ brandName }}</span>
+        Welcome To
+        <span class="font-weight-bold blue--text">{{ brandName }}</span>
       </h1>
       <p class="caption mb-10">
         A Helping hand to study effectively.

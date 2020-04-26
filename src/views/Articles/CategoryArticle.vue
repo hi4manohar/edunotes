@@ -1,7 +1,7 @@
 <template>
   <v-app :class="$options.name">
     <div v-show="!articleContent">
-      <Header pagetitle="Motivation" />
+      <Header :pagetitle="getCategoryName" />
       <v-content class="pt-0" v-scroll="onScroll" id="scroll-target">
         <div class="skloader" v-if="skloader.loading">
           <v-list-item v-for="n in 3" :key="n" class="pa-0">
@@ -17,42 +17,96 @@
           </v-list-item>
         </div>
         <v-container class="px-0 py-2 blue-grey lighten-5 " v-else>
+          <v-dialog
+            v-model="dialog"
+            fullscreen
+            hide-overlay
+            transition="dialog-bottom-transition"
+          >
+            <v-card>
+              <v-toolbar dark color="primary">
+                <v-btn icon dark @click="dialog = false">
+                  <v-icon>mdi-close</v-icon>
+                </v-btn>
+                <v-toolbar-title>{{ quizName }}</v-toolbar-title>
+                <v-spacer></v-spacer>
+              </v-toolbar>
+              <div class="iframe-container">
+                <iframe
+                  id="quizframe"
+                  style="width:100%; height:88vh; border:none;"
+                  :src="dsrc"
+                ></iframe>
+              </div>
+            </v-card>
+          </v-dialog>
+          <v-row dense v-if="listype === 'grid'">
+            <v-col
+              v-for="(name, index) in names"
+              @click="showContent(index, name.post_guid, name.post_title)"
+              :key="index"
+              cols="4"
+              class="pa-2"
+              style=""
+            >
+              <v-card outlined elevation="2">
+                <v-img
+                  :src="name.guid"
+                  class="white--text align-end"
+                  gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                >
+                  <v-card-title
+                    class="body-2 font-weight-bold"
+                    style="word-break: normal;"
+                    v-text="name.post_title"
+                  ></v-card-title>
+                </v-img>
+              </v-card>
+            </v-col>
+          </v-row>
+
           <div
             class="list-card mb-2"
             v-for="(name, index) in names"
             @click="$router.push('/post/' + index)"
             :key="index"
+            v-else
           >
             <v-card
-              class="mx-auto elevation-0"
+              class="mx-auto elevation-0 px-1"
               :class="{ active: activeIndex === index }"
             >
               <div class="d-flex flex-no-wrap justify-space-between">
-                  <v-avatar v-if="name.guid" class="ma-3 article-img" size="64" tile>
-                    <v-img :src="name.guid">
-                      <template v-slot:placeholder>
-                        <v-row
-                          class="fill-height ma-0"
-                          align="center"
-                          justify="center"
-                        >
-                          <v-progress-circular
-                            indeterminate
-                            color="black lighten-5"
-                          ></v-progress-circular>
-                        </v-row>
-                      </template>
-                    </v-img>
-                  </v-avatar>
-                  <v-card class="elevation-0" width="100%">
-                    <v-list-item three-line>
-                      
-                      <v-list-item-content>
-                        <v-list-item-subtitle class="subtitle-2">{{ name.post_title }}</v-list-item-subtitle>
-                      </v-list-item-content>
-                      
-                    </v-list-item>
-                  </v-card>
+                <v-avatar
+                  v-if="name.guid"
+                  class="ml-3 mt-3 article-img"
+                  size="64"
+                  tile
+                >
+                  <v-img :src="name.guid">
+                    <template v-slot:placeholder>
+                      <v-row
+                        class="fill-height ma-0"
+                        align="center"
+                        justify="center"
+                      >
+                        <v-progress-circular
+                          indeterminate
+                          color="black lighten-5"
+                        ></v-progress-circular>
+                      </v-row>
+                    </template>
+                  </v-img>
+                </v-avatar>
+                <v-card class="elevation-0" width="100%">
+                  <v-list-item three-line>
+                    <v-list-item-content>
+                      <v-list-item-subtitle class="subtitle-2">{{
+                        name.post_title
+                      }}</v-list-item-subtitle>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-card>
               </div>
             </v-card>
           </div>
@@ -69,6 +123,13 @@
           </div>
         </v-container>
       </v-content>
+      <v-overlay :value="overlays" opacity="0.02">
+        <v-progress-circular
+          color="blue"
+          indeterminate
+          size="32"
+        ></v-progress-circular>
+      </v-overlay>
       <Footer />
     </div>
   </v-app>
@@ -95,7 +156,13 @@ export default {
       { icon: "mdi-whatsapp", title: "Whatsapp" },
       { icon: "mdi-facebook", title: "Facebook" }
     ],
-    page: 0
+    page: 0,
+    articleCategory: false,
+    listype: false,
+    overlays: false,
+    dialog: false,
+    dsrc: false,
+    quizName: ""
   }),
   components: {
     Header,
@@ -105,43 +172,62 @@ export default {
     ...mapState({
       names: state => state.article.articleList,
       homeScroll: state => state.scroll.component.home,
-      articleCount: state => state.article.articleCount
-    })
+      articleCount: state => state.article.articleCount,
+      category: state => state.article.category
+    }),
+    getCategoryName: {
+      get() {
+        return this.$route.params.category.trim().replace(/-/g, " ");
+      }
+    }
   },
   methods: {
     ...mapActions({
       loadArticleList: "article/articleList",
-      setHomeScroll: "scroll/setHomeScroll"
+      setHomeScroll: "scroll/setHomeScroll",
+      setCategory: "article/setCategory"
     }),
+    showContent(index, url, title) {
+      if (this.articleCategory === "quizzes") {
+        event.preventDefault();
+        this.dialog = true;
+        this.dsrc = url;
+        this.quizName = title;
+      } else {
+        this.$router.push("/post/" + index);
+      }
+    },
     onScroll() {
       this.setHomeScroll({
         component: "home",
         axis: { x: 0, y: window.scrollY }
       });
     },
-    trimmedData(str) {
-      if (str === null || str === "") return false;
-      else str = str.toString();
-      return str
-        .replace(/(<([^>]+)>)/gi, "")
-        .trim()
-        .substring(0, 300);
-    },
     loadArticles(type) {
       if (type === "initial") {
-        if (!this.names.length) {
-          this.loadArticleList({ page: this.page });
+        if (!this.names.length || this.category !== this.articleCategory) {
+          this.loadArticleList({
+            page: this.page,
+            category: this.articleCategory
+          });
         } else {
           this.skloader.loading = false;
         }
       } else if (type === "page") {
         this.page = this.page + 1;
         this.loadMore = true;
-        this.loadArticleList({ page: this.page });
+        this.loadArticleList({
+          page: this.page,
+          category: this.articleCategory
+        });
       }
     }
   },
   created() {
+    this.articleCategory = this.$route.params.category.trim();
+    this.listype = this.$route.query.listype
+      ? this.$route.query.listype
+      : "list";
     this.loadArticles("initial");
   },
   watch: {
@@ -150,12 +236,6 @@ export default {
         this.loadMore = false;
         this.skloader.loading = false;
       }
-    },
-
-    $route(to, from) {
-      const toDepth = to.path.split("/").length;
-      const fromDepth = from.path.split("/").length;
-      this.transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
     }
   },
   mounted() {
@@ -181,10 +261,6 @@ export default {
 .skloader .v-list-item__content {
   padding: 0px;
 }
-h4 {
-  font-size: 16px !important;
-  margin-bottom: 0px;
-}
 .article-img {
   border-radius: 4px;
   overflow: hidden;
@@ -198,5 +274,10 @@ h4 {
 }
 .v-btn span i {
   font-size: 18px !important;
+}
+.iframe-container {
+  background: url(https://edunotes.fresherscode.com/api/uploads/static/images/ajax-loader.gif)
+    center center no-repeat;
+  background-size: 200px;
 }
 </style>

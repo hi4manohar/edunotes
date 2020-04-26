@@ -39,29 +39,38 @@
                 </v-list-item-content>
               </v-list-item>
               <div class="d-flex flex-no-wrap justify-space-between">
-                  <v-avatar v-if="name.guid" class="ma-3 article-img" size="125" tile>
-                    <v-img :src="name.guid">
-                      <template v-slot:placeholder>
-                        <v-row
-                          class="fill-height ma-0"
-                          align="center"
-                          justify="center"
-                        >
-                          <v-progress-circular
-                            indeterminate
-                            color="black lighten-5"
-                          ></v-progress-circular>
-                        </v-row>
-                      </template>
-                    </v-img>
-                  </v-avatar>
-                  <v-card class="mx-auto elevation-0" style="overflow:hidden;" height="140px">            
-                    <v-card-text
-                      class="px-2 py-1 article-description"
-                      v-html="trimmedData(name.post_content)"
-                    >
-                    </v-card-text>
-                  </v-card>
+                <v-avatar
+                  v-if="name.guid"
+                  class="ma-3 article-img"
+                  size="125"
+                  tile
+                >
+                  <v-img :src="name.guid">
+                    <template v-slot:placeholder>
+                      <v-row
+                        class="fill-height ma-0"
+                        align="center"
+                        justify="center"
+                      >
+                        <v-progress-circular
+                          indeterminate
+                          color="black lighten-5"
+                        ></v-progress-circular>
+                      </v-row>
+                    </template>
+                  </v-img>
+                </v-avatar>
+                <v-card
+                  class="mx-auto elevation-0"
+                  style="overflow:hidden;"
+                  height="140px"
+                >
+                  <v-card-text
+                    class="px-2 py-1 article-description"
+                    v-html="trimmedData(name.post_content)"
+                  >
+                  </v-card-text>
+                </v-card>
               </div>
               <v-card-actions class="px-3">
                 <v-btn
@@ -129,7 +138,8 @@ export default {
       { icon: "mdi-whatsapp", title: "Whatsapp" },
       { icon: "mdi-facebook", title: "Facebook" }
     ],
-    page: 0
+    page: 0,
+    articleCategory: "blog"
   }),
   components: {
     Header,
@@ -139,7 +149,8 @@ export default {
     ...mapState({
       names: state => state.article.articleList,
       homeScroll: state => state.scroll.component.home,
-      articleCount: state => state.article.articleCount
+      articleCount: state => state.article.articleCount,
+      category: state => state.article.category
     })
   },
   methods: {
@@ -163,15 +174,21 @@ export default {
     },
     loadArticles(type) {
       if (type === "initial") {
-        if (!this.names.length) {
-          this.loadArticleList({ page: this.page });
+        if (!this.names.length || this.category !== this.articleCategory) {
+          this.loadArticleList({
+            page: this.page,
+            category: this.articleCategory
+          });
         } else {
           this.skloader.loading = false;
         }
       } else if (type === "page") {
         this.page = this.page + 1;
         this.loadMore = true;
-        this.loadArticleList({ page: this.page });
+        this.loadArticleList({
+          page: this.page,
+          category: this.articleCategory
+        });
       }
     }
   },

@@ -14,12 +14,12 @@
           </div>
           <div class="article" v-else>
             <div class="title">
-              <h2 class="ps-4">{{ article.title }}</h2>
+              <h2 class="px-2">{{ article.title }}</h2>
               <hr />
             </div>
 
             <div
-              class="description pa-4"
+              class="description px-2"
               v-html="wpautop(article.content)"
             ></div>
           </div>

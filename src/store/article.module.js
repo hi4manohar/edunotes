@@ -5,20 +5,30 @@ const state = {
   subjectList: [],
   booksList: [],
   bookDetail: {},
-  articleCount: true
+  articleCount: true,
+  category: false
 };
 const actions = {
   async articleList({ dispatch, commit, state }, param) {
-    if (!state.articleList.length || (param.page && param.page > 0)) {
+    if (state.category !== param.category || (param.page && param.page > 0)) {
       try {
         let json = await articleService.articleList(param);
-        if (json.status === true) commit("saveArticle", json.data);
+        if (json.status === true) {
+          commit("saveArticle", { lists: json.data, category: param.category });
+          if (!json.data.length) {
+            dispatch("alert/error", "More content not found.", { root: true });
+          }
+        }
       } catch (err) {
         console.log("err", err);
         dispatch("alert/error", err.msg, { root: true });
       }
-    } else {
-      console.log(state.articleList);
+    }
+  },
+
+  async setCategory({ commit, state }, category) {
+    if (category !== state.category) {
+      commit("setCategory", category);
     }
   },
 
@@ -84,9 +94,23 @@ const actions = {
   }
 };
 const mutations = {
-  saveArticle(state, lists) {
+  saveArticle(state, { lists, category }) {
     state.articleCount = lists.length > 0 ? true : false;
-    state.articleList.push(...lists);
+
+    if (lists.length > 0) {
+      if (state.category === category) {
+        state.articleList.push(...lists);
+      } else {
+        state.category = category;
+        state.articleList = lists;
+      }
+    } else {
+      state.articleList.push(...lists);
+    }
+  },
+
+  setCategory(state, category) {
+    state.category = category;
   },
 
   saveSubject(state, lists) {

@@ -24,6 +24,24 @@ const actions = {
       } else throw "Preference not configured";
       if (configStatus.status === true) {
         localStorage.setItem("token_id", configStatus.data);
+
+        try {
+          let configs = JSON.parse(localStorage.getItem("configUser"));
+          configs.userboard = param.board;
+          configs.userclass = param.class;
+
+          localStorage.setItem("configUser", JSON.stringify(configs));
+        } catch (err) {
+          localStorage.setItem(
+            "configUser",
+            JSON.stringify({
+              installation_date: momentFilter.getCurrentDate(),
+              userboard: param.board,
+              userclass: param.class
+            })
+          );
+        }
+
         commit("loginSuccess", configStatus.data);
         router.push("/homelist");
       }
@@ -44,20 +62,6 @@ const mutations = {
   loginSuccess(state, token_id) {
     state.status = { loggedIn: true };
     state.token_id = token_id;
-
-    if (
-      localStorage.getItem("configUser") &&
-      JSON.parse(localStorage.getItem("configUser"))
-    ) {
-      console.log("No Action");
-    } else {
-      localStorage.setItem(
-        "configUser",
-        JSON.stringify({
-          installation_date: momentFilter.getCurrentDate()
-        })
-      );
-    }
   },
 
   resetLogin(state) {

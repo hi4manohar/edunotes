@@ -47,36 +47,48 @@
           ></div>
         </div>
         <!-- if file type pdf -->
-        <v-list-item
-          class="mb-4 elevation-2 text-left"
-          v-for="(item, index) in attachmentDetails"
-          :key="index"
-        >
-          <v-list-item-content>
-            <v-list-item-title class="subtitle-2">{{
-              item.post_title
-            }}</v-list-item-title>
-            <v-list-item-subtitle style="line-height: 1.5;">{{
-              item.post_content
-            }}</v-list-item-subtitle>
-          </v-list-item-content>
-          <v-list-item-icon title="view file">
-            <a
-              :href="`${pdfViewBaseUrl}${item.reflink}`"
-              target="_blank"
-              @click="openPdfLink($event, `${pdfViewBaseUrl}${item.reflink}`)"
+        <v-list>
+          <a
+            :href="item.reflink"
+            target="_blank"
+            v-for="(item, index) in attachmentDetails"
+            :key="index"
+          >
+            <v-list-item
+              class="mb-4 elevation-2 text-left"
+              @click="isCordova()"
             >
-              <v-btn icon color="primary"
-                ><v-icon>mdi-file-pdf-outline </v-icon></v-btn
-              >
-            </a>
-          </v-list-item-icon>
-          <v-list-item-icon class="mx-0">
-            <a :href="item.reflink" target="_blank">
-              <v-btn icon color="success"><v-icon>mdi-download</v-icon></v-btn>
-            </a>
-          </v-list-item-icon>
-        </v-list-item>
+              <v-list-item-content>
+                <v-list-item-title class="subtitle-2">{{
+                  item.post_title
+                }}</v-list-item-title>
+                <v-list-item-subtitle style="line-height: 1.5;">{{
+                  item.post_content
+                }}</v-list-item-subtitle>
+              </v-list-item-content>
+              <v-list-item-icon title="view file">
+                <a
+                  :href="`${pdfViewBaseUrl}${item.reflink}`"
+                  target="_blank"
+                  @click="
+                    openPdfLink($event, `${pdfViewBaseUrl}${item.reflink}`)
+                  "
+                >
+                  <v-btn icon color="primary"
+                    ><v-icon>mdi-file-pdf-outline </v-icon></v-btn
+                  >
+                </a>
+              </v-list-item-icon>
+              <v-list-item-icon class="mx-0">
+                <a :href="item.reflink" target="_blank">
+                  <v-btn icon color="success"
+                    ><v-icon>mdi-download</v-icon></v-btn
+                  >
+                </a>
+              </v-list-item-icon>
+            </v-list-item>
+          </a>
+        </v-list>
       </div>
     </v-content>
   </v-app>
@@ -139,8 +151,6 @@ export default {
           }
         });
       }
-
-      console.log(this.attachmentDetails);
     }
   }
 };

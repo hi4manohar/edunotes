@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.fresherscode.edunotes" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Edunotes</name>
+<widget id="com.fresherscode.edunotes" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Padhai Mantra</name>
     <description>
         An App to download your study notes at ease.
     </description>
     <author email="hi4manohar@gmail.com" href="https://fresherscode.com">
-        Edunotes Team
+        Padhai Mantra Team
     </author>
     <!-- this hook will point your config.xml to the DevServer on Serve -->
     <hook type="after_prepare" src="../node_modules/vue-cli-plugin-cordova/serve-config-hook.js" />

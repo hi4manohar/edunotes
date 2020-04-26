@@ -16,7 +16,11 @@ function articleList(param) {
   return new Promise((resolve, reject) => {
     param.page = param.page ? param.page : "";
     axios
-      .get(appConfig.API_URL + "article-list?page=" + param.page, {
+      .get(appConfig.API_URL + "article-list", {
+        params: {
+          page: param.page,
+          category: param.category ? param.category.trim() : ""
+        },
         headers: {
           "auth-token": store.state.user.token_id
         }

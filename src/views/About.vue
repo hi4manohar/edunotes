@@ -9,6 +9,10 @@
     </v-app-bar>
     <v-content class="pa-4">
       <h4 class="title">{{ brandName }} Built in India for Students</h4>
+      <p class="subtitle-2">
+        “Education is the passport to the future, for tomorrow belongs to those
+        who prepare for it today. - Malcolm X”
+      </p>
       <ul>
         <li class="subtitle-2">
           We help you to quick find explanation about any topic at our digital
@@ -21,6 +25,11 @@
         <li class="subtitle-2">Your study notes by thousands of users</li>
         <li class="subtitle-2">Be it anywhere, start learning right away</li>
       </ul>
+      <p class="subtitle">
+        Are You a Teacher, Student or Volunteer who wants to contribute to this
+        App. Write to Us at hi4manohar@gmail.com. <br />
+        We'll publish your notes or article with full credit of you as author.
+      </p>
       <p class="subtitle-2">
         Loved this App? Rate 5 star on the Playstore, Help us by Sharing to Your
         Friends.
@@ -47,7 +56,9 @@
         <div class="text-center col col-12">
           <v-btn icon color="pink">
             <v-icon class="mr-2">mdi-heart</v-icon
-            ><span class="text-capitalize">{{ brandName }} {{ appVersion }}</span>
+            ><span class="text-capitalize"
+              >{{ brandName }} {{ appVersion }}</span
+            >
           </v-btn>
         </div>
       </v-footer>

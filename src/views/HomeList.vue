@@ -12,7 +12,14 @@
             class="pa-2"
           >
             <router-link :to="comp.link">
-              <v-card class="mx-auto" width="110" height="110" elevation="2" outlined>
+              <v-card
+                class="mx-auto"
+                width="110"
+                height="110"
+                elevation="2"
+                outlined
+                @click="check(comp.link, $event)"
+              >
                 <v-list-item
                   three-line
                   class="px-2"
@@ -46,6 +53,13 @@
         </div>
       </v-container>
     </v-content>
+    <v-overlay :value="overlays" opacity="0.02">
+      <v-progress-circular
+        color="blue"
+        indeterminate
+        size="32"
+      ></v-progress-circular>
+    </v-overlay>
     <Footer active="home" />
   </v-app>
 </template>
@@ -58,6 +72,7 @@ export default {
   name: "HomeList",
   mixins: [cordovaMixin],
   data: () => ({
+    overlays: false,
     components: [
       {
         title: "Daily Update",
@@ -80,33 +95,29 @@ export default {
         link: "/syllabus"
       },
       {
-        title: "Quiz Game",
-        icons: "mdi-gamepad-variant",
-        link: "/quiz",
-        coming: true
-      },
-      {
         title: "Stay Motivated",
         icons: "mdi-lightbulb-group",
-        link: "/content/motivation",
-        coming: true
+        link: "/content/motivation"
       },
       {
-        title: "GK",
+        title: "Discussions",
+        icons: "mdi-account-group",
+        link: "/community"
+      },
+      {
+        title: "GK Lessons",
         icons: "mdi-lightbulb-on",
-        link: "/gk",
-        coming: true
+        link: "/content/general-knowledge?listype=grid"
+      },
+      {
+        title: "Quiz Game",
+        icons: "mdi-gamepad-variant",
+        link: "/content/quizzes?listype=grid"
       },
       {
         title: "Topic Video",
         icons: "mdi-video-check",
         link: "/video",
-        coming: true
-      },
-      {
-        title: "Community",
-        icons: "mdi-account-group",
-        link: "/community",
         coming: true
       }
     ]
@@ -114,6 +125,48 @@ export default {
   components: {
     Header,
     Footer
+  },
+
+  methods: {
+    check(url, event) {
+      var selfref = this;
+      if (url === "/community") {
+        event.preventDefault();
+        if (this.isCordova()) {
+          let options = [
+            "location=no",
+            "footer=yes",
+            "footercolor=#1565c0",
+            "closebuttoncolor=#ffffff",
+            "hardwareback=yes",
+            "zoom=no",
+            "clearsessioncache=no",
+            "clearcache=no",
+            "closebuttoncaption=Back to the Home"
+          ];
+          var ref = window.open(
+            "https://edunotes.fresherscode.com/community/",
+            "_blank",
+            options.join()
+          );
+
+          ref.addEventListener("loadstart", function() {
+            selfref.overlays = true;
+          });
+
+          ref.addEventListener("loadstop", function() {
+            selfref.overlays = false;
+          });
+
+          ref.addEventListener("loaderror", function() {
+            selfref.overlays = false;
+            alert("Oops!");
+          });
+        } else {
+          window.location.href = "https://edunotes.fresherscode.com/community/";
+        }
+      }
+    }
   }
 };
 </script>

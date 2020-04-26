@@ -2,6 +2,10 @@
 import * as appConfig from "../config/index.config";
 
 export const cordovaMixin = {
+
+  data: () => ({
+    notificationbar: false
+  }),
   methods: {
     deviceReady() {
       window.open = cordova.InAppBrowser.open;
@@ -10,6 +14,7 @@ export const cordovaMixin = {
     },
 
     startPushNotf() {
+      var self = this;
       const push = PushNotification.init({
         android: {
         },
@@ -25,24 +30,55 @@ export const cordovaMixin = {
       });
 
       push.on('registration', (data) => {
-        console.log('regdata', data);
-        // data.registrationId
+        this.subscribeToTopic(push, data);
       });
 
       push.on('notification', (data) => {
         console.log('notdata', JSON.stringify(data));
-        alert(JSON.stringify(data));
         // data.message,
         // data.title,
         // data.count,
         // data.sound,
         // data.image,
         // data.additionalData
+
+        if (data.additionalData.to && data.additionalData.foreground === false ) {
+          // alert(JSON.stringify(data));
+          self.notificationbar = true;
+          return self.$router.push(data.additionalData.to);
+        }
       });
 
       push.on('error', (e) => {
         // e.message
       });
+    },
+
+    subscribeToTopic(push, data) {
+
+      try {
+        let configs = JSON.parse(localStorage.getItem("configUser"));
+        if (configs.pushregid && configs.pushregid === data.registrationId) {
+
+        } else {
+          push.subscribe('android', () => {
+            configs.pushregid = data.registrationId;
+            localStorage.setItem("configUser", JSON.stringify(configs));
+          },
+            e => {
+              console.log('error:', e);
+            }
+          );
+        }
+      } catch( err ) {
+        push.subscribe('android', () => {
+          localStorage.setItem("configUser", JSON.stringify({ pushregid: data.registrationId }));
+        },
+          e => {
+            console.log('error:', e);
+          }
+        );
+      }
     },
 
     openPdfLink(e, strUrl) {

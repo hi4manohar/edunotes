@@ -2,7 +2,9 @@
   <div>
     <v-app-bar app clipped-right color="#1565C0" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" white />
-      <v-toolbar-title title class="pl-0">{{ pagetitle }}</v-toolbar-title>
+      <v-toolbar-title title class="pl-0" style="text-transform: capitalize;">{{
+        pagetitle
+      }}</v-toolbar-title>
       <v-spacer />
     </v-app-bar>
 
@@ -79,20 +81,21 @@ export default {
       if (key === 0 || key === 1) {
         if (this.user.status.loggedIn === true) {
           this.resetConfig();
-          this.$router.push("/?start=board");
+          if (key === 0) this.$router.push("/?start=board");
+          else this.$router.push("/?start=class");
           window.location.reload(true);
           return;
         } else {
-          this.$router.push("/");
+          this.$router.push("");
           window.location.reload(true);
           return;
         }
       }
 
       if (key === 2) {
-        this.$router.push("/about");
-      } else if (key === 3) {
         this.$router.push("/notifications");
+      } else if (key === 3) {
+        this.$router.push("/about");
       }
     }
   }

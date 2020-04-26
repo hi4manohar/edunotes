@@ -1,9 +1,4 @@
-export const appConfig = {
-  // apiUrl: "http://localhost:3000";
-  apiUrl: "https://edunotes.fresherscode.com"
-};
-
-export const appVersion = "1.0.2";
+export const appVersion = "1.0.4";
 export const appMarketUrl = "market://details?id=com.fresherscode.edunotes";
 export const appPlayUrl =
   "https://play.google.com/store/apps/details?id=com.fresherscode.edunotes";

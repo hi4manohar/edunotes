@@ -13,7 +13,7 @@
             </v-skeleton-loader>
           </div>
           <div class="article" v-else>
-            <div class="title ps-4">
+            <div class="title px-2">
               <h2 class="mb-0">{{ article.title }}</h2>
               <v-chip
                 v-for="(tag, tagindex) in article.tags.split(',')"
@@ -25,10 +25,10 @@
                 text-color="white"
                 >{{ tag }}
               </v-chip>
-              <hr />
+              <v-divider></v-divider>
             </div>
             <div
-              class="description px-4"
+              class="description px-2"
               v-html="wpautop(article.content)"
             ></div>
           </div>
