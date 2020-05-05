@@ -3,10 +3,10 @@
     <Header pagetitle="Home" />
     <v-content class="pt-0">
       <v-container>
-        <v-row>
+        <v-row no-gutters>
           <v-col
-            xs="3"
-            cols="4"
+            xs="4"
+            sm="2"
             v-for="(comp, index) in components"
             :key="index"
             class="pa-2"
@@ -14,8 +14,8 @@
             <router-link :to="comp.link">
               <v-card
                 class="mx-auto"
-                width="110"
-                height="110"
+                width="100"
+                height="100"
                 elevation="2"
                 outlined
                 @click="check(comp.link, $event)"
@@ -66,7 +66,8 @@
 <script>
 import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
-import { cordovaMixin } from "../mixins";
+import { cordovaMixin } from "@/mixins";
+import * as appConfig from "@/config/index.config";
 
 export default {
   name: "HomeList",
@@ -82,17 +83,12 @@ export default {
       {
         title: "Books",
         icons: "mdi-book-multiple",
-        link: "/question"
+        link: "/books"
       },
       {
         title: "Answer",
         icons: "mdi-cloud-question",
         link: "/answers"
-      },
-      {
-        title: "Syllabus",
-        icons: "mdi-order-bool-ascending-variant ",
-        link: "/syllabus"
       },
       {
         title: "Stay Motivated",
@@ -113,6 +109,12 @@ export default {
         title: "Quiz Game",
         icons: "mdi-gamepad-variant",
         link: "/content/quizzes?listype=grid"
+      },
+      {
+        title: "Syllabus",
+        icons: "mdi-order-bool-ascending-variant ",
+        link: "/syllabus",
+        coming: true
       },
       {
         title: "Topic Video",
@@ -145,13 +147,17 @@ export default {
             "closebuttoncaption=Back to the Home"
           ];
           var ref = window.open(
-            "https://edunotes.fresherscode.com/community/",
+            `${appConfig.webUrl}community/`,
             "_blank",
             options.join()
           );
 
-          ref.addEventListener("loadstart", function() {
+          ref.addEventListener("loadstart", function(params) {
             selfref.overlays = true;
+            if (params.url.includes("closeinappbrowser")) {
+              ref.close();
+              selfref.overlays = false;
+            }
           });
 
           ref.addEventListener("loadstop", function() {
@@ -163,7 +169,7 @@ export default {
             alert("Oops!");
           });
         } else {
-          window.location.href = "https://edunotes.fresherscode.com/community/";
+          window.location.href = `${appConfig.webUrl}community/`;
         }
       }
     }

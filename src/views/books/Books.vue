@@ -18,8 +18,16 @@
         </div>
 
         <div class="item-container" v-else>
-          <v-row v-if="booksList">
-            <v-col cols="6" v-for="(item, index) in booksList" :key="index">
+          <v-row v-if="booksList" no-gutters>
+            <v-col
+              class="pa-2"
+              cols="6"
+              xs="6"
+              sm="3"
+              md="2"
+              v-for="(item, index) in booksList"
+              :key="index"
+            >
               <router-link :to="'/books/' + item.ID">
                 <v-card height="170px">
                   <div class="img-container" style="height:90px;">
@@ -58,7 +66,7 @@
         </div>
       </v-container>
     </v-content>
-    <Footer active="question" />
+    <Footer active="books" />
   </v-app>
 </template>
 
@@ -66,10 +74,10 @@
 import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
 import { mapState, mapActions } from "vuex";
-import { skloaderMixin } from "../mixins";
+import { skloaderMixin } from "@/mixins";
 
 export default {
-  name: "Question",
+  name: "Books",
   mixins: [skloaderMixin],
   data: () => ({}),
   components: {

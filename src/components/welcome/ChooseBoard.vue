@@ -8,31 +8,39 @@
         </h1>
       </v-toolbar>
       <v-list three-line>
-        <template v-for="item in items">
-          <v-list-item
+        <v-row>
+          <v-col
+            xs="3"
+            sm="6"
+            md="4"
+            cols="12"
+            v-for="item in items"
             :key="item.name"
-            class="mb-2"
-            @click="showClass(item.slug)"
+            class="pa-2"
           >
-            <v-list-item-avatar>
-              <v-img
-                v-if="item.slug"
-                :src="iconFullPath + '' + item.slug + '.jpg'"
-              ></v-img>
-            </v-list-item-avatar>
+            <template>
+              <v-list-item @click="showClass(item.slug)">
+                <v-list-item-avatar>
+                  <v-img
+                    v-if="item.slug"
+                    :src="iconFullPath + '' + item.slug + '.jpg'"
+                  ></v-img>
+                </v-list-item-avatar>
 
-            <v-list-item-content>
-              <v-list-item-title
-                v-html="item.name"
-                class="font-weight-bold"
-              ></v-list-item-title>
-              <v-list-item-subtitle
-                style="line-height: 1.5;"
-                v-html="item.description"
-              ></v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </template>
+                <v-list-item-content>
+                  <v-list-item-title
+                    v-html="item.name"
+                    class="font-weight-bold"
+                  ></v-list-item-title>
+                  <v-list-item-subtitle
+                    style="line-height: 1.5;"
+                    v-html="item.description"
+                  ></v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </template>
+          </v-col>
+        </v-row>
       </v-list>
       <v-overlay :value="overlays" opacity="0.02">
         <v-progress-circular

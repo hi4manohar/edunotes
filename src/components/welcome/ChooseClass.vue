@@ -11,32 +11,40 @@
         <p class="text-center ma-0 pa-2 subtitle-1 font-weight-bold">
           Your class preference will help us to personalize your content.
         </p>
-        <template v-for="item in items">
-          <v-list-item
-            :key="item.name"
-            class="ma-2"
-            @click="setHandleConfig(item.slug)"
-            v-ripple
-          >
-            <!-- <v-list-item-avatar>
-              <v-img :src="item.avatar"></v-img>
-            </v-list-item-avatar> -->
-            <div class="icon-avatar" style="margin-top:-8px;">
-              <v-icon size="35" color="#5f4444">mdi-account-group</v-icon>
-            </div>
 
-            <v-list-item-content class="pl-2">
-              <v-list-item-title
-                v-html="item.name"
-                class="font-weight-bold"
-              ></v-list-item-title>
-              <v-list-item-subtitle
-                style="line-height: 1.5;"
-                v-html="item.description"
-              ></v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </template>
+        <v-row>
+          <v-col
+            xs="3"
+            sm="6"
+            md="4"
+            cols="12"
+            v-for="item in items"
+            :key="item.name"
+            class="pa-2"
+          >
+            <template>
+              <v-list-item @click="setHandleConfig(item.slug)" v-ripple>
+                <!-- <v-list-item-avatar>
+                    <v-img :src="item.avatar"></v-img>
+                  </v-list-item-avatar> -->
+                <div class="icon-avatar" style="margin-top:-8px;">
+                  <v-icon size="35" color="#5f4444">mdi-account-group</v-icon>
+                </div>
+
+                <v-list-item-content class="pl-2">
+                  <v-list-item-title
+                    v-html="item.name"
+                    class="font-weight-bold"
+                  ></v-list-item-title>
+                  <v-list-item-subtitle
+                    style="line-height: 1.5;"
+                    v-html="item.description"
+                  ></v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </template>
+          </v-col>
+        </v-row>
       </v-list>
       <v-overlay :value="overlays" opacity="0">
         <v-progress-circular

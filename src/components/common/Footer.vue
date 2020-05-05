@@ -9,10 +9,16 @@
         <v-icon size="25">mdi-home</v-icon><span class="caption">Home</span>
       </div>
     </router-link>
-    <router-link to="/question">
+    <router-link to="/ask">
+      <div class="footbtn" :class="[active === 'ask' ? 'active' : '']" ripple>
+        <v-icon size="25">mdi-frequently-asked-questions </v-icon
+        ><span class="caption">Ask Me</span>
+      </div>
+    </router-link>
+    <router-link to="/books">
       <div
         class="footbtn enc"
-        :class="[active === 'question' ? 'active' : '']"
+        :class="[active === 'books' ? 'active' : '']"
         ripple
       >
         <v-icon size="25">mdi-book-multiple</v-icon
@@ -28,17 +34,6 @@
       >
         <v-icon size="25">mdi-book-open-page-variant </v-icon
         ><span class="caption">Answers</span>
-      </div>
-    </router-link>
-
-    <router-link to="/syllabus">
-      <div
-        class="footbtn"
-        :class="[active === 'syllabus' ? 'active' : '']"
-        ripple
-      >
-        <v-icon size="25">mdi-timer</v-icon
-        ><span class="caption">Syllabus</span>
       </div>
     </router-link>
   </v-footer>

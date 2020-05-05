@@ -7,11 +7,6 @@ p {
 a {
   text-decoration: none;
 }
-
-img{
-  width: 100% !important;
-  height: auto;
-}
 h1 {
   font-size: 24px;
   font-weight: 500;
@@ -31,7 +26,7 @@ h3 {
   line-height: 1.35;
 }
 h3 span{
-  font-size: 18px !important;
+  font-size: 18px;
   font-weight: 500;
   margin-bottom:10px;
   line-height: 1.6;
@@ -89,8 +84,8 @@ p {
   padding:5px;
 }
 .description span{
-  font-size: 12px !important;
-  color: rgba(0, 0, 0, 0.6) !important;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
   white-space: normal;
 }
 .description pre{
@@ -124,18 +119,18 @@ ul li {
   top: 0;
 }
 .v-text-field__details{
-  display: none !important;
+  display: none;
 }
 .v-toolbar__title{
-  font-size: 1.1rem !important;
+  font-size: 1.1rem;
 }
 
 .welcome-carousel .mdi-circle {
-  font-size: 10px!important;
-  color: black !important;
+  font-size: 10px;
+  color: black;
 }
 .welcome-carousel .v-item--active {
-  color: black !important;
+  color: black;
 }
 .welcome-carousel .v-carousel__controls__item {
   margin: 0;

@@ -4,18 +4,18 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home";
 import HomeList from "../views/HomeList";
-import ArticleList from "../views/ArticleList";
-import ArticleContent from "../views/ArticleContent";
+import ArticleList from "../views/Articles/ArticleList";
+import ArticleContent from "../views/Articles/ArticleContent";
 import CategoryArticle from "../views/Articles/CategoryArticle";
-import Question from "../views/Question";
+import Books from "../views/books/Books";
+import BookDescription from "../views/books/BookDescription";
 import Answers from "../views/Answers";
 import AnswersContent from "../views/AnswersContent";
-import Notes from "../views/Notes";
+import Ask from "../views/Ask";
 import Syllabus from "../views/Syllabus";
 import SubjectPosts from "../views/SubjectPosts";
 import Notifications from "../views/Notifications";
 import ChapterPosts from "../views/ChapterPosts";
-import BookDescription from "../views/BookDescription";
 import WriteAnswer from "../views/WriteAnswer";
 import Notfound from "../views/Notfound";
 import Pdf from "../views/Pdf";
@@ -38,7 +38,7 @@ const routes = [
     name: "ArticleContent",
     component: ArticleContent
   },
-  { path: "/question", name: "Question", component: Question },
+  { path: "/books", name: "Books", component: Books },
   {
     path: "/books/:bookid",
     name: "BookDescription",
@@ -51,7 +51,7 @@ const routes = [
     component: AnswersContent,
     meta: { transition: "flip-x" }
   },
-  { path: "/notes", name: "Notes", component: Notes },
+  { path: "/ask", name: "Ask", component: Ask },
   { path: "/syllabus", name: "Syllabus", component: Syllabus },
   {
     path: "/syllabus/:subjects",
@@ -84,8 +84,8 @@ export const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
 
-  //check if width of the display
-  if (window.innerWidth > 991) {
+  // check if width of the display
+  if (window.innerWidth > 1028) {
     return false;
   }
 

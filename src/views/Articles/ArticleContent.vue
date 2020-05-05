@@ -37,7 +37,7 @@
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
-import { contentMixin } from "../mixins";
+import { contentMixin } from "@/mixins";
 
 export default {
   props: ["content"],

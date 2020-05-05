@@ -16,7 +16,7 @@
             </v-list-item-content>
           </v-list-item>
         </div>
-        <v-container class="px-0 py-2 blue-grey lighten-5 " v-else>
+        <v-container class="blue-grey lighten-5 " v-else>
           <v-dialog
             v-model="dialog"
             fullscreen
@@ -40,14 +40,15 @@
               </div>
             </v-card>
           </v-dialog>
-          <v-row dense v-if="listype === 'grid'">
+          <v-row no-gutters v-if="listype === 'grid'">
             <v-col
               v-for="(name, index) in names"
               @click="showContent(index, name.post_guid, name.post_title)"
               :key="index"
               cols="4"
+              xs="4"
+              sm="2"
               class="pa-2"
-              style=""
             >
               <v-card outlined elevation="2">
                 <v-img
@@ -65,51 +66,56 @@
             </v-col>
           </v-row>
 
-          <div
-            class="list-card mb-2"
-            v-for="(name, index) in names"
-            @click="$router.push('/post/' + index)"
-            :key="index"
-            v-else
-          >
-            <v-card
-              class="mx-auto elevation-0 px-1"
-              :class="{ active: activeIndex === index }"
+          <v-row no-gutters v-else>
+            <v-col
+              cols="12"
+              xs="12"
+              sm="6"
+              v-for="(name, index) in names"
+              :key="index"
+              class="pb-2"
             >
-              <div class="d-flex flex-no-wrap justify-space-between">
-                <v-avatar
-                  v-if="name.guid"
-                  class="ml-3 mt-3 article-img"
-                  size="64"
-                  tile
+              <div class="list-card" @click="$router.push('/post/' + index)">
+                <v-card
+                  class="mx-auto elevation-0 px-1"
+                  :class="{ active: activeIndex === index }"
                 >
-                  <v-img :src="name.guid">
-                    <template v-slot:placeholder>
-                      <v-row
-                        class="fill-height ma-0"
-                        align="center"
-                        justify="center"
-                      >
-                        <v-progress-circular
-                          indeterminate
-                          color="black lighten-5"
-                        ></v-progress-circular>
-                      </v-row>
-                    </template>
-                  </v-img>
-                </v-avatar>
-                <v-card class="elevation-0" width="100%">
-                  <v-list-item three-line>
-                    <v-list-item-content>
-                      <v-list-item-subtitle class="subtitle-2">{{
-                        name.post_title
-                      }}</v-list-item-subtitle>
-                    </v-list-item-content>
-                  </v-list-item>
+                  <div class="d-flex flex-no-wrap justify-space-between">
+                    <v-avatar
+                      v-if="name.guid"
+                      class="ml-3 mt-3 article-img"
+                      size="64"
+                      tile
+                    >
+                      <v-img :src="name.guid">
+                        <template v-slot:placeholder>
+                          <v-row
+                            class="fill-height ma-0"
+                            align="center"
+                            justify="center"
+                          >
+                            <v-progress-circular
+                              indeterminate
+                              color="black lighten-5"
+                            ></v-progress-circular>
+                          </v-row>
+                        </template>
+                      </v-img>
+                    </v-avatar>
+                    <v-card class="elevation-0" width="100%">
+                      <v-list-item three-line>
+                        <v-list-item-content>
+                          <v-list-item-subtitle class="subtitle-2">{{
+                            name.post_title
+                          }}</v-list-item-subtitle>
+                        </v-list-item-content>
+                      </v-list-item>
+                    </v-card>
+                  </div>
                 </v-card>
               </div>
-            </v-card>
-          </div>
+            </v-col>
+          </v-row>
           <div style="text-align:center;" class="ma-4">
             <v-btn
               :disabled="!articleCount"
