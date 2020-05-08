@@ -24,7 +24,7 @@
               cols="12"
               v-for="(name, index) in names"
               :key="index"
-              class="pb-2"
+              class="pa-2"
             >
               <div
                 class="list-card"
