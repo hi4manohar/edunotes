@@ -1,7 +1,7 @@
 <template>
   <v-app :class="$options.name">
     <Header pagetitle="Home" />
-    <v-content class="pt-0">
+    <v-content class="pt-0" v-scroll="onScroll" id="scroll-target">
       <v-container>
         <v-row no-gutters>
           <v-col
@@ -9,7 +9,7 @@
             sm="2"
             v-for="(comp, index) in components"
             :key="index"
-            class="pa-2"
+            class="pa-2 d-flex"
           >
             <router-link :to="comp.link">
               <v-card
@@ -31,7 +31,7 @@
                     <v-icon size="25px">{{ comp.icons }}</v-icon>
                     <v-list-item-subtitle
                       class="text-center font-weight-medium pt-1"
-                      >{{ comp.title }}</v-list-item-subtitle
+                      >{{ $t(comp.title) }}</v-list-item-subtitle
                     >
                     <span
                       v-if="comp.coming"
@@ -45,7 +45,10 @@
             </router-link>
           </v-col>
         </v-row>
-        <div class="text-center mt-4">
+        <v-row no-gutters class="pa-2 mt-2" style="overflow:hidden;">
+          <FeaturedCourse />
+        </v-row>
+        <div class="text-center mb-5">
           <v-btn depressed small class="ma-2" @click="shareAppLik()">
             Share App
             <v-icon right dark>mdi-share</v-icon>
@@ -68,6 +71,8 @@ import Header from "@/components/common/Header.vue";
 import Footer from "@/components/common/Footer.vue";
 import { cordovaMixin } from "@/mixins";
 import * as appConfig from "@/config/index.config";
+import FeaturedCourse from "./course/FeaturedCourse.vue";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "HomeList",
@@ -110,26 +115,41 @@ export default {
         icons: "mdi-gamepad-variant",
         link: "/content/quizzes?listype=grid"
       },
+      // {
+      //   title: "Syllabus",
+      //   icons: "mdi-order-bool-ascending-variant ",
+      //   link: "/syllabus",
+      //   coming: true
+      // },
       {
-        title: "Syllabus",
-        icons: "mdi-order-bool-ascending-variant ",
-        link: "/syllabus",
-        coming: true
+        title: "Result Updates",
+        icons: "mdi-book-open ",
+        link: "/content/result-updates",
       },
       {
         title: "Topic Video",
         icons: "mdi-video-check",
         link: "/video",
         coming: true
-      }
+      },
     ]
   }),
   components: {
     Header,
-    Footer
+    Footer,
+    FeaturedCourse
+  },
+
+  computed: {
+    ...mapState({
+      homeScroll: state => state.scroll.component.homelist
+    })
   },
 
   methods: {
+    ...mapActions({
+      setHomeScroll: "scroll/setHomeScroll"
+    }),
     check(url, event) {
       var selfref = this;
       if (url === "/community") {
@@ -172,7 +192,20 @@ export default {
           window.location.href = `${appConfig.webUrl}community/`;
         }
       }
+    },
+
+    onScroll() {
+      this.setHomeScroll({
+        component: "homelist",
+        axis: { x: 0, y: window.scrollY }
+      });
     }
+  },
+
+  mounted() {
+    this.$nextTick(() => {
+      window.scrollTo(0, Number(this.homeScroll.y));
+    });
   }
 };
 </script>

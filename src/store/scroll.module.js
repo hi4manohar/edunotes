@@ -15,6 +15,10 @@ const state = {
     answers: {
       x: 0,
       y: 0
+    },
+    homelist: {
+      x: 0,
+      y: 0
     }
   }
 };

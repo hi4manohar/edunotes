@@ -72,6 +72,7 @@ const routes = [
 export const router = new VueRouter({
   base: process.env.BASE_URL,
   scrollBehavior (to, from, savedPosition) {
+    console.log('hi');
     if( to.name === 'BookDescription' || to.name === 'ArticleContent' ) {
       return { x: 0, y: 0 };
     }
