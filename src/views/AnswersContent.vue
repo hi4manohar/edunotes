@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="blue-grey lighten-5">
     <div class="article-content">
       <v-content class="pt-0">
         <v-container>
@@ -13,24 +13,26 @@
             </v-skeleton-loader>
           </div>
           <div class="article" v-else>
-            <div class="title px-2">
-              <h2 class="mb-0">{{ article.title }}</h2>
-              <v-chip
-                v-for="(tag, tagindex) in article.tags.split(',')"
-                :key="tagindex"
-                class="mr-2"
-                color="pink"
-                x-small
-                label
-                text-color="white"
-                >{{ tag }}
-              </v-chip>
-              <v-divider></v-divider>
-            </div>
-            <div
-              class="description px-2"
-              v-html="wpautop(article.content)"
-            ></div>
+            <v-card class="pa-2">
+              <div class="title px-2">
+                <h2 class="mb-0">{{ article.title }}</h2>
+                <v-chip
+                  v-for="(tag, tagindex) in article.tags.split(',')"
+                  :key="tagindex"
+                  class="mr-2"
+                  color="pink"
+                  x-small
+                  label
+                  text-color="white"
+                  >{{ tag }}
+                </v-chip>
+                <v-divider></v-divider>
+              </div>
+              <div
+                class="description px-2"
+                v-html="wpautop(article.content)"
+              ></div>
+            </v-card>
           </div>
         </v-container>
       </v-content>
@@ -55,18 +57,18 @@ export default {
   name: "AnswersContent",
   data: () => ({
     skloader: {
-      loading: true
+      loading: true,
     },
-    article: {}
+    article: {},
   }),
   computed: {
     ...mapState({
-      names: state => state.answers.answersList
-    })
+      names: (state) => state.answers.answersList,
+    }),
   },
   methods: {
     ...mapActions({
-      loadAnswersList: "answers/answersList"
+      loadAnswersList: "answers/answersList",
     }),
 
     loadAnswer(id) {
@@ -75,7 +77,7 @@ export default {
           title: this.names[id].post_title,
           content: this.names[id].post_content,
           tags: this.names[id].tags,
-          guid: this.names[id].guid
+          guid: this.names[id].guid,
         };
       } else {
         console.log("hello");
@@ -83,7 +85,7 @@ export default {
     },
     showListAnswers() {
       this.$emit("showListAnswers", true);
-    }
+    },
   },
   created() {
     this.loadAnswer(this.$route.params.articleid);
@@ -92,7 +94,7 @@ export default {
     this.$nextTick(function() {
       this.skloader.loading = false;
     });
-  }
+  },
 };
 </script>
 <style scoped>

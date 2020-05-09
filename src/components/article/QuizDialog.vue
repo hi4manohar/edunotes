@@ -14,41 +14,45 @@
           <v-toolbar-title>{{ quizName }}</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
-        <div class="iframe-container">
-          <iframe
-            id="quizframe"
-            style="width:100%; height:88vh; border:none;"
-            :src="dsrc"
-          ></iframe>
+        <div class="blue-grey lighten-5">
+          <v-card class="iframe-container pa-2" elevation="2">
+            <iframe
+              id="quizframe"
+              style="width:100%; height:88vh; border:none;"
+              :src="dsrc"
+            ></iframe>
+          </v-card>
         </div>
       </v-card>
     </v-dialog>
 
-    <v-row no-gutters>
-      <v-col
-        v-for="(name, index) in names"
-        @click="showContent(index, name.post_guid, name.post_title)"
-        :key="index"
-        cols="4"
-        xs="4"
-        sm="2"
-        class="pa-2"
-      >
-        <v-card outlined elevation="2">
-          <v-img
-            :src="name.guid"
-            class="white--text align-end"
-            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-          >
-            <v-card-title
-              class="body-2 font-weight-bold"
-              style="word-break: normal;"
-              v-text="name.post_title"
-            ></v-card-title>
-          </v-img>
-        </v-card>
-      </v-col>
-    </v-row>
+    <v-card>
+      <v-row no-gutters>
+        <v-col
+          v-for="(name, index) in names"
+          @click="showContent(index, name.post_guid, name.post_title)"
+          :key="index"
+          cols="4"
+          xs="4"
+          sm="2"
+          class="pa-2"
+        >
+          <v-card elevation="2">
+            <v-img
+              :src="name.guid"
+              class="white--text align-end"
+              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+            >
+              <v-card-title
+                class="body-2 font-weight-bold"
+                style="word-break: normal;"
+                v-text="name.post_title"
+              ></v-card-title>
+            </v-img>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-card>
   </div>
 </template>
 <script>

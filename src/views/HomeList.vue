@@ -124,14 +124,14 @@ export default {
       {
         title: "Result Updates",
         icons: "mdi-book-open ",
-        link: "/content/result-updates",
+        link: "/content/result-updates"
       },
       {
         title: "Topic Video",
         icons: "mdi-video-check",
         link: "/video",
         coming: true
-      },
+      }
     ]
   }),
   components: {

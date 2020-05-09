@@ -1,5 +1,5 @@
 <template>
-  <v-app :class="$options.name">
+  <v-app :class="$options.name" class="blue-grey lighten-5">
     <div class="article-content">
       <v-content class="pt-0">
         <v-container>
@@ -13,15 +13,17 @@
             </v-skeleton-loader>
           </div>
           <div class="article" v-else>
-            <div class="title">
-              <h2 class="px-2">{{ article.title }}</h2>
-              <hr />
-            </div>
+            <v-card class="pa-2">
+              <div class="title">
+                <h2 class="px-2">{{ article.title }}</h2>
+                <hr />
+              </div>
 
-            <div
-              class="description px-2"
-              v-html="wpautop(article.content)"
-            ></div>
+              <div
+                class="description px-2"
+                v-html="wpautop(article.content)"
+              ></div>
+            </v-card>
           </div>
         </v-container>
       </v-content>

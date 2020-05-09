@@ -40,8 +40,8 @@
                 <v-list-item three-line>
                   <v-list-item-content class="align-self-center">
                     <span class="caption">{{
-                        name.post_date | dateFormat
-                      }}</span>
+                      name.post_date | dateFormat
+                    }}</span>
                     <v-list-item-subtitle class="pt-1 subtitle-2">{{
                       name.post_title
                     }}</v-list-item-subtitle>
