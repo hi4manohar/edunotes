@@ -22,3 +22,10 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Checklist to Make App Live
+
+ 1. Make sure everything is working
+ 2. Change version in cordova config.xml
+ 3. change version in front-end app.config
+ 4. Change version in backend start.route.js

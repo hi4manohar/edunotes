@@ -51,43 +51,60 @@ export default {
       showerror: "alert/error"
     }),
 
+    turnComponent(c) {
+      this.chooseboard = false;
+      this.welcome = false;
+      this.chooseclass = false;
+      this.maintainance = false;
+      this.upgradeapp = false;
+      this[c] = true;
+    },
+
     changeComponentStatus(val, data) {
+        
       if (val === "chooseboard") {
-        this.chooseboard = true;
-        this.welcome = false;
-        this.chooseclass = false;
+        this.turnComponent('chooseboard');
       } else if (val === "welcome") {
-        this.chooseboard = false;
-        this.welcome = true;
-        this.chooseclass = false;
+        this.turnComponent('welcome');
       } else if (val === "chooseclass") {
-        this.chooseboard = false;
-        this.welcome = false;
-        this.chooseclass = true;
+        this.turnComponent('chooseclass');
         this.board = data ? data.board : null;
       }
     },
 
     async loadApp() {
       //get app version
-      if (this.isCordova()) {
+      // if (this.isCordova()) {
         try {
           let appdetails = await welcomeService.getappdetails();
 
           if (appdetails.data.maintanance_mode === true) {
-            this.welcome = false;
-            this.maintainance = true;
+            this.turnComponent('maintainance');
             return "maintainance";
           }
           if (appdetails.data.published_app_version > appConfig.appVersion) {
-            this.welcome = false;
-            this.upgradeapp = true;
+            this.turnComponent('upgradeapp');
             return "upgradeapp";
+          }
+
+          if (this.$route.query.start && this.$route.query.start === "board") {
+            this.changeComponentStatus("chooseboard");
+          } else if (this.$route.query.start && this.$route.query.start === "class") {
+            try {
+              let configs = JSON.parse(localStorage.getItem("configUser"));
+              this.changeComponentStatus("chooseclass", { board: configs.userboard });
+            } catch (err) {
+              console.log("err", err);
+              this.changeComponentStatus("chooseboard");
+            }
+            
+          } else {
+            this.loggedInComponent();
           }
         } catch (err) {
           this.showerror(err);
         }
-      }
+      // }
     },
 
     loggedInComponent() {
@@ -102,21 +119,8 @@ export default {
     }
   },
 
-  mounted() {
-    this.loadApp();
-    if (this.$route.query.start && this.$route.query.start === "board") {
-      this.changeComponentStatus("chooseboard");
-    } else if (this.$route.query.start && this.$route.query.start === "class") {
-      try {
-        let configs = JSON.parse(localStorage.getItem("configUser"));
-        this.changeComponentStatus("chooseclass", { board: configs.userboard });
-      } catch (err) {
-        console.log("err", err);
-        this.changeComponentStatus("chooseboard");
-      }
-    } else {
-      this.loggedInComponent();
-    }
+  async mounted() {
+    this.loadApp();    
   }
 };
 </script>

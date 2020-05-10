@@ -17,7 +17,7 @@
           </v-list-item>
         </div>
         <v-container class="blue-grey lighten-5 " v-else>
-          <QuizDialog v-if="listype === 'grid'" :names="names" />
+          <QuizDialog v-if="listype === 'grid'" :names="names" :articleCategory="articleCategory" />
 
           <ListArticleContainer v-else :names="names" />
           <div style="text-align:center;" class="ma-4">

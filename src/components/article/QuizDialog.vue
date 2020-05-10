@@ -57,7 +57,7 @@
 </template>
 <script>
 export default {
-  props: ["names"],
+  props: ["names", "articleCategory"],
   name: "QuizDialog",
   data: () => ({
     dialog: false,
@@ -67,9 +67,14 @@ export default {
 
   methods: {
     showContent(index, url, title) {
-      this.dialog = true;
-      this.dsrc = url;
-      this.quizName = title;
+      if (this.articleCategory === "quizzes") {
+        event.preventDefault();
+        this.dialog = true;
+        this.dsrc = url;
+        this.quizName = title;
+      } else {
+        this.$router.push("/post/" + index);
+      }
     }
   }
 };
