@@ -1,5 +1,5 @@
 <template>
-  <v-app :class="$options.name">
+  <v-app :class="$options.name" class="blue-grey lighten-5">
     <Header pagetitle="Home" />
     <v-content class="pt-0" v-scroll="onScroll" id="scroll-target">
       <v-container>
@@ -11,7 +11,7 @@
             :key="index"
             class="pa-2 d-flex"
           >
-            <router-link :to="comp.link">
+            <router-link :to="comp.link" class="justify-center">
               <v-card
                 class="mx-auto"
                 width="100"
@@ -45,11 +45,19 @@
             </router-link>
           </v-col>
         </v-row>
-        <v-row no-gutters class="pa-2 mt-2" style="overflow:hidden;">
-          <FeaturedCourse />
-        </v-row>
+        <v-card>
+          <v-row no-gutters class="pa-2 mt-2" style="overflow:hidden;">
+            <FeaturedCourse />
+          </v-row>
+        </v-card>
         <div class="text-center mb-5">
-          <v-btn depressed small class="ma-2" @click="shareAppLik()">
+          <v-btn
+            color="white"
+            depressed
+            small
+            class="ma-2"
+            @click="shareAppLik()"
+          >
             Share App
             <v-icon right dark>mdi-share</v-icon>
           </v-btn>
@@ -86,7 +94,7 @@ export default {
         link: "/content"
       },
       {
-        title: "Books",
+        title: "NCERT Books",
         icons: "mdi-book-multiple",
         link: "/books"
       },
@@ -214,5 +222,11 @@ export default {
 .v-content {
   margin-top: 56px;
   margin-bottom: 56px !important;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+.HomeList {
+  scrollbar-width: none;
 }
 </style>

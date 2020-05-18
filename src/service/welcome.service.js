@@ -1,5 +1,5 @@
-import axios from "axios";
 import * as appConfig from "../config/index.config";
+import store from "../store";
 
 export const welcomeService = {
   getWelcomeData,
@@ -10,7 +10,7 @@ export const welcomeService = {
 
 function getWelcomeData() {
   return new Promise((resolve, reject) => {
-    axios
+    store.$axios
       .get(appConfig.API_URL + "start/getwelcome")
       .then(function(response) {
         if (response.data.status === true) {
@@ -33,7 +33,7 @@ function getWelcomeData() {
 
 function getBoardList() {
   return new Promise((resolve, reject) => {
-    axios
+    store.$axios
       .get(appConfig.API_URL + "start/getboardlist")
       .then(function(response) {
         if (response.data.status === true) {
@@ -59,7 +59,7 @@ function getBoardList() {
 
 function getclasslist() {
   return new Promise((resolve, reject) => {
-    axios
+    store.$axios
       .get(appConfig.API_URL + "start/getclasslist")
       .then(function(response) {
         if (response.status === 200) {
@@ -83,7 +83,7 @@ function getclasslist() {
 
 function getappdetails() {
   return new Promise((resolve, reject) => {
-    axios
+    store.$axios
       .get(appConfig.API_URL + "start/app_details")
       .then(function(response) {
         if (response.status === 200) {

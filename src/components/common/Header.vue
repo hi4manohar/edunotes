@@ -1,11 +1,17 @@
 <template>
   <div>
-    <v-app-bar app clipped-right color="#1565C0" dark>
+    <v-app-bar app clipped-right color="#1565C0" dark v-bind:flat="flat">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" white />
       <v-toolbar-title title class="pl-0" style="text-transform: capitalize;">{{
         pagetitle
       }}</v-toolbar-title>
       <v-spacer />
+
+      <v-btn icon @click="moveTo(2)">
+        <v-badge color="green" content="0" overlap>
+          <v-icon>mdi-bell-outline</v-icon>
+        </v-badge>
+      </v-btn>
     </v-app-bar>
 
     <div class="text-center">
@@ -91,7 +97,7 @@ import { mapState, mapActions } from "vuex";
 import * as appConfig from "../../config/index.config";
 
 export default {
-  props: ["pagetitle"],
+  props: ["pagetitle", "flat"],
   name: "Header",
   data: () => ({
     drawer: null,

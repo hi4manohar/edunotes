@@ -1,5 +1,5 @@
-import axios from "axios";
 import * as appConfig from "../config/index.config";
+import store from "../store";
 
 export const userService = {
   setConfig
@@ -7,7 +7,7 @@ export const userService = {
 
 function setConfig(param) {
   return new Promise((resolve, reject) => {
-    axios
+    store.$axios
       .get(appConfig.API_URL + "auth/config", {
         params: {
           board: param.board,

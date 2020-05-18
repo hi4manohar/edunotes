@@ -27,7 +27,6 @@
         </v-card>
       </v-dialog>
     </v-row>
-    <v-divider></v-divider>
     <v-content class="pa-2">
       <div class="skloader" v-show="skloader.loading">
         <v-skeleton-loader
@@ -43,66 +42,70 @@
           {{ $t("Featured Course for You") }}
         </h3>
         <div class="slidercon">
-          <div>
-            <div class="sliderconin" :style="{ width: getsliderWidth }">
-              <div
-                style="display:contents;"
-                @click="showContent($event, item.post_title)"
-                v-for="(item, index) in articles"
-                :key="index"
+          <v-row
+            no-gutters
+            class="flex-nowrap flex-md-wrap"
+            style="overflow-y:scroll;"
+          >
+            <v-col
+              xs="4"
+              sm="4"
+              md="3"
+              @click="showContent($event, item.post_title)"
+              v-for="(item, index) in articles"
+              :key="index"
+              class="pa-2 d-flex"
+            >
+              <v-card
+                elevation="1"
+                width="200"
+                overflow-x="hidden"
+                class="v-list-item--three-line ma-2 d-inline-block"
               >
-                <v-card
-                  elevation="1"
-                  width="200"
-                  overflow-x="hidden"
-                  class="v-list-item--three-line ma-2 d-inline-block"
-                >
-                  <v-img height="120" width="200" :src="item.guid"></v-img>
-                  <v-list-item three-line>
-                    <v-list-item-content>
-                      <v-list-item-subtitle
-                        class="subtitle-2 font-weight-medium"
-                        >{{ item.post_title }}</v-list-item-subtitle
+                <v-img height="120" width="200" :src="item.guid"></v-img>
+                <v-list-item three-line>
+                  <v-list-item-content>
+                    <v-list-item-subtitle
+                      class="subtitle-2 font-weight-medium"
+                      >{{ item.post_title }}</v-list-item-subtitle
+                    >
+                    <v-list-item-subtitle>Rohan Keshav</v-list-item-subtitle>
+                    <v-row class="pa-0 ma-0">
+                      <v-col cols="6" class="pa-0 ma-0">
+                        <v-rating
+                          class="mt-1"
+                          v-model="rating"
+                          color="yellow darken-3"
+                          background-color="grey darken-1"
+                          empty-icon="$ratingFull"
+                          size="25"
+                          value="4"
+                          half-increments
+                          hover
+                          small
+                          ><span class="pa-0"></span
+                        ></v-rating>
+                      </v-col>
+                      <v-col cols="6" class="mt-2 pl-2 pa-0 ma-0">
+                        <span>4.5</span>
+                      </v-col>
+                    </v-row>
+                    <v-list-item-subtitle
+                      class="subtitle-1 font-weight-bold mt-1"
+                    >
+                      <span class="title"
+                        ><v-icon size="21">mdi-currency-inr </v-icon
+                        >599.00</span
                       >
-                      <v-list-item-subtitle>Rohan Keshav</v-list-item-subtitle>
-                      <v-row class="pa-0 ma-0">
-                        <v-col cols="6" class="pa-0 ma-0">
-                          <v-rating
-                            class="mt-1"
-                            v-model="rating"
-                            color="yellow darken-3"
-                            background-color="grey darken-1"
-                            empty-icon="$ratingFull"
-                            size="25"
-                            value="4"
-                            half-increments
-                            hover
-                            small
-                            ><span class="pa-0"></span
-                          ></v-rating>
-                        </v-col>
-                        <v-col cols="6" class="mt-2 pl-2 pa-0 ma-0">
-                          <span>4.5</span>
-                        </v-col>
-                      </v-row>
-                      <v-list-item-subtitle
-                        class="subtitle-1 font-weight-bold mt-1"
+                      <span class="pl-2 actualprice"
+                        ><v-icon size="21">mdi-currency-inr</v-icon>999.00</span
                       >
-                        <span class="title"
-                          ><v-icon size="21">mdi-currency-inr </v-icon
-                          >599.00</span
-                        >
-                        <span class="pl-2 actualprice"
-                          ><v-icon size="21">mdi-currency-inr</v-icon
-                          >999.00</span
-                        >
-                      </v-list-item-subtitle>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-card>
-              </div>
-            </div>
-          </div>
+                    </v-list-item-subtitle>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-card>
+            </v-col>
+          </v-row>
         </div>
       </div>
     </v-content>
@@ -122,7 +125,6 @@ export default {
     dsrc: null,
     sliderWidth: "220",
     subjectname: null,
-    articleCount: null,
     articles: [
       {
         post_title: "Class 10 Bihar Board Complete Maths in Hindi",
@@ -142,12 +144,6 @@ export default {
       }
     ]
   }),
-  computed: {
-    getsliderWidth() {
-      return this.articleCount * this.sliderWidth + "px";
-    }
-  },
-
   methods: {
     showContent(event, title) {
       event.preventDefault();
@@ -158,24 +154,18 @@ export default {
     }
   },
 
-  created() {
-    this.articleCount = this.articles.length;
-  },
-
   mounted() {
     this.skloader.loading = false;
   }
 };
 </script>
 <style scoped="">
-.slidercon {
-  max-width: 94vh;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-  margin: 0 auto;
-}
 ::-webkit-scrollbar {
   width: 0px;
+}
+.FeaturedCourse {
+  width: 100%;
+  scrollbar-width: none;
 }
 .v-card__text,
 .v-card__title {
@@ -184,9 +174,6 @@ export default {
 .actualprice {
   -webkit-text-decoration-line: line-through; /* Safari */
   text-decoration-line: line-through;
-}
-.FeaturedCourse {
-  width: 100%;
 }
 .iframe-container {
   background: url(https://edunotes.fresherscode.com/api/uploads/static/images/ajax-loader.gif)

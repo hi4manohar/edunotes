@@ -1,4 +1,3 @@
-import axios from "axios";
 import * as appConfig from "../config/index.config";
 import store from "../store";
 
@@ -10,7 +9,7 @@ function answersList(param) {
   return new Promise((resolve, reject) => {
     param.page = param.page ? param.page : "";
     param.tags = param.tags ? param.tags : "";
-    axios
+    store.$axios
       .get(
         `${appConfig.API_URL}answers/list?page=${param.page}&tags=${param.tags}`,
         {

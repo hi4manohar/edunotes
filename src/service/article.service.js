@@ -1,4 +1,3 @@
-import axios from "axios";
 import * as appConfig from "../config/index.config";
 import store from "../store";
 
@@ -15,7 +14,7 @@ export const articleService = {
 function articleList(param) {
   return new Promise((resolve, reject) => {
     param.page = param.page ? param.page : "";
-    axios
+    store.$axios
       .get(appConfig.API_URL + "article-list", {
         params: {
           page: param.page,
@@ -50,7 +49,7 @@ function articleList(param) {
 
 function articleDetails() {
   return new Promise((resolve, reject) => {
-    axios
+    store.$axios
       .get(appConfig.API_URL + "article-list", {
         headers: {
           "auth-token": store.state.user.token_id
@@ -81,7 +80,7 @@ function articleDetails() {
 
 function subjectList() {
   return new Promise((resolve, reject) => {
-    axios
+    store.$axios
       .get(appConfig.API_URL + "class/get", {
         headers: {
           "auth-token": store.state.user.token_id
@@ -111,7 +110,7 @@ function subjectList() {
 
 function syllabusArticleList(param) {
   return new Promise((resolve, reject) => {
-    axios
+    store.$axios
       .get(appConfig.API_URL + "class/get/" + param.subject, {
         headers: {
           "auth-token": store.state.user.token_id
@@ -141,7 +140,7 @@ function syllabusArticleList(param) {
 
 function getArticleByChapter(param) {
   return new Promise((resolve, reject) => {
-    axios
+    store.$axios
       .get(appConfig.API_URL + "class/get/chapters/" + param.chaptername, {
         headers: {
           "auth-token": store.state.user.token_id
@@ -169,7 +168,7 @@ function getArticleByChapter(param) {
 
 function getBooksList() {
   return new Promise((resolve, reject) => {
-    axios
+    store.$axios
       .get(appConfig.API_URL + "books", {
         headers: {
           "auth-token": store.state.user.token_id
@@ -199,7 +198,7 @@ function getBooksList() {
 
 function getBookDetails(param) {
   return new Promise((resolve, reject) => {
-    axios
+    store.$axios
       .get(appConfig.API_URL + "books/" + param.bookid, {
         headers: {
           "auth-token": store.state.user.token_id

@@ -8,7 +8,7 @@
       <v-spacer></v-spacer>
     </v-app-bar>
 
-    <v-content class="pa-4">
+    <v-content class="pa-4 blue-grey lighten-5">
       <div class="skloader" v-if="!bookDescription">
         <v-skeleton-loader
           :loading="true"
@@ -20,41 +20,43 @@
       </div>
 
       <div class="description-container" v-if="bookDescription">
-        <v-row>
-          <v-col xs="12" sm="6">
-            <div class="book-img pa-2">
-              <v-img
-                :src="bookDescription.reflink"
-                width="100%"
-                max-height="200px"
-                class="mx-auto"
-                contain
-              >
-                <template v-slot:placeholder>
-                  <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center"
-                  >
-                    <v-progress-circular
-                      indeterminate
-                      color="grey lighten-5"
-                    ></v-progress-circular>
-                  </v-row>
-                </template>
-              </v-img>
-            </div>
-          </v-col>
-          <v-col xs="12" sm="6" class="pb-0">
-            <div class="class-article ml-2 mt-4">
-              <h3 class="mb-0">{{ bookDescription.post_title }}</h3>
-              <div
-                class="mb-3 mt-3 book-description"
-                v-html="bookDescription.post_content"
-              ></div>
-            </div>
-          </v-col>
-        </v-row>
+        <v-card>
+          <v-row>
+            <v-col xs="12" sm="6">
+              <div class="book-img">
+                <v-img
+                  :src="bookDescription.reflink"
+                  width="100%"
+                  max-height="200px"
+                  class="mx-auto"
+                  contain
+                >
+                  <template v-slot:placeholder>
+                    <v-row class="fill-height" align="center" justify="center">
+                      <v-progress-circular
+                        indeterminate
+                        color="grey lighten-5"
+                      ></v-progress-circular>
+                    </v-row>
+                  </template>
+                </v-img>
+              </div>
+            </v-col>
+            <v-col xs="12" sm="6">
+              <v-list-item three-line>
+                <v-list-item-content>
+                  <v-list-item-title style="line-height:1.6;" class="py-2">{{
+                    bookDescription.post_title
+                  }}</v-list-item-title>
+                  <div
+                    class="book-description"
+                    v-html="bookDescription.post_content"
+                  ></div>
+                </v-list-item-content>
+              </v-list-item>
+            </v-col>
+          </v-row>
+        </v-card>
         <!-- if file type pdf -->
         <v-row>
           <v-col
@@ -64,9 +66,9 @@
             cols="12"
             v-for="(item, index) in attachmentDetails"
             :key="index"
-            class="py-0"
+            class="py-2"
           >
-            <v-list>
+            <v-list class="pa-0">
               <a :href="item.reflink" target="_blank">
                 <v-list-item class="elevation-2 text-left" @click="isCordova()">
                   <v-list-item-content>
@@ -109,11 +111,11 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import { cordovaMixin } from "@/mixins";
+import { cordovaMixin, contentMixin } from "@/mixins";
 
 export default {
   name: "BookDescription",
-  mixins: [cordovaMixin],
+  mixins: [cordovaMixin, contentMixin],
   data() {
     return {
       items: [
@@ -174,12 +176,12 @@ export default {
   overflow: auto;
   padding: 10px;
 }
-.book-img {
+/* .book-img {
   background: #eee;
   border: 1px solid #ddd;
   max-width: 400px;
   margin: 0 auto;
-}
+} */
 .caption {
   line-height: 10px !important;
 }

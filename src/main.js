@@ -9,8 +9,26 @@ import "./registerServiceWorker";
 import "./plugins/tiptap-vuetify";
 
 import { i18n } from "./plugins/i18n";
+import axios from "axios";
 
 Vue.config.productionTip = false;
+
+store.$axios = axios;
+Vue.prototype.$axios = axios;
+
+axios.interceptors.response.use(
+  function(response) {
+    // Any status code that lie within the range of 2xx cause this function to trigger
+    return response;
+  },
+  function(error) {
+    if (error.response.status === 440) {
+      store.dispatch("alert/success", error.response.data.msg);
+      store.dispatch("user/resetConfig");
+    }
+    // return Promise.reject(error);
+  }
+);
 
 new Vue({
   router,

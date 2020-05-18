@@ -20,8 +20,8 @@ const actions = {
           }
         }
       } catch (err) {
-        console.log("err", err);
-        dispatch("alert/error", err.msg, { root: true });
+        console.log("err", err.response);
+        dispatch("alert/error", err.response.data.msg, { root: true });
       }
     }
   },

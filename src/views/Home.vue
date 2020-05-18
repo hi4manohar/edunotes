@@ -61,13 +61,12 @@ export default {
     },
 
     changeComponentStatus(val, data) {
-        
       if (val === "chooseboard") {
-        this.turnComponent('chooseboard');
+        this.turnComponent("chooseboard");
       } else if (val === "welcome") {
-        this.turnComponent('welcome');
+        this.turnComponent("welcome");
       } else if (val === "chooseclass") {
-        this.turnComponent('chooseclass');
+        this.turnComponent("chooseclass");
         this.board = data ? data.board : null;
       }
     },
@@ -75,35 +74,39 @@ export default {
     async loadApp() {
       //get app version
       // if (this.isCordova()) {
-        try {
-          let appdetails = await welcomeService.getappdetails();
+      try {
+        let appdetails = await welcomeService.getappdetails();
 
-          if (appdetails.data.maintanance_mode === true) {
-            this.turnComponent('maintainance');
-            return "maintainance";
-          }
-          if (appdetails.data.published_app_version > appConfig.appVersion) {
-            this.turnComponent('upgradeapp');
-            return "upgradeapp";
-          }
-
-          if (this.$route.query.start && this.$route.query.start === "board") {
-            this.changeComponentStatus("chooseboard");
-          } else if (this.$route.query.start && this.$route.query.start === "class") {
-            try {
-              let configs = JSON.parse(localStorage.getItem("configUser"));
-              this.changeComponentStatus("chooseclass", { board: configs.userboard });
-            } catch (err) {
-              console.log("err", err);
-              this.changeComponentStatus("chooseboard");
-            }
-            
-          } else {
-            this.loggedInComponent();
-          }
-        } catch (err) {
-          this.showerror(err);
+        if (appdetails.data.maintanance_mode === true) {
+          this.turnComponent("maintainance");
+          return "maintainance";
         }
+        if (appdetails.data.published_app_version > appConfig.appVersion) {
+          this.turnComponent("upgradeapp");
+          return "upgradeapp";
+        }
+
+        if (this.$route.query.start && this.$route.query.start === "board") {
+          this.changeComponentStatus("chooseboard");
+        } else if (
+          this.$route.query.start &&
+          this.$route.query.start === "class"
+        ) {
+          try {
+            let configs = JSON.parse(localStorage.getItem("configUser"));
+            this.changeComponentStatus("chooseclass", {
+              board: configs.userboard
+            });
+          } catch (err) {
+            console.log("err", err);
+            this.changeComponentStatus("chooseboard");
+          }
+        } else {
+          this.loggedInComponent();
+        }
+      } catch (err) {
+        this.showerror(err);
+      }
       // }
     },
 
@@ -120,7 +123,7 @@ export default {
   },
 
   async mounted() {
-    this.loadApp();    
+    this.loadApp();
   }
 };
 </script>

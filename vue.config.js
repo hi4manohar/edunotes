@@ -6,6 +6,9 @@ if (process.env.CORDOVA_PLATFORM === "android") {
 }
 
 module.exports = {
+  css: {
+    extract: { ignoreOrder: true },
+  },
   transpileDependencies: ["vuetify"],
   publicPath: publicPath,
   productionSourceMap: false,
@@ -15,6 +18,9 @@ module.exports = {
   },
 
   pluginOptions: {
-    cordovaPath: "src-cordova"
+    cordovaPath: "src-cordova",
+    webpackBundleAnalyzer: {
+      openAnalyzer: false
+    }
   }
 };

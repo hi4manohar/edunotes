@@ -2,23 +2,23 @@
 
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home";
-import HomeList from "../views/HomeList";
-import ArticleList from "../views/Articles/ArticleList";
-import ArticleContent from "../views/Articles/ArticleContent";
-import CategoryArticle from "../views/Articles/CategoryArticle";
-import Books from "../views/books/Books";
-import BookDescription from "../views/books/BookDescription";
-import Answers from "../views/Answers";
-import AnswersContent from "../views/AnswersContent";
-import Ask from "../views/Ask";
-import Syllabus from "../views/Syllabus";
-import SubjectPosts from "../views/SubjectPosts";
-import Notifications from "../views/Notifications";
-import ChapterPosts from "../views/ChapterPosts";
-import WriteAnswer from "../views/WriteAnswer";
-import Notfound from "../views/Notfound";
-import Pdf from "../views/Pdf";
+const Home = () => import( "../views/Home");
+const HomeList = () => import( "../views/HomeList");
+const ArticleContent = () => import( "../views/Articles/ArticleContent");
+const CategoryArticle = () => import( "../views/Articles/CategoryArticle");
+const Books = () => import( "../views/books/Books");
+const BookDescription = () => import( "../views/books/BookDescription");
+const Answers = () => import( "../views/Answers");
+const AnswersContent = () => import( "../views/AnswersContent");
+const Ask = () => import( "../views/Ask");
+const Syllabus = () => import( "../views/Syllabus");
+const SubjectPosts = () => import( "../views/SubjectPosts");
+const Notifications = () => import( "../views/Notifications");
+const ChapterPosts = () => import( "../views/ChapterPosts");
+const WriteAnswer = () => import( "../views/WriteAnswer");
+const Notfound = () => import("../views/Notfound");
+const Pdf = () => import("../views/Pdf");
+const ArticleList = () => import("../views/Articles/ArticleList");
 
 Vue.use(VueRouter);
 
