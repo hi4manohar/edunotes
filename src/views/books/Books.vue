@@ -5,7 +5,6 @@
       color="#1565C0"
       dark
       flat
-      dense
       mobile-break-point="0"
       show-arrows="false"
       class="flex-grow-0"

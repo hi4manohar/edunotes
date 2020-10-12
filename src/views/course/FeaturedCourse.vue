@@ -1,5 +1,6 @@
 <template>
   <div :class="$options.name">
+    
     <v-row justify="center">
       <v-dialog
         v-model="dialog"
@@ -27,6 +28,7 @@
         </v-card>
       </v-dialog>
     </v-row>
+
     <v-content class="pa-2">
       <div class="skloader" v-show="skloader.loading">
         <v-skeleton-loader
@@ -149,7 +151,7 @@ export default {
       event.preventDefault();
       this.dialog = true;
       this.dsrc =
-        "https://www.fresherscode.com/edunotes-admin/course-enquiry-form/";
+        "https://www.padhaimantra.org/edunotes-admin/course-enquiry-form/";
       this.quizName = title;
     }
   },

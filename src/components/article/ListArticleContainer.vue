@@ -7,7 +7,7 @@
         sm="6"
         v-for="(name, index) in names"
         :key="index"
-        class="pb-2"
+        class="pa-2"
       >
         <div class="list-card" @click="$router.push('/post/' + index)">
           <v-card

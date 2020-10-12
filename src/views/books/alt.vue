@@ -15,7 +15,7 @@ const Syllabus = () => import( "../views/Syllabus");
 const SubjectPosts = () => import( "../views/SubjectPosts");
 const Notifications = () => import( "../views/Notifications");
 const ChapterPosts = () => import( "../views/ChapterPosts");
-// const WriteAnswer = () => import( "../views/WriteAnswer");
+const WriteAnswer = () => import( "../views/WriteAnswer");
 const Notfound = () => import("../views/Notfound");
 const Pdf = () => import("../views/Pdf");
 const ArticleList = () => import("../views/Articles/ArticleList");
@@ -63,7 +63,7 @@ const routes = [
     name: "ChapterPosts",
     component: ChapterPosts
   },
-  // { path: "/write/:quid", name: "WriteAnswer", component: WriteAnswer },
+  { path: "/write/:quid", name: "WriteAnswer", component: WriteAnswer },
   { path: "/notifications", name: "Notifications", component: Notifications },
   { path: "/pdf", name: "Pdf", component: Pdf },
   { path: "*", name: "404", component: Notfound }

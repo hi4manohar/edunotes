@@ -6,8 +6,6 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import "./registerServiceWorker";
 
-import "./plugins/tiptap-vuetify";
-
 import { i18n } from "./plugins/i18n";
 import axios from "axios";
 

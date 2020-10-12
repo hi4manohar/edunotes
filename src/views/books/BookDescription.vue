@@ -22,7 +22,7 @@
       <div class="description-container" v-if="bookDescription">
         <v-card>
           <v-row>
-            <v-col xs="12" sm="6">
+            <v-col xs="12" sm="6" class="justify-center">
               <div class="book-img">
                 <v-img
                   :src="bookDescription.reflink"

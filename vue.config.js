@@ -7,7 +7,7 @@ if (process.env.CORDOVA_PLATFORM === "android") {
 
 module.exports = {
   css: {
-    extract: { ignoreOrder: true },
+    extract: { ignoreOrder: true }
   },
   transpileDependencies: ["vuetify"],
   publicPath: publicPath,
@@ -22,5 +22,8 @@ module.exports = {
     webpackBundleAnalyzer: {
       openAnalyzer: false
     }
+  },
+  configureWebpack: {
+    mode: 'production'
   }
 };
