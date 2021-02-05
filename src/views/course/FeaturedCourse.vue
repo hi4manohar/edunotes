@@ -1,6 +1,5 @@
 <template>
   <div :class="$options.name">
-    
     <v-row justify="center">
       <v-dialog
         v-model="dialog"

@@ -2,7 +2,7 @@ var publicPath = "";
 if (process.env.CORDOVA_PLATFORM === "android") {
   publicPath = "";
 } else {
-  publicPath = process.env.NODE_ENV === "production" ? "/" : "/";
+  publicPath = process.env.NODE_ENV === "production" ? "./" : "/";
 }
 
 module.exports = {
@@ -24,6 +24,6 @@ module.exports = {
     }
   },
   configureWebpack: {
-    mode: 'production'
+    mode: "production"
   }
 };

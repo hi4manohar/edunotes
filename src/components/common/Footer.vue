@@ -45,39 +45,40 @@ export default {
   props: ["active"],
   name: "Footer",
   data: () => ({
-    isDesktop: false,
+    isDesktop: false
   }),
 
-  beforeDestroy () {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('resize', this.onResize, { passive: true })
+  beforeDestroy() {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("resize", this.onResize, { passive: true });
     }
   },
 
-  mounted () {
-    this.onResize()
-    window.addEventListener('resize', this.onResize, { passive: true });    
+  mounted() {
+    this.onResize();
+    window.addEventListener("resize", this.onResize, { passive: true });
   },
 
   watch: {
     // whenever question changes, this function will run
-    isDesktop: function (newval) {
-      if( newval ) {
+    isDesktop: function(newval) {
+      if (newval) {
         document.getElementById("footerc").style.width = "100%";
-        document.getElementById("footerc").style['max-width'] = "calc(100% - 300px)";
-        document.getElementById("footerc").style['left'] = "auto";
+        document.getElementById("footerc").style["max-width"] =
+          "calc(100% - 300px)";
+        document.getElementById("footerc").style["left"] = "auto";
       } else {
-        document.getElementById("footerc").style['left'] = "auto";
-        document.getElementById("footerc").style['max-width'] = "100%";
+        document.getElementById("footerc").style["left"] = "auto";
+        document.getElementById("footerc").style["max-width"] = "100%";
       }
     }
   },
 
   methods: {
-    onResize () {
+    onResize() {
       this.isDesktop = window.innerWidth > 1264;
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped="">
